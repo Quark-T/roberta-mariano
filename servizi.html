@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servizi — Arch. Roberta Mariano</title>
+<meta name="description" content="Certificazioni APE, perizie tecniche CTU, perizie per mutui, interior design, facciate continue, spazi esterni e collaudi statici. Studio Arch. Roberta Mariano, Padova.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ── INTRO ── */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem,8vw,7rem);
+  align-items: center;
+  max-width: var(--max); margin: 0 auto;
+}
+.intro-grid p { color: var(--muted); margin-bottom: 1.1rem; font-size: 1rem; }
+.intro-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; clip-path: inset(0% 0% 100% 0%); }
+@media(max-width:768px) { .intro-grid { grid-template-columns: 1fr; } }
+
+/* ── SERVICE BLOCK ── */
+.svc-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem,8vw,7rem);
+  align-items: center;
+  max-width: var(--max); margin: 0 auto;
+  padding: clamp(4rem,8vw,7rem) var(--pad);
+  border-bottom: 1px solid var(--border);
+}
+.svc-block:last-of-type { border-bottom: none; }
+.svc-block.reverse { direction: rtl; }
+.svc-block.reverse > * { direction: ltr; }
+.svc-block-img {
+  width: 100%; aspect-ratio: 4/3;
+  object-fit: cover;
+  object-position: center;
+  clip-path: inset(0% 0% 100% 0%);
+}
+.svc-block-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem; font-weight: 300; line-height: 1;
+  color: var(--border); display: block; margin-bottom: -.5rem;
+}
+.svc-block-copy .label { margin-bottom: .5rem; }
+.svc-block-copy h2 { font-size: clamp(1.8rem,3vw,2.8rem); margin-bottom: 1.2rem; }
+.svc-block-copy p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
+.svc-block-copy ul {
+  margin: 1.2rem 0;
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.svc-block-copy ul li {
+  font-size: .9rem; color: var(--muted);
+  display: flex; align-items: baseline; gap: .7rem;
+}
+.svc-block-copy ul li::before {
+  content: '—'; color: var(--accent); font-size: .8rem; flex-shrink: 0;
+}
+@media(max-width:768px) {
+  .svc-block { grid-template-columns: 1fr; padding: 4rem var(--pad); }
+  .svc-block.reverse { direction: ltr; }
+}
+
+/* ── PROCESS ── */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: var(--max); margin: 0 auto;
+}
+.process-step {
+  background: var(--white); padding: 2.5rem 2rem;
+  position: relative; overflow: hidden;
+}
+.process-step::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--accent);
+  transition: width .5s var(--ease);
+}
+.process-step:hover::after { width: 100%; }
+.process-step:hover { background: var(--bg-alt); }
+.process-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 300; line-height: 1;
+  color: var(--border); display: block; margin-bottom: 1rem;
+}
+.process-step h3 { font-size: 1.15rem; margin-bottom: .6rem; }
+.process-step p  { font-size: .88rem; color: var(--muted); margin: 0; line-height: 1.6; }
+@media(max-width:900px) { .process-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:480px) { .process-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="contatti.html" class="btn nav-cta">Richiedi Preventivo</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/image18.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Servizi</span>
+    </div>
+    <h1>Servizi di<br><em style="font-weight:300;color:var(--accent)">Architettura</em></h1>
+    <p class="page-hero-sub">
+      Dalle certificazioni energetiche alle perizie forensi, dall'interior design
+      alle facciate continue: un'offerta completa per ogni esigenza edilizia e progettuale.
+    </p>
+  </div>
+</header>
+
+
+<!-- INTRO -->
+<section class="section">
+  <div class="intro-grid">
+    <div>
+      <span class="label">Metodologia</span>
+      <span class="dline"></span>
+      <h2>Un metodo fondato su<br><em style="font-weight:300;color:var(--accent)">competenza e ascolto</em></h2>
+      <p class="reveal" style="margin-top:1.2rem;">
+        Ogni incarico, grande o piccolo, viene affrontato con la stessa intensità.
+        Non esiste il "progetto di routine": dietro ogni certificazione energetica c'è
+        una famiglia che vuole ridurre i costi; dietro ogni perizia c'è una persona
+        che ha bisogno di certezze legali; dietro ogni intervento di interior design
+        c'è qualcuno che sogna uno spazio più bello in cui vivere.
+      </p>
+      <p class="reveal" data-delay=".08">
+        Collaboro stabilmente con ingegneri strutturisti, geometri, imprese edili e
+        serramentisti per garantire soluzioni integrate. Il mio territorio di riferimento
+        è il Veneto, con una presenza consolidata a Padova, Venezia, Treviso e Vicenza,
+        ma opero su tutto il territorio nazionale e ho maturato esperienze internazionali.
+      </p>
+    </div>
+    <div>
+      <img class="intro-img" src="assets/img/roberta-mariano-architetto-di-borgoricco.webp"
+           alt="Studio di lavoro" loading="lazy" width="700" height="525">
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SERVIZIO 1: APE ═══ -->
+<div class="svc-block">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">01</span>
+    <span class="label">Certificazione Energetica</span>
+    <h2>Attestati di Prestazione Energetica (APE)</h2>
+    <p class="reveal">
+      L'APE è il documento obbligatorio che certifica la classe energetica di un
+      immobile. È richiesto per le compravendite, le locazioni, i lavori di
+      ristrutturazione e l'accesso agli incentivi fiscali come il Superbonus e
+      l'Ecobonus. Senza un APE valido, molte operazioni immobiliari non sono
+      giuridicamente possibili.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Sono certificatrice energetica accreditata e ho emesso oltre 1.000 attestati
+      in più di un decennio, con una percentuale di approvazione del 100% presso
+      le autorità competenti. Opero su edifici residenziali, direzionali e
+      commerciali, nuovi o esistenti.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>APE per compravendita e locazione</li>
+      <li>APE per pratiche Superbonus 110% ed Ecobonus</li>
+      <li>APE per banche e istituti di credito</li>
+      <li>Diagnosi energetica e consulenza per la riqualificazione</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/architettura-e-energia-rinnovabile.webp"
+         alt="Architettura sostenibile" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- ═══ SERVIZIO 2: CTU ═══ -->
+<div class="svc-block reverse bg-alt" style="background:var(--bg-alt)">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">02</span>
+    <span class="label">Perizie Forensi</span>
+    <h2>Perizie Tecniche CTU &amp; CTP</h2>
+    <p class="reveal">
+      Da oltre un decennio sono Consulente Tecnico d'Ufficio (CTU) per il Tribunale
+      civile di Padova in materia edilizia e immobiliare. Ho prodotto oltre 100
+      relazioni tecniche per cause civili riguardanti vizi costruttivi, difformità
+      urbanistiche, divisioni ereditarie, stime patrimoniali e controversie contrattuali.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Opero anche come Consulente Tecnico di Parte (CTP) per assistere privati e
+      aziende nella lettura e nella contestazione di perizie avverse. Ogni relazione
+      è redatta con rigore metodologico, linguaggio chiaro e documentazione fotografica
+      e grafica dettagliata.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>Perizie CTU per il Tribunale di Padova</li>
+      <li>Consulenza CTP per assistenza a privati e imprese</li>
+      <li>Vizi costruttivi e difformità edilizie</li>
+      <li>Divisioni ereditarie e stime patrimoniali</li>
+      <li>Contenziosi da appalto</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/architetto-perizie-techiche-estimative.webp"
+         alt="Perizie tecniche" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- ═══ SERVIZIO 3: MUTUI ═══ -->
+<div class="svc-block">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">03</span>
+    <span class="label">Valutazioni Immobiliari</span>
+    <h2>Perizie per Mutui e Banche</h2>
+    <p class="reveal">
+      Le banche e gli istituti di credito richiedono una perizia tecnica estimativa
+      prima di concedere un finanziamento immobiliare. È una procedura delicata che
+      richiede precisione, conoscenza del mercato locale e capacità di analisi
+      strutturale dell'immobile.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Ho prodotto oltre 1.000 perizie per mutuo in oltre un decennio, per abitazioni
+      private, locali commerciali, capannoni industriali, terreni agricoli ed edifici
+      in costruzione. Le valutazioni vengono effettuate secondo i più aggiornati
+      standard tecnici ed estimativi e rispettano le linee guida bancarie.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>Perizie per istituti bancari e finanziarie</li>
+      <li>Immobili residenziali, commerciali e industriali</li>
+      <li>Edifici finiti e in costruzione</li>
+      <li>Terreni agricoli e lotti edificabili</li>
+      <li>Valutazioni per esecuzioni immobiliari</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/architetto-perizie-mutui.webp"
+         alt="Perizie per mutui" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- ═══ SERVIZIO 4: EDILIZIA ═══ -->
+<div class="svc-block reverse bg-alt" style="background:var(--bg-alt)">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">04</span>
+    <span class="label">Progettazione</span>
+    <h2>Edilizia Civile &amp; Pratiche Edilizie</h2>
+    <p class="reveal">
+      Progetto edifici residenziali, commerciali e direzionali in collaborazione
+      con ingegneri strutturisti e imprese edili partner. Il mio approccio mira
+      sempre all'integrazione tra forma e funzione, rispettando i tempi, i costi
+      e le aspettative del committente.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Gestisco l'iter burocratico completo: dalla SCIA alla DIA, dalla CIL alla
+      variante in corso d'opera, fino all'agibilità e al collaudo. La conoscenza
+      approfondita delle normative comunali e regionali del Veneto mi permette di
+      ottimizzare i tempi delle pratiche.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>Progettazione residenziale e commerciale</li>
+      <li>Ristrutturazioni e ampliamenti</li>
+      <li>Pratiche SCIA, DIA, PdC, CIL</li>
+      <li>Agibilità e conformità urbanistica</li>
+      <li>Direzione Lavori</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/Immagine6Medie-1.webp"
+         alt="Edilizia civile e progettazione architettonica" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- ═══ SERVIZIO 5: INTERIOR ═══ -->
+<div class="svc-block">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">05</span>
+    <span class="label">Interior Design</span>
+    <h2>Arredamento &amp; Interior Design</h2>
+    <p class="reveal">
+      Ogni spazio interno racconta una storia. Lavoro con i committenti per
+      capire come vivono, che colori li emozionano, quale luce preferiscono,
+      come immaginano la loro cucina o il loro studio. A partire da queste
+      informazioni creo progetti d'interni personalizzati, coerenti e funzionali.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Collaboro con artigiani e fornitori locali selezionati per garantire
+      materiali di qualità a costi controllati. I miei progetti si distinguono
+      per la cura del dettaglio, la scelta dei materiali e la capacità di
+      valorizzare ogni metro quadro disponibile.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>Progettazione d'interni residenziali e commerciali</li>
+      <li>Planimetrie funzionali e distribuzione spazi</li>
+      <li>Selezione materiali, rivestimenti e arredi</li>
+      <li>Illuminotecnica e impianti nascosti</li>
+      <li>Render 3D e visualizzazioni fotorealistiche</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/architetto-esperto-per-interni.webp"
+         alt="Interior design" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- ═══ SERVIZIO 6: FACCIATE ═══ -->
+<div class="svc-block reverse bg-alt" style="background:var(--bg-alt)">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">06</span>
+    <span class="label">Involucro Edilizio</span>
+    <h2>Progettazione di Facciate Continue</h2>
+    <p class="reveal">
+      La facciata è il volto di un edificio: ne definisce l'identità, ne protegge
+      la struttura e ne determina le prestazioni energetiche. Progetto facciate
+      continue, ventilate e sistemi di rivestimento con materiali tecnici di
+      alto livello — vetro, alluminio, pietra naturale, compositi.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Ogni progetto di facciata viene sviluppato tenendo conto del contesto
+      urbanistico, delle normative locali, delle prestazioni termoacustiche
+      richieste e del budget disponibile. Collaboro con serramentisti e
+      posatori specializzati per garantire una posa a regola d'arte.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>Facciate continue in vetro e alluminio</li>
+      <li>Sistemi di rivestimento ventilato</li>
+      <li>Isolamento a cappotto con finitura decorativa</li>
+      <li>Serramenti ad alta prestazione energetica</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/facciate-continue-architetto-veneto.webp"
+         alt="Facciata continua" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- ═══ SERVIZIO 7: ACUSTICA ═══ -->
+<div class="svc-block">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">07</span>
+    <span class="label">Acustica &amp; Strutture</span>
+    <h2>Rivestimenti Acustici &amp; Sottostrutture</h2>
+    <p class="reveal">
+      Il comfort acustico di un ambiente incide profondamente sulla qualità
+      della vita di chi lo abita o ci lavora. Progetto sistemi di rivestimento
+      acustico e sottostrutture per pareti, soffitti e pavimenti, applicati
+      in contesti residenziali, scolastici, commerciali e ricettivi.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Le soluzioni vengono dimensionate in base ai requisiti normativi previsti
+      dal D.P.C.M. 5/12/97 e successive integrazioni, con scelta dei materiali
+      fonoisolanti e fonoassorbenti più adeguati alla destinazione d'uso dell'ambiente.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>Pareti fonoassorbenti e contropareti</li>
+      <li>Soffitti acustici sospesi</li>
+      <li>Pavimenti galleggianti antivibranti</li>
+      <li>Certificazione acustica degli ambienti</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/image2.webp"
+         alt="Rivestimenti acustici e sottostrutture" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- ═══ SERVIZIO 8: ESTERNI ═══ -->
+<div class="svc-block reverse bg-alt" style="background:var(--bg-alt)">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">08</span>
+    <span class="label">Spazi Esterni</span>
+    <h2>Strutture Metalliche &amp; Spazi Esterni</h2>
+    <p class="reveal">
+      Il confine tra interno ed esterno è sempre più fluido nell'architettura
+      contemporanea. Progetto strutture metalliche su misura per completare
+      e valorizzare gli spazi aperti: pergolati bioclimatici, gazebo, recinzioni
+      artistiche, ringhiere, scale esterne e passerelle.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Ogni struttura viene progettata con attenzione alla durabilità nel tempo,
+      alla resistenza agli agenti atmosferici e all'integrazione estetica con
+      l'edificio esistente. Lavoro con carpentieri metallici specializzati per
+      garantire finiture di qualità.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>Pergolati bioclimatici e gazebo</li>
+      <li>Recinzioni e cancelli su misura</li>
+      <li>Ringhiere e parapetti</li>
+      <li>Scale esterne in ferro e acciaio</li>
+      <li>Passerelle e strutture di collegamento</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/architetto-di-cancelletti-alti.webp"
+         alt="Strutture metalliche esterne" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- ═══ SERVIZIO 9: COLLAUDI ═══ -->
+<div class="svc-block">
+  <div class="svc-block-copy">
+    <span class="svc-block-num">09</span>
+    <span class="label">Sicurezza Strutturale</span>
+    <h2>Collaudi Statici</h2>
+    <p class="reveal">
+      Il collaudo statico è l'atto finale che certifica la conformità di un'opera
+      strutturale al progetto approvato e alle normative vigenti. È obbligatorio per
+      le strutture in cemento armato, acciaio o elementi prefabbricati, e costituisce
+      un documento indispensabile per ottenere l'agibilità.
+    </p>
+    <p class="reveal" data-delay=".08">
+      Effettuo sopralluoghi in cantiere nelle fasi di avanzamento dei lavori,
+      verifico la documentazione di cantiere (libretti delle misure, registri
+      dei controlli, certificati dei materiali) e redigo la relazione di collaudo
+      secondo le NTC 2018.
+    </p>
+    <ul class="reveal" data-delay=".12">
+      <li>Collaudi per strutture in c.a., acciaio e prefabbricato</li>
+      <li>Sopralluoghi in corso d'opera</li>
+      <li>Relazione di collaudo NTC 2018</li>
+      <li>Verifica documentazione tecnica di cantiere</li>
+    </ul>
+  </div>
+  <div>
+    <img class="svc-block-img" src="assets/img/image9-1.webp"
+         alt="Collaudo statico in cantiere" loading="lazy" width="700" height="525">
+  </div>
+</div>
+
+
+<!-- PROCESS -->
+<section class="section bg-white">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh sh-c">
+      <span class="label">Metodo</span>
+      <span class="dline dline-c"></span>
+      <h2>Come Lavoriamo Insieme</h2>
+      <p>Un processo chiaro e trasparente, dove il cliente è sempre informato e coinvolto.</p>
+    </div>
+  </div>
+  <div class="process-grid stagger-parent">
+    <div class="process-step stagger-item">
+      <span class="process-n">01</span>
+      <h3>Consulenza Iniziale</h3>
+      <p>Un incontro (di persona, telefonico o in video-call) per capire le esigenze,
+         valutare fattibilità e costi, e rispondere a ogni domanda. Sempre gratuita
+         e senza impegno.</p>
+    </div>
+    <div class="process-step stagger-item">
+      <span class="process-n">02</span>
+      <h3>Progettazione &amp; Analisi</h3>
+      <p>Sopralluogo, raccolta dati, analisi documentale e sviluppo del progetto o
+         della perizia. Ogni fase è condivisa con il cliente prima di procedere.</p>
+    </div>
+    <div class="process-step stagger-item">
+      <span class="process-n">03</span>
+      <h3>Realizzazione</h3>
+      <p>Esecuzione dell'incarico con aggiornamenti periodici, gestione delle
+         pratiche burocratiche e coordinamento con gli altri professionisti coinvolti.</p>
+    </div>
+    <div class="process-step stagger-item">
+      <span class="process-n">04</span>
+      <h3>Consegna &amp; Assistenza</h3>
+      <p>Consegna della documentazione completa e assistenza post-consegna per
+         eventuali integrazioni, chiarimenti o aggiornamenti futuri.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Iniziamo<br><em style="font-weight:300">il tuo progetto</em></h2>
+  <p>Compila il modulo di contatto specificando il servizio di cui hai bisogno.
+     Ti risponderò entro 24 ore.</p>
+  <a href="contatti.html" class="btn btn-light">
+    Richiedi Preventivo
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/>
+    </svg>
+  </a>
+</div>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script type="module">
+gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  /* Page hero */
+  gsap.from('.page-hero h1, .page-hero-sub', {
+    opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2,
+  });
+  /* Intro image */
+  gsap.to('.intro-img', {
+    clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power3.inOut',
+    scrollTrigger: { trigger: '.intro-img', start: 'top 80%', once: true },
+  });
+  /* Service block images */
+  gsap.utils.toArray('.svc-block-img').forEach(img => {
+    gsap.to(img, {
+      clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power3.inOut',
+      scrollTrigger: { trigger: img, start: 'top 80%', once: true },
+    });
+  });
+  /* Service numbers */
+  gsap.utils.toArray('.svc-block-num').forEach(n => {
+    gsap.from(n, {
+      opacity: 0, x: -20, duration: .7, ease: 'power3.out',
+      scrollTrigger: { trigger: n, start: 'top 85%', once: true },
+    });
+  });
+});
+</script>
+</body>
+</html>

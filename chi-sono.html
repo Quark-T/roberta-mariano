@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi Sono — Arch. Roberta Mariano</title>
+<meta name="description" content="Roberta Mariano: architetta laureata allo IUAV di Venezia, con 22+ anni di esperienza in architettura, interior design, certificazioni energetiche e perizie tecniche nel Veneto.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ── BIO ── */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem,8vw,7rem);
+  align-items: start;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.bio-img-wrap { position: relative; }
+.bio-img-wrap::before {
+  content: ''; position: absolute;
+  top: 20px; right: -20px;
+  width: 100%; height: 100%;
+  border: 1px solid var(--accent-l); z-index: -1;
+}
+.bio-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; clip-path: inset(0% 0% 100% 0%); }
+.bio-copy p { color: var(--muted); margin-bottom: 1.2rem; font-size: 1rem; }
+.bio-copy strong { color: var(--text); }
+@media(max-width:768px) {
+  .bio-grid { grid-template-columns: 1fr; }
+  .bio-img-wrap::before { display: none; }
+  .bio-img { aspect-ratio: 4/3; }
+}
+
+/* ── TIMELINE ── */
+.timeline-wrap { max-width: 800px; margin: 0 auto; position: relative; }
+.timeline-line {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px; height: 100%;
+  background: var(--border);
+  transform-origin: top;
+}
+.timeline-line-fill {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px; height: 0%;
+  background: var(--accent);
+  transition: height 1.5s ease;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 2rem;
+  padding-bottom: 3.5rem;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  background: var(--white);
+  margin-top: .4rem;
+  position: relative; z-index: 1;
+  flex-shrink: 0;
+}
+.timeline-year {
+  font-size: .68rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent);
+  font-weight: 500; margin-bottom: .4rem; display: block;
+}
+.timeline-item h3 { font-size: 1.2rem; margin-bottom: .5rem; }
+.timeline-item p  { font-size: .95rem; color: var(--muted); margin: 0; }
+
+/* ── VALUES ── */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: var(--max); margin: 0 auto;
+}
+.value-card {
+  background: var(--white); padding: 3rem 2.5rem;
+  transition: background .3s ease; position: relative; overflow: hidden;
+}
+.value-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--accent);
+  transition: width .5s var(--ease);
+}
+.value-card:hover::after { width: 100%; }
+.value-card:hover { background: var(--bg-alt); }
+.value-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; font-weight: 300; line-height: 1;
+  color: var(--border); display: block; margin-bottom: 1.2rem;
+}
+.value-card h3 { margin-bottom: .7rem; }
+.value-card p  { font-size: .9rem; color: var(--muted); margin: 0; line-height: 1.65; }
+@media(max-width:580px) { .values-grid { grid-template-columns: 1fr; } }
+
+/* ── LIBRO ── */
+.libro-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: var(--max); margin: 0 auto;
+}
+.libro-cover {
+  width: 220px; flex-shrink: 0;
+  border: 1px solid var(--border);
+  aspect-ratio: 2/3;
+  background: var(--bg-alt);
+  display: flex; align-items: center; justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+.libro-cover-inner {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; line-height: 1.4;
+  font-style: italic; color: var(--text);
+}
+.libro-cover-inner small {
+  display: block; margin-top: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .68rem; letter-spacing: .14em;
+  text-transform: uppercase; font-style: normal;
+  color: var(--accent); font-weight: 500;
+}
+.libro-copy p { color: var(--muted); margin-bottom: 1.1rem; font-size: 1rem; }
+@media(max-width:640px) {
+  .libro-grid { grid-template-columns: 1fr; }
+  .libro-cover { width: 100%; max-width: 220px; margin: 0 auto; }
+}
+
+/* ── PORTRAIT QUOTE ── */
+.portrait-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem,8vw,7rem);
+  align-items: center;
+  max-width: var(--max); margin: 0 auto;
+}
+.portrait-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; clip-path: inset(0% 0% 100% 0%); }
+.blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.8rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem,2.5vw,2rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--text);
+}
+.blockquote cite {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: .72rem;
+  font-style: normal;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
+@media(max-width:768px) {
+  .portrait-grid { grid-template-columns: 1fr; }
+  .portrait-img { aspect-ratio: 3/2; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="contatti.html" class="btn nav-cta">Consulenza Gratuita</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/roberta-mariano-architetto-di-borgoricco.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span>Chi Sono</span>
+    </div>
+    <h1>Professionalità,<br><em style="font-weight:300;color:var(--accent)">Visione e Dettaglio</em></h1>
+    <p class="page-hero-sub">
+      Architetta con oltre 22 anni di esperienza, unisco la precisione tecnica
+      alla sensibilità estetica per dare forma a spazi che durano nel tempo.
+    </p>
+  </div>
+</header>
+
+
+<!-- BIO -->
+<section class="section">
+  <div class="bio-grid">
+    <div class="bio-img-wrap">
+      <img class="bio-img" src="assets/img/roby1a.jpg"
+           alt="Arch. Roberta Mariano" loading="lazy" width="600" height="800">
+    </div>
+    <div class="bio-copy">
+      <span class="label">Biografia</span>
+      <span class="dline"></span>
+      <h2>Chi sono</h2>
+
+      <p class="reveal" style="margin-top:1.2rem;">
+        Sono Roberta Mariano, architetta libera professionista con studio a Borgoricco,
+        in provincia di Padova. Mi sono laureata allo <strong>IUAV di Venezia</strong> —
+        una delle scuole di architettura più prestigiose d'Italia — e da oltre 22 anni
+        esercito la professione con passione, rigore e un'innata curiosità per la materia.
+      </p>
+      <p class="reveal" data-delay=".08">
+        La mia formazione mi ha insegnato che l'architettura non è mai solo estetica:
+        è una disciplina che richiede conoscenza strutturale, sensibilità ambientale,
+        rispetto per le normative e, soprattutto, ascolto profondo delle persone che
+        abiteranno quegli spazi. Per questo ogni progetto nasce sempre da un
+        <strong>dialogo diretto e continuativo con il cliente</strong>.
+      </p>
+      <p class="reveal" data-delay=".12">
+        Nel corso degli anni ho sviluppato una specializzazione trasversale che mi permette
+        di muovermi con uguale competenza tra progettazione architettonica, interior design,
+        certificazione energetica degli edifici e perizia tecnica estimativa. Sono
+        <strong>Consulente Tecnico d'Ufficio del Tribunale di Padova</strong> da oltre un
+        decennio, con un portfolio di più di 100 relazioni tecniche prodotte in ambito
+        civile e commerciale.
+      </p>
+      <p class="reveal" data-delay=".16">
+        Sono anche certificatore energetico accreditato: ho emesso oltre 1.000 Attestati
+        di Prestazione Energetica per privati, agenzie immobiliari, istituti bancari e
+        società di riqualificazione energetica, con una percentuale di approvazione del
+        100%. La sostenibilità non è per me un'etichetta, ma una responsabilità
+        professionale concreta.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- TIMELINE -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh">
+      <span class="label">Percorso</span>
+      <span class="dline"></span>
+      <h2>Tappe Professionali</h2>
+      <p>Un percorso costruito sul campo, tra aula e cantiere, tra normativa e creatività.</p>
+    </div>
+  </div>
+  <div class="timeline-wrap">
+    <div class="timeline-line">
+      <div class="timeline-line-fill" id="tlFill"></div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div>
+        <span class="timeline-year">2002</span>
+        <h3>Laurea allo IUAV di Venezia</h3>
+        <p>Conseguita la laurea in Architettura presso lo Iuav di Venezia, una delle
+           scuole di architettura più innovative d'Europa. Il percorso accademico ha
+           gettato le basi per una professione orientata alla qualità del progetto e
+           al rispetto del contesto.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal" data-delay=".1">
+      <div class="timeline-dot"></div>
+      <div>
+        <span class="timeline-year">2003 — 2010</span>
+        <h3>Libera Professione &amp; Prime Collaborazioni</h3>
+        <p>Avvio dell'attività in proprio, affiancando progettazioni residenziali a
+           lavori di interior design. Collaborazioni con studi di ingegneria e imprese
+           edili del Veneto per interventi civili e commerciali di media entità. In
+           questo periodo si consolida l'approccio multidisciplinare che caratterizza
+           ancora oggi il metodo di lavoro.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal" data-delay=".15">
+      <div class="timeline-dot"></div>
+      <div>
+        <span class="timeline-year">2011</span>
+        <h3>Nomina a CTU del Tribunale di Padova</h3>
+        <p>Incarico come Consulente Tecnico d'Ufficio (CTU) presso il Tribunale civile
+           di Padova per la materia edilizia e immobiliare. L'esperienza forense ha
+           affinato la capacità di analisi, la precisione documentale e la gestione
+           di dossier complessi, competenze che arricchiscono ogni progetto.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal" data-delay=".2">
+      <div class="timeline-dot"></div>
+      <div>
+        <span class="timeline-year">2013 — 2020</span>
+        <h3>Specializzazione in Certificazione Energetica</h3>
+        <p>Accreditamento come certificatore energetico e avvio di una intensa attività
+           di redazione di APE per privati, agenzie immobiliari e banche. In questo
+           periodo vengono emessi oltre 700 attestati, tutti approvati. La pubblicazione
+           del libro "Eco-viaggio dentro la tua casa" nel 2014 consolida la competenza
+           divulgativa sul tema della sostenibilità.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal" data-delay=".25">
+      <div class="timeline-dot"></div>
+      <div>
+        <span class="timeline-year">2021 — Oggi</span>
+        <h3>Perito Estimatore &amp; Superbonus</h3>
+        <p>Ampliamento delle competenze verso la perizia estimativa avanzata: valutazioni
+           per istituti di credito, esecuzioni immobiliari e pratiche Superbonus 110%.
+           Lo studio raggiunge quota 1.000+ perizie prodotte e 2.000+ clienti serviti,
+           mantenendo un rapporto diretto e personale con ciascuno di essi.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- VALUES -->
+<section class="section bg-white">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh sh-c">
+      <span class="label">Valori</span>
+      <span class="dline dline-c"></span>
+      <h2>Cosa guida il mio lavoro</h2>
+      <p>Principi che informano ogni decisione progettuale, ogni perizia,
+         ogni consulenza.</p>
+    </div>
+  </div>
+  <div class="values-grid stagger-parent">
+    <div class="value-card stagger-item">
+      <span class="value-num">01</span>
+      <h3>Creatività Tecnica</h3>
+      <p>Ogni vincolo normativo o strutturale è un'opportunità di design.
+         La soluzione più elegante nasce spesso dal rispetto rigoroso delle regole,
+         non dalla loro elusione. Creatività e tecnica, per me, non si oppongono:
+         si alimentano a vicenda.</p>
+    </div>
+    <div class="value-card stagger-item">
+      <span class="value-num">02</span>
+      <h3>Aggiornamento Continuo</h3>
+      <p>Le normative cambiano, i materiali evolvono, le tecniche costruttive si
+         rinnovano. Rimanere aggiornata è un dovere etico verso i clienti. Mi formo
+         costantemente in ambito energetico, strutturale, acustico e progettuale per
+         offrire sempre il meglio disponibile.</p>
+    </div>
+    <div class="value-card stagger-item">
+      <span class="value-num">03</span>
+      <h3>Relazione e Ascolto</h3>
+      <p>Un buon progetto nasce da una buona conversazione. Dedico tempo all'ascolto
+         delle esigenze reali, dei sogni e dei vincoli economici di ogni cliente. Solo
+         comprendendo a fondo le persone è possibile creare spazi che le rappresentino
+         davvero.</p>
+    </div>
+    <div class="value-card stagger-item">
+      <span class="value-num">04</span>
+      <h3>Sostenibilità Responsabile</h3>
+      <p>La sostenibilità non è una moda: è una scelta etica che impatta il pianeta
+         e il portafoglio dei clienti. Progetto con materiali a basso impatto ambientale,
+         lavoro per ridurre i consumi energetici e cerco soluzioni che abbiano senso
+         anche tra vent'anni.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- LIBRO -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh">
+      <span class="label">Pubblicazione · 2014</span>
+      <span class="dline"></span>
+      <h2>"Eco-viaggio dentro la tua casa"</h2>
+      <p>Un libro divulgativo sull'abitare ecologico, nato dall'esperienza
+         diretta di centinaia di sopralluoghi e certificazioni energetiche.</p>
+    </div>
+  </div>
+  <div class="libro-grid">
+    <div class="libro-cover reveal">
+      <div class="libro-cover-inner">
+        Eco-viaggio<br>dentro la tua<br>casa
+        <small>Roberta Mariano<br>2014</small>
+      </div>
+    </div>
+    <div class="libro-copy">
+      <p class="reveal">
+        Nel 2014 ho scritto e pubblicato <em>"Eco-viaggio dentro la tua casa"</em>,
+        un libro che esplora il concetto di abitazione ecologica in modo accessibile
+        e concreto. Non un manuale tecnico, ma un invito a guardare la propria casa
+        con occhi nuovi: come un organismo vivo che respira, consuma, disperde calore
+        e interagisce con l'ambiente esterno.
+      </p>
+      <p class="reveal" data-delay=".08">
+        Il testo nasce dall'esperienza diretta di centinaia di sopralluoghi e
+        certificazioni energetiche: ho visto edifici degli anni '70 trasformarsi in
+        abitazioni a basso consumo, famiglie ridurre del 40% le bollette con interventi
+        mirati, e proprietari riscoprire il piacere di vivere in spazi sani e confortevoli.
+      </p>
+      <p class="reveal" data-delay=".12">
+        Il libro ha riscosso un riscontro positivo tra professionisti e cittadini curiosi,
+        diventando uno strumento divulgativo in alcune scuole e associazioni di categoria
+        del Veneto. È disponibile su richiesta diretta allo studio.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- PORTRAIT QUOTE -->
+<section class="section bg-white">
+  <div class="portrait-grid">
+    <div>
+      <img class="portrait-img"
+           src="assets/img/fotorobyconpianta.jpg"
+           alt="Roberta Mariano con pianta architettonica" loading="lazy"
+           width="700" height="530">
+    </div>
+    <div>
+      <span class="label">Filosofia</span>
+      <span class="dline"></span>
+      <h2>Lavorare senza confini</h2>
+      <p class="reveal" style="color:var(--muted);margin:1.2rem 0 2rem;">
+        L'architettura, per me, è prima di tutto un mestiere relazionale: chiede di
+        muoversi, ascoltare, vedere i luoghi con i propri occhi. Per questo non ho
+        legato lo studio a un solo indirizzo — il progetto nasce dove sta il cliente.
+      </p>
+      <blockquote class="blockquote reveal">
+        "Non ho un indirizzo fisso, perché trovo ispirazione ovunque. Dal cuore
+        pulsante della città al relax del mare, il mondo è il mio ufficio e la
+        creatività non conosce confini geografici."
+        <cite>— Roberta Mariano, Architetta</cite>
+      </blockquote>
+      <p class="reveal" data-delay=".1" style="color:var(--muted);margin-top:2rem;">
+        Questo spirito si riflette anche nelle collaborazioni internazionali maturate
+        nel tempo, con progetti sviluppati in Canada e nel Nord America, a fianco di
+        team multidisciplinari che hanno arricchito la visione progettuale con
+        prospettive diverse.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Collaboriamo <em style="font-weight:300">insieme</em></h2>
+  <p>Hai un progetto, una domanda, o semplicemente vuoi conoscere come lavoro?
+     Scrivimi: la prima conversazione è sempre gratuita e senza impegno.</p>
+  <a href="contatti.html" class="btn btn-light">
+    Contattami ora
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/>
+    </svg>
+  </a>
+</div>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script type="module">
+gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  /* Bio image reveal */
+  gsap.to('.bio-img', {
+    clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power3.inOut',
+    scrollTrigger: { trigger: '.bio-img', start: 'top 80%', once: true },
+  });
+  /* Portrait image reveal */
+  gsap.to('.portrait-img', {
+    clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power3.inOut',
+    scrollTrigger: { trigger: '.portrait-img', start: 'top 80%', once: true },
+  });
+  /* Timeline line fill */
+  ScrollTrigger.create({
+    trigger: '.timeline-wrap',
+    start: 'top 70%',
+    end: 'bottom 30%',
+    onUpdate(self) {
+      document.getElementById('tlFill').style.height = (self.progress * 100) + '%';
+    },
+  });
+  /* Timeline dots */
+  gsap.from('.timeline-dot', {
+    scale: 0, duration: .4, stagger: .15, ease: 'back.out(2)',
+    scrollTrigger: { trigger: '.timeline-wrap', start: 'top 75%', once: true },
+  });
+  /* Page hero */
+  gsap.from('.page-hero h1, .page-hero-sub', {
+    opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2,
+  });
+});
+</script>
+</body>
+</html>

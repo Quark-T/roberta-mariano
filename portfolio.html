@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Arch. Roberta Mariano</title>
+<meta name="description" content="Galleria dei progetti dello studio: interior design, facciate continue, spazi esterni, architettura sostenibile e progetti internazionali.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ── FULL PORTFOLIO GRID ── */
+.pf-full {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+/* ── INTERNATIONAL ── */
+.intl-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1.4rem;
+  max-width: var(--max); margin: 0 auto;
+}
+.intl-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+  background: var(--text);
+}
+.intl-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: .75;
+  transition: opacity .5s ease, transform .7s var(--ease);
+  clip-path: inset(0% 0% 100% 0%);
+}
+.intl-item:hover img { opacity: .9; transform: scale(1.03); }
+.intl-cap {
+  position: absolute;
+  inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(28,28,26,.9) 0%, transparent 60%);
+}
+.intl-cap h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem,2vw,1.7rem); font-weight: 400;
+  color: var(--white); margin-bottom: .3rem;
+}
+.intl-cap p { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.55); margin: 0; }
+@media(max-width:640px) { .intl-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="contatti.html" class="btn nav-cta">Hai un Progetto?</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/image11.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Portfolio</span>
+    </div>
+    <h1>Progetti<br><em style="font-weight:300;color:var(--accent)">Selezionati</em></h1>
+    <p class="page-hero-sub">
+      Una raccolta di interventi che documentano vent'anni di architettura,
+      interior design, riqualificazione energetica e progettazione di spazi interni
+      ed esterni nel Veneto e oltre confine.
+    </p>
+  </div>
+</header>
+
+
+<!-- MAIN GRID -->
+<section class="section bg-alt">
+  <div class="pf-full">
+    <div class="sh">
+      <span class="label">Progetti in Italia</span>
+      <span class="dline"></span>
+      <h2>Galleria dei Lavori</h2>
+      <p>Filtra per categoria o scorri l'intera galleria.</p>
+    </div>
+
+    <div class="pf-filters" role="group" aria-label="Filtra per categoria">
+      <button class="pf-btn on" data-f="all">Tutti</button>
+      <button class="pf-btn" data-f="interni">Interior Design</button>
+      <button class="pf-btn" data-f="facciate">Facciate &amp; Edilizia</button>
+      <button class="pf-btn" data-f="esterni">Spazi Esterni</button>
+      <button class="pf-btn" data-f="energia">Energia</button>
+    </div>
+
+    <div class="pf-grid" id="pfGrid">
+
+      <div class="pf-item tall" data-c="facciate">
+        <img class="pf-img" src="assets/img/facciate-continue-architetto-veneto.webp" alt="Facciata continua" loading="lazy" width="600" height="800">
+        <div class="pf-cap"><h3>Facciata Continua</h3><span>Architettura · Veneto</span></div>
+      </div>
+
+      <div class="pf-item" data-c="interni">
+        <img class="pf-img" src="assets/img/architetto-esperto-per-interni.webp" alt="Interior design" loading="lazy" width="600" height="450">
+        <div class="pf-cap"><h3>Interior Design Abitativo</h3><span>Residenziale · Padova</span></div>
+      </div>
+
+      <div class="pf-item" data-c="energia">
+        <img class="pf-img" src="assets/img/architettura-e-energia-rinnovabile.webp" alt="Architettura sostenibile" loading="lazy" width="600" height="450">
+        <div class="pf-cap"><h3>Architettura Sostenibile</h3><span>Efficienza Energetica</span></div>
+      </div>
+
+      <div class="pf-item wide" data-c="facciate">
+        <img class="pf-img" src="assets/img/Immagine6Medie-1.webp" alt="Intervento edilizio" loading="lazy" width="900" height="500">
+        <div class="pf-cap"><h3>Intervento Edilizio</h3><span>Edilizia Civile · Veneto</span></div>
+      </div>
+
+      <div class="pf-item" data-c="esterni">
+        <img class="pf-img" src="assets/img/architetto-di-cancelletti-alti.webp" alt="Spazi esterni" loading="lazy" width="600" height="450">
+        <div class="pf-cap"><h3>Cancelleria su Misura</h3><span>Metallo · Esterno</span></div>
+      </div>
+
+      <div class="pf-item" data-c="interni">
+        <img class="pf-img" src="assets/img/image8.webp" alt="Residenza privata" loading="lazy" width="600" height="450">
+        <div class="pf-cap"><h3>Residenza Privata</h3><span>Interior Design · Padova</span></div>
+      </div>
+
+      <div class="pf-item tall" data-c="interni">
+        <img class="pf-img" src="assets/img/image7.webp" alt="Progetto interni" loading="lazy" width="600" height="800">
+        <div class="pf-cap"><h3>Living Open Space</h3><span>Residenziale</span></div>
+      </div>
+
+      <div class="pf-item" data-c="interni">
+        <img class="pf-img" src="assets/img/renderinggiardinoinverno.webp" alt="Giardino d'inverno" loading="lazy" width="600" height="450">
+        <div class="pf-cap"><h3>Giardino d'Inverno</h3><span>Verde Architettonico</span></div>
+      </div>
+
+      <div class="pf-item" data-c="facciate">
+        <img class="pf-img" src="assets/img/image9-1.webp" alt="Edilizia civile" loading="lazy" width="600" height="450">
+        <div class="pf-cap"><h3>Edilizia Civile</h3><span>Veneto</span></div>
+      </div>
+
+      <div class="pf-item wide" data-c="energia">
+        <img class="pf-img" src="assets/img/image18.webp" alt="Riqualificazione energetica" loading="lazy" width="900" height="500">
+        <div class="pf-cap"><h3>Riqualificazione Energetica</h3><span>Superbonus · Veneto</span></div>
+      </div>
+
+      <div class="pf-item" data-c="interni">
+        <img class="pf-img" src="assets/img/image4.webp" alt="Progetto interni" loading="lazy" width="600" height="450">
+        <div class="pf-cap"><h3>Studio Professionale</h3><span>Interior Design</span></div>
+      </div>
+
+      <div class="pf-item" data-c="facciate">
+        <img class="pf-img" src="assets/img/image2.webp" alt="Involucro edilizio" loading="lazy" width="600" height="450">
+        <div class="pf-cap"><h3>Involucro Edilizio</h3><span>Rivestimento Esterno</span></div>
+      </div>
+
+    </div><!-- /pf-grid -->
+  </div>
+</section>
+
+
+<!-- INTERNATIONAL PROJECTS -->
+<section class="section bg-white">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh">
+      <span class="label">Oltre Confine</span>
+      <span class="dline"></span>
+      <h2>Esperienze Internazionali</h2>
+      <p>Collaborazioni con studi internazionali che hanno arricchito la visione
+         progettuale con metodologie e scale differenti.</p>
+    </div>
+  </div>
+  <div class="intl-grid">
+    <div class="intl-item">
+      <img src="assets/img/imanulife.jpg"
+           alt="Manulife — Canada" loading="lazy" width="700" height="470">
+      <div class="intl-cap">
+        <h3>Manulife Financial — Toronto</h3>
+        <p>Canada · Complesso direzionale</p>
+      </div>
+    </div>
+    <div class="intl-item">
+      <img src="assets/img/gmanulife-1.webp"
+           alt="Manulife — panoramica" loading="lazy" width="700" height="470">
+      <div class="intl-cap">
+        <h3>Manulife Centre — Dettaglio</h3>
+        <p>Canada · Architettura commerciale</p>
+      </div>
+    </div>
+    <div class="intl-item">
+      <img src="assets/img/fessoglen.jpg"
+           alt="Fessoglen" loading="lazy" width="700" height="470">
+      <div class="intl-cap">
+        <h3>Fessoglen Residence</h3>
+        <p>Nord America · Residenziale di lusso</p>
+      </div>
+    </div>
+    <div class="intl-item">
+      <img src="assets/img/fPalestraSouthpoint2.jpg"
+           alt="Palestra Southpoint" loading="lazy" width="700" height="470">
+      <div class="intl-cap">
+        <h3>Southpoint Fitness &amp; Wellness</h3>
+        <p>Nord America · Impianto sportivo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Hai un progetto<br><em style="font-weight:300">in mente?</em></h2>
+  <p>Raccontami la tua idea. Valutiamo insieme come realizzarla al meglio,
+     nel rispetto del budget e dei tempi.</p>
+  <a href="contatti.html" class="btn btn-light">
+    Parliamone
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/>
+    </svg>
+  </a>
+</div>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script type="module">
+gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  /* Page hero */
+  gsap.from('.page-hero h1, .page-hero-sub', {
+    opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2,
+  });
+  /* International images */
+  gsap.utils.toArray('.intl-item img').forEach((img, i) => {
+    gsap.to(img, {
+      clipPath: 'inset(0% 0% 0% 0%)', duration: 1.0, ease: 'power3.inOut',
+      delay: (i % 2) * .1,
+      scrollTrigger: { trigger: img, start: 'top 85%', once: true },
+    });
+  });
+});
+</script>
+</body>
+</html>

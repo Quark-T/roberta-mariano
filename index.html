@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio di Architettura Roberta Mariano — Borgoricco, Padova</title>
+<meta name="description" content="Studio di architettura Roberta Mariano: progettazione, interior design, certificazioni energetiche APE e perizie tecniche. Borgoricco, Padova, Veneto.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="preload" as="image" href="assets/img/gmb11-scaled-1.webp" fetchpriority="high">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  "name": "Studio Arch. Roberta Mariano",
+  "description": "Studio di architettura a Borgoricco, Padova: progettazione, interior design, certificazioni energetiche APE e perizie tecniche.",
+  "telephone": "+393476622673",
+  "email": "arch.robertamariano@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Dandolo 21",
+    "addressLocality": "Borgoricco",
+    "addressRegion": "PD",
+    "postalCode": "35010",
+    "addressCountry": "IT"
+  },
+  "url": "https://robertamariano.it",
+  "sameAs": ["https://it.linkedin.com/in/arch-roberta-mariano-18304036"]
+}
+</script>
+<style>
+/* ── HERO ── */
+.hero {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: var(--nav-h);
+  overflow: hidden;
+  position: relative;
+}
+.hero-deco {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 55%; height: 100%;
+  pointer-events: none;
+  z-index: 1; opacity: .26;
+}
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(3rem,6vw,6rem) var(--pad) clamp(4rem,6vw,6rem);
+}
+.hero-pre {
+  display: flex; align-items: center; gap: 14px;
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  font-weight: 500; color: var(--accent-text); margin-bottom: 1.6rem; opacity: 0;
+}
+.hero-pre::before { content: ''; width: 36px; height: 1px; background: var(--accent-text); flex-shrink: 0; }
+.hero-htitle { overflow: hidden; margin-bottom: 1.5rem; }
+.hero-h1 { transform: translateY(110%); opacity: 0; }
+.hero-sub {
+  font-size: clamp(.95rem,1.4vw,1.08rem); color: var(--muted);
+  max-width: 440px; margin-bottom: 2.5rem; opacity: 0; line-height: 1.78;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; }
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: var(--pad);
+  display: flex; align-items: center; gap: 12px;
+  font-size: .65rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); opacity: 0;
+}
+.scroll-line { width: 1px; height: 44px; background: var(--border); position: relative; overflow: hidden; }
+.scroll-line::after {
+  content: ''; position: absolute; top: -100%; width: 100%; height: 100%;
+  background: var(--accent); animation: sl 2s ease-in-out infinite;
+}
+@keyframes sl { 0%{top:-100%} 100%{top:100%} }
+.hero-right { position: relative; overflow: hidden; clip-path: polygon(6% 0,100% 0,100% 100%,0 100%); }
+.hero-right img { width: 100%; height: 100%; object-fit: cover; }
+.hero-right::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(250,250,248,.15) 0%, transparent 35%);
+}
+@media(max-width:768px) {
+  .hero { grid-template-columns: 1fr; min-height: 100dvh; }
+  .hero-right { order: -1; height: 48vh; clip-path: none; }
+  .hero-left  { padding: 2.5rem var(--pad) 5rem; justify-content: flex-end; }
+  .hero-deco, .hero-scroll { display: none; }
+}
+
+/* ── STUDIO PREVIEW ── */
+.studio-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem,8vw,7rem); align-items: center;
+  max-width: var(--max); margin: 0 auto;
+}
+.studio-img-wrap { position: relative; }
+.studio-img-wrap::before {
+  content: ''; position: absolute;
+  top: 20px; right: -20px; width: 100%; height: 100%;
+  border: 1px solid var(--accent-l); z-index: -1;
+}
+.studio-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: top; clip-path: inset(0% 0% 100% 0%); }
+@media(max-width:768px) {
+  .studio-grid { grid-template-columns: 1fr; }
+  .studio-img-wrap::before { display: none; }
+  .studio-img { aspect-ratio: 4/3; }
+}
+
+/* ── SERVICES PREVIEW ── */
+.svc-prev-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--border); border: 1px solid var(--border);
+  max-width: var(--max); margin: 0 auto 3rem;
+}
+.svc-prev-card {
+  background: var(--white); padding: 2.8rem 2.4rem;
+  transition: background .3s ease; position: relative; overflow: hidden;
+}
+.svc-prev-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--accent);
+  transition: width .5s var(--ease);
+}
+.svc-prev-card:hover::after { width: 100%; }
+.svc-prev-card:hover { background: var(--bg-alt); }
+.svc-ico { width: 44px; height: 44px; color: var(--accent); margin-bottom: 1.4rem; }
+.svc-prev-card h3 { margin-bottom: .6rem; font-size: 1.3rem; }
+.svc-prev-card p  { font-size: .9rem; color: var(--muted); margin: 0; line-height: 1.65; }
+@media(max-width:768px) { .svc-prev-grid { grid-template-columns: 1fr; } }
+
+/* ── PORTFOLIO PREVIEW ── */
+.pf-prev-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: .9rem; max-width: var(--max); margin: 0 auto 3rem;
+}
+@media(max-width:768px) { .pf-prev-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:480px) { .pf-prev-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="contatti.html" class="btn nav-cta">Consulenza Gratuita</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero" aria-label="Benvenuti nello studio">
+  <svg class="hero-deco" viewBox="0 0 700 650" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <line id="d1" x1="60" y1="60" x2="380" y2="60" stroke="#8B7355" stroke-width=".6" stroke-dasharray="320" stroke-dashoffset="320"/>
+    <line id="d2" x1="60" y1="60" x2="60" y2="460" stroke="#8B7355" stroke-width=".6" stroke-dasharray="400" stroke-dashoffset="400"/>
+    <line id="d3" x1="60" y1="460" x2="220" y2="460" stroke="#8B7355" stroke-width=".6" stroke-dasharray="160" stroke-dashoffset="160"/>
+    <line id="d4" x1="220" y1="460" x2="220" y2="220" stroke="#8B7355" stroke-width=".6" stroke-dasharray="240" stroke-dashoffset="240"/>
+    <line id="d5" x1="220" y1="220" x2="380" y2="220" stroke="#8B7355" stroke-width=".6" stroke-dasharray="160" stroke-dashoffset="160"/>
+    <line id="d6" x1="380" y1="60" x2="380" y2="220" stroke="#8B7355" stroke-width=".6" stroke-dasharray="160" stroke-dashoffset="160"/>
+    <rect id="d7" x="100" y="100" width="80" height="60" fill="none" stroke="#8B7355" stroke-width=".5" stroke-dasharray="280" stroke-dashoffset="280"/>
+    <rect id="d8" x="240" y="280" width="60" height="60" fill="none" stroke="#8B7355" stroke-width=".5" stroke-dasharray="240" stroke-dashoffset="240"/>
+    <circle id="d9" cx="60" cy="60" r="4" fill="none" stroke="#8B7355" stroke-width=".6" stroke-dasharray="26" stroke-dashoffset="26"/>
+    <circle id="d10" cx="380" cy="60" r="4" fill="none" stroke="#8B7355" stroke-width=".6" stroke-dasharray="26" stroke-dashoffset="26"/>
+    <line id="d11" x1="340" y1="180" x2="440" y2="60" stroke="#8B7355" stroke-width=".3" stroke-dasharray="155" stroke-dashoffset="155"/>
+    <text id="dt1" x="72" y="118" font-family="Inter,sans-serif" font-size="7" fill="#8B7355" opacity="0">3.5 m</text>
+    <text id="dt2" x="248" y="318" font-family="Inter,sans-serif" font-size="7" fill="#8B7355" opacity="0">2.0 m</text>
+  </svg>
+
+  <div class="hero-left">
+    <span class="hero-pre" id="hpre" style="color:var(--accent-text)">Studio di Architettura · Borgoricco, Padova</span>
+    <div class="hero-htitle">
+      <h1 class="hero-h1">Arte, Tecnica<br><em style="font-weight:300;color:var(--accent)">e Sostenibilità</em></h1>
+    </div>
+    <p class="hero-sub">Progettazione architettonica, interior design, certificazioni energetiche e perizie tecniche. Oltre 22 anni di esperienza nel Veneto.</p>
+    <div class="hero-btns">
+      <a href="servizi.html" class="btn">
+        Scopri i Servizi
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </a>
+      <a href="contatti.html" class="btn btn-o">Contattami</a>
+    </div>
+    <div class="hero-scroll" id="hscroll"><div class="scroll-line"></div><span>Scopri</span></div>
+  </div>
+
+  <div class="hero-right">
+    <img src="assets/img/gmb11-scaled-1.webp" alt="Progetto architettonico" loading="eager" fetchpriority="high" width="900" height="1200" decoding="sync">
+  </div>
+</section>
+
+
+<!-- ═════════════════════════════ STATS ════════════════════════════════ -->
+<div class="stats">
+  <p style="text-align:center;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-text);font-weight:500;margin-bottom:2rem">Numeri che raccontano lo studio</p>
+  <div class="stats-grid">
+    <div class="stat"><span class="stat-n"><span class="ctr" data-t="22">0</span><span class="stat-sfx">+</span></span><span class="stat-l">Anni di Esperienza</span></div>
+    <div class="stat"><span class="stat-n"><span class="ctr" data-t="2000">0</span><span class="stat-sfx">+</span></span><span class="stat-l">Clienti Soddisfatti</span></div>
+    <div class="stat"><span class="stat-n"><span class="ctr" data-t="1000">0</span><span class="stat-sfx">+</span></span><span class="stat-l">Perizie Completate</span></div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════ STUDIO PREVIEW ════════════════════════════ -->
+<section class="section">
+  <div class="studio-grid">
+    <div class="studio-img-wrap">
+      <img class="studio-img" src="assets/img/roby1a.jpg"
+           alt="Arch. Roberta Mariano" loading="lazy" width="600" height="750">
+    </div>
+    <div>
+      <span class="label">Lo Studio</span>
+      <span class="dline"></span>
+      <h2>Un approccio globale all'<em style="font-weight:300;color:var(--accent)">architettura</em></h2>
+      <p class="section-lead">Progettazione, interior design, certificazione energetica e perizia tecnica: una professione esercitata da oltre vent'anni con metodo e visione.</p>
+      <p class="reveal" style="margin-top:1.2rem;color:var(--muted);">
+        Sono Roberta Mariano, architetta con studio a Borgoricco, in provincia di Padova.
+        Laureata allo IUAV di Venezia, una delle più prestigiose scuole di architettura
+        d'Italia, esercito la libera professione da oltre 22 anni integrando progettazione,
+        interior design, certificazione energetica e perizia tecnica.
+      </p>
+      <p class="reveal" data-delay=".1" style="color:var(--muted);">
+        Ogni progetto nasce da un dialogo diretto con il cliente, da una profonda
+        conoscenza del contesto e da un'innata attenzione per i materiali e le normative.
+        La mia filosofia è semplice: l'architettura deve essere bella, funzionale
+        e rispettosa dell'ambiente.
+      </p>
+      <a href="chi-sono.html" class="btn btn-o reveal" data-delay=".2" style="margin-top:1rem">
+        Scopri chi sono
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════ SERVICES PREVIEW ════════════════════════════ -->
+<section class="section bg-white">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh">
+      <span class="label">Competenze</span>
+      <span class="dline"></span>
+      <h2>Servizi Principali</h2>
+      <p>Un ventaglio completo di competenze architettoniche e tecniche,
+         dalla progettazione all'expertise legale.</p>
+    </div>
+  </div>
+  <div class="svc-prev-grid stagger-parent">
+    <div class="svc-prev-card stagger-item">
+      <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <circle cx="24" cy="24" r="16"/><path d="M24 8v4M24 36v4M8 24h4M36 24h4"/>
+        <circle cx="24" cy="24" r="6"/>
+        <path d="M17 17l2.5 2.5M28.5 28.5L31 31M17 31l2.5-2.5M28.5 19.5L31 17"/>
+      </svg>
+      <h3>Certificazioni Energetiche APE</h3>
+      <p>Atto la prestazione energetica degli edifici per privati, agenzie immobiliari e
+         istituti di credito. 100% di approvazioni in oltre vent'anni di attività.</p>
+    </div>
+    <div class="svc-prev-card stagger-item">
+      <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <rect x="8" y="8" width="32" height="32" rx="1"/>
+        <path d="M8 20h32M20 8v32M14 14h2v2h-2zM14 26h2v2h-2zM26 14h8M26 26h8M26 32h8"/>
+      </svg>
+      <h3>Perizie Tecniche &amp; Immobiliari</h3>
+      <p>CTU del Tribunale di Padova, perizie estimative per mutui, esecuzioni
+         immobiliari e contenziosi. Oltre 1.000 perizie prodotte.</p>
+    </div>
+    <div class="svc-prev-card stagger-item">
+      <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M8 32l8-8 8 8 8-8 8 8"/><rect x="10" y="12" width="28" height="24" rx="1"/>
+        <path d="M16 20h4v4h-4zM24 16h8v8h-8z"/>
+      </svg>
+      <h3>Interior Design &amp; Progettazione</h3>
+      <p>Dalla planimetria alla scelta dei materiali, creo ambienti che coniugano
+         funzionalità, estetica e identità personale del committente.</p>
+    </div>
+  </div>
+  <div style="text-align:center" class="reveal">
+    <a href="servizi.html" class="btn">
+      Tutti i Servizi
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ PORTFOLIO PREVIEW ══════════════════════════ -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh">
+      <span class="label">Portfolio</span>
+      <span class="dline"></span>
+      <h2>Alcuni Progetti</h2>
+      <p>Una selezione di interventi che racconta la varietà
+         e la profondità del lavoro dello studio.</p>
+    </div>
+  </div>
+  <div class="pf-prev-grid">
+    <div class="pf-item tall" data-c="facciate">
+      <img class="pf-img" src="assets/img/facciate-continue-architetto-veneto.webp" alt="Facciata continua" loading="lazy" width="600" height="800">
+      <div class="pf-cap"><h3>Facciata Continua</h3><span>Veneto</span></div>
+    </div>
+    <div class="pf-item" data-c="interni">
+      <img class="pf-img" src="assets/img/architetto-esperto-per-interni.webp" alt="Interior design" loading="lazy" width="600" height="450">
+      <div class="pf-cap"><h3>Interior Design</h3><span>Residenziale</span></div>
+    </div>
+    <div class="pf-item" data-c="energia">
+      <img class="pf-img" src="assets/img/architettura-e-energia-rinnovabile.webp" alt="Energia" loading="lazy" width="600" height="450">
+      <div class="pf-cap"><h3>Architettura Sostenibile</h3><span>Efficienza Energetica</span></div>
+    </div>
+    <div class="pf-item" data-c="esterni">
+      <img class="pf-img" src="assets/img/architetto-di-cancelletti-alti.webp" alt="Spazi esterni" loading="lazy" width="600" height="450">
+      <div class="pf-cap"><h3>Spazi Esterni</h3><span>Metallo su Misura</span></div>
+    </div>
+    <div class="pf-item" data-c="interni">
+      <img class="pf-img" src="assets/img/renderinggiardinoinverno.webp" alt="Giardino d'inverno" loading="lazy" width="600" height="450">
+      <div class="pf-cap"><h3>Giardino d'Inverno</h3><span>Verde &amp; Architettura</span></div>
+    </div>
+    <div class="pf-item" data-c="facciate">
+      <img class="pf-img" src="assets/img/image9-1.webp" alt="Edilizia civile" loading="lazy" width="600" height="450">
+      <div class="pf-cap"><h3>Edilizia Civile</h3><span>Padova</span></div>
+    </div>
+  </div>
+  <div style="text-align:center" class="reveal">
+    <a href="portfolio.html" class="btn">
+      Galleria Completa
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ TESTIMONIALS ══════════════════════════════ -->
+<section class="section bg-white">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh sh-c">
+      <span class="label">Recensioni</span>
+      <span class="dline dline-c"></span>
+      <h2>Cosa Dicono i Clienti</h2>
+      <p>La soddisfazione dei clienti è la misura più autentica del lavoro svolto.</p>
+    </div>
+    <div class="tst-grid">
+      <div class="tst-card">
+        <div class="tst-stars">★★★★★</div>
+        <p class="tst-q">"L'architetto Mariano per la redazione dell'APE mi ha pienamente soddisfatta. Roberta è una Professionista puntuale, di una gentilezza e sollecitudine introvabili. Una perla rara."</p>
+        <div class="tst-author"><strong>Laura Grigolon</strong><span>Certificazione APE</span></div>
+      </div>
+      <div class="tst-card">
+        <div class="tst-stars">★★★★★</div>
+        <p class="tst-q">"Il servizio è stato eccellente. Professionista molto preparata, seria, brillante ed empatica. In tempi celeri ha realizzato magistralmente l'incarico. Una fuoriclasse."</p>
+        <div class="tst-author"><strong>Sara Scarpa</strong><span>Progettazione</span></div>
+      </div>
+      <div class="tst-card">
+        <div class="tst-stars">★★★★★</div>
+        <p class="tst-q">"Il suo approccio basato sul buon senso e sul desiderio di contribuire a un mondo migliore traspare in ogni aspetto del lavoro. Un'esperienza professionale straordinaria."</p>
+        <div class="tst-author"><strong>Paola Mugeri</strong><span>Consulenza Tecnica</span></div>
+      </div>
+      <div class="tst-card">
+        <div class="tst-stars">★★★★★</div>
+        <p class="tst-q">"Mi sono affidato all'Arch. Roberta Mariano per una perizia immobiliare. È una vera professionista: mi ha seguito in modo ottimale in ogni fase. La consiglio vivamente."</p>
+        <div class="tst-author"><strong>Paolo D'Agostini</strong><span>Perizia Immobiliare</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════ CTA BAND ══════════════════════════════════ -->
+<div class="cta-band">
+  <h2>"Il mondo è il mio ufficio,<br><em style="font-weight:300">la creatività non ha confini."</em></h2>
+  <p>Hai un progetto da realizzare? Parliamone. La prima consulenza è gratuita e senza impegno.</p>
+  <a href="contatti.html" class="btn btn-light">
+    Inizia la Conversazione
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+  </a>
+</div>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script type="module">
+gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  const decoEls = document.querySelectorAll('.hero-deco line,.hero-deco rect,.hero-deco circle');
+  tl.to(decoEls, { strokeDashoffset: 0, duration: 1.3, stagger: .07, ease: 'power2.inOut' }, 0)
+    .to(['#dt1','#dt2'], { opacity: .65, duration: .4 }, .9)
+    .to('#hpre',    { opacity: 1, duration: .65 }, .25)
+    .to('.hero-h1', { opacity: 1, y: '0%', duration: .9, ease: 'power4.out' }, .45)
+    .to('.hero-sub',  { opacity: 1, duration: .65 }, .75)
+    .to('.hero-btns', { opacity: 1, duration: .6  }, .95)
+    .to('#hscroll',   { opacity: 1, duration: .5  }, 1.25)
+    .from('.hero-right img', { clipPath: 'inset(0% 0% 100% 0%)', duration: 1.2, ease: 'power3.inOut' }, .15);
+  gsap.to('.hero-right img', {
+    yPercent: -8, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+  });
+  gsap.to('.studio-img', {
+    clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power3.inOut',
+    scrollTrigger: { trigger: '.studio-img', start: 'top 80%', once: true },
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti — Arch. Roberta Mariano</title>
+<meta name="description" content="Contatta l'Arch. Roberta Mariano: email, telefono, WhatsApp e form di contatto. Consulenza gratuita per architettura, perizie e certificazioni energetiche.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ── FAQ ── */
+.faq-wrap { max-width: 780px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 0;
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem,1.8vw,1.3rem);
+  font-weight: 400;
+  color: var(--text);
+  cursor: pointer;
+  gap: 1rem;
+  transition: color .25s ease;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-icon {
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: 300;
+  flex-shrink: 0;
+  width: 24px; text-align: center;
+  transition: transform .35s ease;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  padding: 0 0 1.4rem;
+  font-size: .97rem;
+  color: var(--muted);
+  line-height: 1.75;
+  overflow: hidden;
+}
+
+/* ── CLOSING QUOTE ── */
+.closing {
+  text-align: center;
+  padding: clamp(4rem,8vw,8rem) var(--pad);
+  max-width: 800px;
+  margin: 0 auto;
+}
+.closing-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem,3vw,2.5rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.closing-sig {
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.closing-sig strong { color: var(--accent); }
+
+/* ── PRIVACY ── */
+.privacy-row {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.privacy-row input[type="checkbox"] {
+  width: 16px; height: 16px;
+  margin-top: 2px; flex-shrink: 0;
+  accent-color: var(--accent);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="#form" class="btn nav-cta">Scrivi ora</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/roby2.jpg" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Contatti</span>
+    </div>
+    <h1>Iniziamo a<br><em style="font-weight:300;color:var(--accent)">Collaborare</em></h1>
+    <p class="page-hero-sub">
+      Ogni grande progetto inizia da una conversazione. Scrivimi, chiamami o
+      compila il modulo: sarò felice di ascoltare la tua idea e valutare come posso aiutarti.
+    </p>
+  </div>
+</header>
+
+
+<!-- CONTACT GRID -->
+<section class="section" id="form">
+  <div class="ct-grid">
+
+    <!-- Info -->
+    <div class="ct-info reveal">
+      <span class="label">Recapiti</span>
+      <span class="dline"></span>
+      <h2>Come<br><em style="font-weight:300;color:var(--accent)">Raggiungermi</em></h2>
+      <p>Sono disponibile per consulenze in tutto il Veneto e oltre.
+         Non ho un ufficio fisso ma vengo sempre da te, dove sei.</p>
+
+      <div class="ct-item">
+        <svg class="ct-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:arch.robertamariano@gmail.com">arch.robertamariano@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="ct-item">
+        <svg class="ct-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.16 2.36 2 2 0 012.12.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        <div>
+          <h4>Telefono / WhatsApp</h4>
+          <a href="tel:+393476622673">+39 347 662 2673</a>
+        </div>
+      </div>
+
+      <div class="ct-item">
+        <svg class="ct-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <div>
+          <h4>Sede</h4>
+          <p>Via Dandolo 21<br>Borgoricco (PD) 35010</p>
+        </div>
+      </div>
+
+      <div class="ct-item">
+        <svg class="ct-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        <div>
+          <h4>LinkedIn</h4>
+          <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036"
+             target="_blank" rel="noopener">Arch. Roberta Mariano</a>
+        </div>
+      </div>
+
+      <div class="ct-item">
+        <svg class="ct-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <div>
+          <h4>Orari</h4>
+          <p>Lun – Ven: 9:00 – 18:00<br>
+             Sab: su appuntamento</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form class="ct-form reveal" data-delay=".15" id="ctForm"
+          action="mailto:arch.robertamariano@gmail.com"
+          method="post" enctype="text/plain">
+      <div class="fg-row">
+        <div class="fg">
+          <label for="fn">Nome *</label>
+          <input type="text" id="fn" name="nome" placeholder="Mario"
+                 required autocomplete="given-name">
+        </div>
+        <div class="fg">
+          <label for="ln">Cognome *</label>
+          <input type="text" id="ln" name="cognome" placeholder="Rossi"
+                 required autocomplete="family-name">
+        </div>
+      </div>
+      <div class="fg-row">
+        <div class="fg">
+          <label for="em">Email *</label>
+          <input type="email" id="em" name="email" placeholder="mario@esempio.it"
+                 required autocomplete="email">
+        </div>
+        <div class="fg">
+          <label for="tel">Telefono</label>
+          <input type="tel" id="tel" name="telefono" placeholder="+39 340 000 0000"
+                 autocomplete="tel">
+        </div>
+      </div>
+      <div class="fg">
+        <label for="sv">Servizio richiesto</label>
+        <select id="sv" name="servizio">
+          <option value="">— Seleziona un servizio —</option>
+          <option>Certificazione Energetica APE</option>
+          <option>Perizia Tecnica CTU / CTP</option>
+          <option>Perizia per Mutuo / Banca</option>
+          <option>Progettazione Edilizia Civile</option>
+          <option>Interior Design &amp; Arredamento</option>
+          <option>Facciate Continue</option>
+          <option>Rivestimenti Acustici</option>
+          <option>Spazi Esterni in Metallo</option>
+          <option>Collaudo Statico</option>
+          <option>Consulenza Generale</option>
+          <option>Altro</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="ms">Messaggio *</label>
+        <textarea id="ms" name="messaggio" required
+          placeholder="Descrivimi il tuo progetto, la tua esigenza o la domanda che vuoi pormi. Più dettagli fornisci, più precisa sarà la mia risposta."></textarea>
+      </div>
+      <div class="privacy-row">
+        <input type="checkbox" id="prv" name="privacy" required>
+        <label for="prv">
+          Ho letto e accetto il trattamento dei miei dati personali ai sensi del
+          Reg. UE 2016/679 (GDPR). I dati saranno utilizzati esclusivamente per
+          rispondere alla presente richiesta.
+        </label>
+      </div>
+      <button type="submit" class="btn" id="ctBtn">
+        Invia Richiesta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </form>
+
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh sh-c">
+      <span class="label">Domande Frequenti</span>
+      <span class="dline dline-c"></span>
+      <h2>FAQ</h2>
+      <p>Risposte alle domande che mi vengono poste più spesso.</p>
+    </div>
+  </div>
+  <div class="faq-wrap">
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Come funziona la consulenza iniziale?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        La prima consulenza è sempre gratuita e senza impegno. Possiamo incontrarci
+        di persona nel tuo immobile, parlarci al telefono o organizzare una video-call
+        — in base alle tue preferenze. In questa fase capisco le tue esigenze, rispondo
+        alle domande e ti fornisco una stima orientativa dei tempi e dei costi.
+        Non esistono domande banali: sono qui per aiutarti a prendere la decisione
+        giusta.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        In quale territorio operi?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        Il mio territorio principale è il Veneto, con presenza consolidata nelle
+        province di Padova, Venezia, Treviso e Vicenza. Opero regolarmente anche
+        nelle province di Verona, Rovigo e Belluno. Per incarichi particolari —
+        perizie legali, certificazioni energetiche, direzione lavori — mi muovo
+        senza difficoltà su tutto il territorio nazionale. Ho inoltre maturato
+        esperienze internazionali in Canada e nel Nord America.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Quanto tempo richiede la redazione di un'APE?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        I tempi dipendono dalla tipologia dell'immobile e dalla disponibilità della
+        documentazione. In media, per un appartamento residenziale con la documentazione
+        impiantistica disponibile, l'APE viene consegnata entro 5–7 giorni lavorativi
+        dal sopralluogo. Per immobili commerciali o direzionali i tempi sono
+        leggermente più lunghi. In caso di urgenza (compravendita imminente) contattami:
+        valutiamo insieme la fattibilità di un iter accelerato.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Posso ricevere un preventivo online senza sopralluogo?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        Per molti servizi — come le certificazioni APE, alcune tipologie di perizia
+        estimativa e le consulenze normative — è possibile fornire un preventivo
+        orientativo sulla base delle informazioni che mi trasmetti online (planimetrie,
+        visure, fotografie). Per interventi di progettazione e interior design preferisco
+        sempre effettuare un sopralluogo prima di quotare, perché solo vedendo lo spazio
+        posso valutarne le reali potenzialità.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Collabori con notai, agenzie immobiliari e banche?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        Sì, lavoro regolarmente con agenzie immobiliari, studi notarili, istituti di
+        credito e società di mediazione creditizia. Per questi soggetti garantisco
+        tempi di risposta rapidi, documentazione conforme agli standard richiesti e
+        un interlocutore tecnico affidabile e sempre raggiungibile. Se sei un
+        professionista e cerchi un tecnico di fiducia, contattami per discutere
+        una possibile collaborazione continuativa.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        Quali sono i tuoi onorari?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        Gli onorari variano in base alla tipologia di incarico, alla complessità
+        dell'immobile e al territorio di intervento. Mi attengo alle tariffe di
+        riferimento dell'Ordine degli Architetti di Padova e del Consiglio Nazionale
+        per le prestazioni soggette a parcella. Per le perizie estimative e le
+        certificazioni energetiche applico tariffe competitive e trasparenti, sempre
+        comunicate prima di iniziare il lavoro. Non esistono costi nascosti.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CLOSING QUOTE -->
+<section class="section bg-white">
+  <div class="closing">
+    <p class="closing-q reveal">
+      "Ogni progetto è un atto di fiducia reciproca. Il cliente si affida a me
+      con la sua casa, il suo immobile, i suoi soldi. Io mi affido a lui con
+      la mia competenza, la mia creatività e il mio tempo. Da questa fiducia
+      nascono i progetti più belli."
+    </p>
+    <p class="closing-sig reveal" data-delay=".15">
+      — <strong>Roberta Mariano</strong>, Architetta · Borgoricco, Padova
+    </p>
+  </div>
+</section>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script type="module">
+gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  gsap.from('.page-hero h1, .page-hero-sub', {
+    opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2,
+  });
+});
+
+/* Form feedback */
+document.getElementById('ctForm').addEventListener('submit', () => {
+  const btn = document.getElementById('ctBtn');
+  btn.textContent = 'Messaggio Inviato ✓';
+  btn.style.cssText = 'background:var(--accent);border-color:var(--accent)';
+});
+</script>
+</body>
+</html>
