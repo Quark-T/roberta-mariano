@@ -238,6 +238,104 @@
 </section>
 
 
+<!-- ═══════════════ PRIMA / DOPO ═══════════════ -->
+<section class="section bg-white" id="prima-dopo">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Prima / Dopo</span>
+      <span class="dline dline-c"></span>
+      <h2>Trasformazioni</h2>
+      <p>Confronta lo stato di fatto e il risultato finale di alcune
+         ristrutturazioni e interventi di interior design.</p>
+    </div>
+  </div>
+  <style>
+    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: var(--max); margin: 0 auto; }
+    .ba-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; }
+    .ba-slider {
+      position: relative; aspect-ratio: 4/3; overflow: hidden; cursor: ew-resize;
+      user-select: none; touch-action: none;
+    }
+    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ba-img.after { clip-path: inset(0 0 0 50%); transition: clip-path .2s ease; }
+    .ba-handle {
+      position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+      background: var(--white); transform: translateX(-1px); pointer-events: none;
+    }
+    .ba-handle::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--white); transform: translate(-50%, -50%);
+      box-shadow: 0 2px 12px rgba(0,0,0,.3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ba-handle::after {
+      content: '⇆'; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); color: var(--accent);
+      font-size: 1.2rem; font-weight: 600; pointer-events: none;
+    }
+    .ba-label {
+      position: absolute; top: 1rem; padding: .35rem .8rem;
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      font-weight: 600; backdrop-filter: blur(8px); background: rgba(0,0,0,.55); color: #fff;
+    }
+    .ba-label.before { left: 1rem; }
+    .ba-label.after  { right: 1rem; background: rgba(139,115,85,.85); }
+    .ba-meta { padding: 1.4rem 1.6rem; }
+    .ba-meta h3 { font-size: 1.15rem; margin-bottom: .3rem; }
+    .ba-meta p { font-size: .86rem; color: var(--muted); margin: 0; }
+    .ba-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--bg-alt);
+      border: 1px dashed var(--border);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    @media(max-width:768px) { .ba-grid { grid-template-columns: 1fr; } }
+  </style>
+  <div class="ba-grid">
+
+    <div class="ba-card">
+      <div class="ba-slider" data-ba>
+        <img class="ba-img before" src="assets/img/image2.webp" alt="Prima dell'intervento">
+        <img class="ba-img after"  src="assets/img/architetto-esperto-per-interni.webp" alt="Dopo l'intervento">
+        <span class="ba-label before">Prima</span>
+        <span class="ba-label after">Dopo</span>
+        <div class="ba-handle"></div>
+      </div>
+      <div class="ba-meta">
+        <h3>Ristrutturazione zona giorno</h3>
+        <p>Apertura parete, nuova pavimentazione, illuminazione integrata · Padova</p>
+      </div>
+    </div>
+
+    <div class="ba-card">
+      <div class="ba-slider" data-ba>
+        <img class="ba-img before" src="assets/img/image4.webp" alt="Prima dell'intervento">
+        <img class="ba-img after"  src="assets/img/renderinggiardinoinverno.webp" alt="Dopo l'intervento">
+        <span class="ba-label before">Prima</span>
+        <span class="ba-label after">Dopo</span>
+        <div class="ba-handle"></div>
+      </div>
+      <div class="ba-meta">
+        <h3>Conversione veranda in giardino d'inverno</h3>
+        <p>Serramenti ad alta efficienza, riscaldamento integrato · Borgoricco</p>
+      </div>
+    </div>
+
+    <div class="ba-empty">
+      Altri progetti "Prima / Dopo" in fase di pubblicazione. Le foto verranno aggiunte progressivamente.
+    </div>
+
+  </div>
+  <p style="text-align:center;margin-top:2rem;font-size:.85rem;color:var(--muted)">
+    Trascina il cursore sull'immagine per vedere il confronto.
+  </p>
+</section>
+
+
 <!-- CTA -->
 <div class="cta-band">
   <h2>Hai un progetto<br><em style="font-weight:300">in mente?</em></h2>
@@ -287,6 +385,30 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
       scrollTrigger: { trigger: img, start: 'top 85%', once: true },
     });
   });
+});
+</script>
+<script>
+/* Prima/Dopo slider — vanilla, funziona indipendentemente da GSAP */
+document.querySelectorAll('[data-ba]').forEach(slider => {
+  const after = slider.querySelector('.ba-img.after');
+  const handle = slider.querySelector('.ba-handle');
+  let dragging = false;
+  const setPos = (pct) => {
+    pct = Math.max(0, Math.min(100, pct));
+    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    handle.style.left = pct + '%';
+  };
+  const fromEvent = (e) => {
+    const rect = slider.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    setPos((x / rect.width) * 100);
+  };
+  slider.addEventListener('mousedown', (e) => { dragging = true; fromEvent(e); });
+  slider.addEventListener('touchstart', (e) => { dragging = true; fromEvent(e); }, { passive: true });
+  window.addEventListener('mousemove', (e) => { if (dragging) fromEvent(e); });
+  window.addEventListener('touchmove', (e) => { if (dragging) fromEvent(e); }, { passive: true });
+  window.addEventListener('mouseup', () => dragging = false);
+  window.addEventListener('touchend', () => dragging = false);
 });
 </script>
 </body>

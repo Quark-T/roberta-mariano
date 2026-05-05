@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progetti e Pratiche Edilizie — CILA, SCIA, Sanatorie — Arch. Roberta Mariano</title>
+<meta name="description" content="Progettazione, ristrutturazioni, sanatorie e pratiche edilizie: CILA, SCIA, Permesso di Costruire, regolarizzazioni catastali. Studio Arch. Roberta Mariano, Padova.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.split-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2.4rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.split-card .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: block;
+}
+.split-card h3 { font-size: 1.4rem; margin-bottom: .8rem; }
+.split-card p.lead { color: var(--muted); font-size: .95rem; line-height: 1.65; margin-bottom: 1.4rem; }
+.split-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  flex-grow: 1;
+}
+.split-card ul li {
+  padding: .6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .9rem;
+  color: var(--muted);
+  display: flex;
+  gap: .6rem;
+}
+.split-card ul li::before { content: '—'; color: var(--accent); font-weight: 600; }
+.split-card ul li:last-child { border-bottom: none; }
+@media(max-width:768px) { .split-grid { grid-template-columns: 1fr; } }
+
+.proc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.proc-step {
+  background: var(--white);
+  padding: 2.2rem 1.6rem;
+}
+.proc-step .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: .8rem;
+  display: block;
+}
+.proc-step h4 { font-size: 1.05rem; margin-bottom: .4rem; }
+.proc-step p  { font-size: .85rem; color: var(--muted); margin: 0; line-height: 1.5; }
+@media(max-width:900px) { .proc-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:480px) { .proc-grid { grid-template-columns: 1fr; } }
+
+.req-form {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: clamp(2rem,4vw,3rem);
+  border: 1px solid var(--border);
+}
+.req-form h3 { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="#form" class="btn nav-cta">Inizia Progetto</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/Immagine6Medie-1.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><a href="servizi.html">Servizi</a><span>/</span><span>Progetti e Pratiche</span>
+    </div>
+    <h1>Progettazione e Pratiche<br><em style="font-weight:300;color:var(--accent)">Dalla Visione al Cantiere</em></h1>
+    <p class="page-hero-sub">
+      Trasformo le tue idee in progetti concreti seguendo ogni iter burocratico in
+      Comune e al Catasto. Dalla CILA alla SCIA, dalla sanatoria al permesso di costruire,
+      con la tranquillità di non dover gestire nulla in autonomia.
+    </p>
+  </div>
+</header>
+
+<!-- DUE MACRO AREE -->
+<section class="section">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Aree di Intervento</span>
+      <span class="dline dline-c"></span>
+      <h2>Due Specializzazioni</h2>
+      <p>Il lavoro si divide in due macro-aree: progettazione di nuovi interventi
+         e regolarizzazione di situazioni esistenti.</p>
+    </div>
+  </div>
+  <div class="split-grid">
+    <div class="split-card">
+      <span class="num">01</span>
+      <h3>Ristrutturazioni &amp; Nuovi Interventi</h3>
+      <p class="lead">Progetto e gestisco l'iter completo di ristrutturazioni, ampliamenti,
+         interventi di manutenzione straordinaria e nuove costruzioni. Mi occupo di tutto:
+         dalla concezione architettonica al coordinamento del cantiere.</p>
+      <ul>
+        <li>Progettazione architettonica e interior design</li>
+        <li>CILA per manutenzione straordinaria</li>
+        <li>SCIA per ristrutturazioni e ampliamenti</li>
+        <li>Permesso di Costruire per nuove edificazioni</li>
+        <li>Direzione Lavori e coordinamento sicurezza</li>
+        <li>Pratica di agibilità a fine lavori</li>
+      </ul>
+    </div>
+    <div class="split-card">
+      <span class="num">02</span>
+      <h3>Sanatorie &amp; Regolarizzazioni</h3>
+      <p class="lead">Stai vendendo o comprando casa e scopri difformità rispetto al progetto
+         originale o alla planimetria catastale? Mi occupo di sanare la situazione,
+         requisito spesso indispensabile per concludere la compravendita.</p>
+      <ul>
+        <li>Verifica conformità urbanistico-catastale</li>
+        <li>Accesso atti edilizi presso il Comune</li>
+        <li>CILA in sanatoria (regolarizzazione differita)</li>
+        <li>Sanatoria edilizia ex art. 36 DPR 380/2001</li>
+        <li>Allineamento planimetrie catastali (DOCFA)</li>
+        <li>Pre-acquisto: verifica difformità prima della firma</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ITER -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Come Lavoriamo</span>
+      <span class="dline dline-c"></span>
+      <h2>Quattro Passaggi Chiari</h2>
+    </div>
+  </div>
+  <div class="proc-grid">
+    <div class="proc-step">
+      <span class="num">01</span>
+      <h4>Sopralluogo</h4>
+      <p>Analizzo lo stato di fatto, raccolgo misure e documentazione esistente.</p>
+    </div>
+    <div class="proc-step">
+      <span class="num">02</span>
+      <h4>Progetto</h4>
+      <p>Sviluppo il progetto tecnico in base alle tue esigenze e alla normativa.</p>
+    </div>
+    <div class="proc-step">
+      <span class="num">03</span>
+      <h4>Pratica</h4>
+      <p>Presento la pratica al Comune e seguo l'istruttoria fino all'approvazione.</p>
+    </div>
+    <div class="proc-step">
+      <span class="num">04</span>
+      <h4>Cantiere</h4>
+      <p>Direzione lavori, coordinamento imprese, agibilità finale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section bg-white" id="form">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Modulo Online</span>
+      <span class="dline dline-c"></span>
+      <h2>Inizia il Tuo Progetto</h2>
+      <p>Raccontami cosa hai in mente: ti rispondo entro 24 ore con un primo
+         orientamento e una proposta di sopralluogo.</p>
+    </div>
+  </div>
+
+  <form class="req-form" id="progettiForm" novalidate>
+    <h3>Tipologia richiesta</h3>
+    <div class="fg">
+      <label for="tipo">Cosa ti serve? *</label>
+      <select id="tipo" name="tipo" required>
+        <option value="">— Seleziona —</option>
+        <option>Ristrutturazione di un immobile esistente</option>
+        <option>Ampliamento / Sopraelevazione</option>
+        <option>Nuova costruzione</option>
+        <option>CILA per manutenzione straordinaria</option>
+        <option>SCIA per intervento edilizio</option>
+        <option>Permesso di Costruire</option>
+        <option>Sanatoria edilizia / regolarizzazione</option>
+        <option>Allineamento planimetria catastale</option>
+        <option>Verifica conformità pre-acquisto</option>
+        <option>Non lo so, valutiamo insieme</option>
+      </select>
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="tipologia">Tipologia immobile *</label>
+        <select id="tipologia" name="tipologia" required>
+          <option value="">— Seleziona —</option>
+          <option>Appartamento</option>
+          <option>Villa / Villetta</option>
+          <option>Edificio storico / vincolato</option>
+          <option>Locale commerciale / Ufficio</option>
+          <option>Capannone / Industriale</option>
+          <option>Terreno edificabile</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="mq">Superficie indicativa (m²)</label>
+        <input type="number" id="mq" name="mq" min="10" max="50000" placeholder="es. 120">
+      </div>
+    </div>
+    <div class="fg">
+      <label for="indirizzo">Indirizzo immobile *</label>
+      <input type="text" id="indirizzo" name="indirizzo" placeholder="Via, civico, comune, provincia" required>
+    </div>
+    <div class="fg">
+      <label for="urgenza">Tempistica</label>
+      <select id="urgenza" name="urgenza">
+        <option>Voglio iniziare appena possibile</option>
+        <option>Entro 1–3 mesi</option>
+        <option>Entro 6 mesi</option>
+        <option>Sto solo valutando, non c'è urgenza</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label for="budget">Budget orientativo (se lo conosci)</label>
+      <select id="budget" name="budget">
+        <option>Non l'ho ancora definito</option>
+        <option>Fino a € 30.000</option>
+        <option>€ 30.000 – € 80.000</option>
+        <option>€ 80.000 – € 200.000</option>
+        <option>Oltre € 200.000</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label for="note">Descrivi il progetto o la situazione</label>
+      <textarea id="note" name="note" placeholder="Es: voglio ristrutturare il piano terra di una casa anni '60, abbattere una parete e rifare il bagno; oppure: sto comprando un appartamento e l'agenzia mi ha chiesto la conformità catastale…"></textarea>
+    </div>
+
+    <h3 style="margin-top:2rem">I tuoi recapiti</h3>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="fn">Nome e cognome *</label>
+        <input type="text" id="fn" name="nome" required autocomplete="name">
+      </div>
+      <div class="fg">
+        <label for="em">Email *</label>
+        <input type="email" id="em" name="email" required autocomplete="email">
+      </div>
+    </div>
+    <div class="fg">
+      <label for="tel">Telefono / WhatsApp *</label>
+      <input type="tel" id="tel" name="telefono" required autocomplete="tel">
+    </div>
+    <div class="privacy-row" style="margin-top:1.4rem">
+      <input type="checkbox" id="prv" name="privacy" required>
+      <label for="prv">Accetto il trattamento dei miei dati personali (Reg. UE 2016/679 — GDPR).</label>
+    </div>
+    <button type="submit" class="btn" style="margin-top:1.5rem">
+      Invia Richiesta
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+</section>
+
+<div class="cta-band">
+  <h2>Vuoi vedere<br><em style="font-weight:300">progetti realizzati?</em></h2>
+  <p>Sfoglia il portfolio per vedere ristrutturazioni e nuovi interventi già conclusi.</p>
+  <a href="portfolio.html" class="btn btn-light">
+    Vai al Portfolio
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script>
+document.getElementById('progettiForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+  btn.disabled = true; btn.textContent = 'Invio in corso…';
+  await new Promise(r => setTimeout(r, 600));
+  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Richiesta inviata</h2><p>Grazie! Ti rispondo entro 24 ore con un primo orientamento e una proposta di sopralluogo.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+});
+</script>
+</body>
+</html>

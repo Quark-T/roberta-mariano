@@ -143,85 +143,140 @@
 @media(max-width:768px) { .pf-prev-grid { grid-template-columns: repeat(2,1fr); } }
 @media(max-width:480px) { .pf-prev-grid { grid-template-columns: 1fr; } }
 
-/* ── REQUESTS HUB ── */
-.req-hub-grid {
+/* ── 4 BIG SERVICE BUTTONS ── */
+.svc-big-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
+  gap: 1.2rem;
   max-width: var(--max);
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2rem;
 }
-.req-hub-card {
+.svc-big {
+  position: relative;
   background: var(--white);
-  padding: 2.4rem 1.8rem;
+  border: 1px solid var(--border);
   text-decoration: none;
   color: var(--text);
-  transition: background .3s ease, transform .3s ease;
+  padding: 2.8rem 2rem 2.2rem;
   display: flex;
   flex-direction: column;
-  position: relative;
+  min-height: 320px;
+  transition: transform .35s var(--ease), border-color .35s ease, box-shadow .35s ease;
   overflow: hidden;
+  isolation: isolate;
 }
-.req-hub-card::after {
+.svc-big::before {
   content: '';
   position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 2px;
-  background: var(--accent);
-  transition: width .5s var(--ease);
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark, #6d5a40) 100%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  z-index: -1;
 }
-.req-hub-card:hover::after { width: 100%; }
-.req-hub-card:hover { background: var(--bg-alt); }
-.req-hub-card .req-hub-ico {
-  width: 38px; height: 38px;
+.svc-big:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px -12px rgba(139, 115, 85, .25);
+}
+.svc-big-ico {
+  width: 64px; height: 64px;
   color: var(--accent);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.6rem;
+  transition: transform .35s var(--ease);
 }
-.req-hub-card h3 {
-  font-size: 1.15rem;
-  margin-bottom: .5rem;
+.svc-big:hover .svc-big-ico { transform: scale(1.08) rotate(-3deg); }
+.svc-big h3 {
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin-bottom: .6rem;
 }
-.req-hub-card p {
-  font-size: .85rem;
+.svc-big p {
+  font-size: .9rem;
   color: var(--muted);
-  margin: 0 0 1.2rem;
+  margin: 0 0 1.4rem;
   line-height: 1.55;
   flex-grow: 1;
 }
-.req-hub-cta {
+.svc-big-cta {
   font-size: .72rem;
-  letter-spacing: .14em;
+  letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--accent-text);
   font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
+  gap: .55rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.1rem;
 }
-.req-hub-cta svg { width: 14px; height: 14px; }
+.svc-big-cta svg {
+  width: 16px; height: 16px;
+  transition: transform .35s var(--ease);
+}
+.svc-big:hover .svc-big-cta svg { transform: translateX(4px); }
+.svc-big-tag {
+  position: absolute;
+  top: 1.4rem; right: 1.4rem;
+  background: var(--accent);
+  color: var(--white);
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .3rem .7rem;
+  font-weight: 600;
+}
 
-/* secondary row (partner / recensioni) */
-.req-hub-extra {
+/* secondary row (consulenza arredo / partner / recensioni) */
+.svc-extra-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
-  border-top: none;
   max-width: var(--max);
   margin: 0 auto 3rem;
 }
-.req-hub-extra .req-hub-card { padding: 2rem 1.8rem; }
+.svc-extra {
+  background: var(--white);
+  padding: 1.8rem 1.6rem;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background .25s ease;
+}
+.svc-extra:hover { background: var(--bg-alt); }
+.svc-extra-ico {
+  width: 32px; height: 32px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.svc-extra h4 {
+  font-size: 1rem;
+  margin-bottom: .15rem;
+}
+.svc-extra p {
+  font-size: .82rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.svc-extra-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform .25s ease, color .25s ease;
+}
+.svc-extra:hover .svc-extra-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
 
-@media(max-width:900px) {
-  .req-hub-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media(max-width:520px) {
-  .req-hub-grid, .req-hub-extra { grid-template-columns: 1fr; }
-  .req-hub-extra { border-top: 1px solid var(--border); margin-top: -1px; }
-}
+@media(max-width:1000px) { .svc-big-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:900px)  { .svc-extra-grid { grid-template-columns: 1fr; } }
+@media(max-width:520px)  { .svc-big-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -305,102 +360,139 @@
 </div>
 
 
-<!-- ════════════════════════ RICHIESTE ONLINE ══════════════════════════ -->
+<!-- ════════════════════════ I MIEI SERVIZI ════════════════════════════ -->
 <section class="section bg-white">
   <div style="max-width:var(--max);margin:0 auto">
     <div class="sh sh-c">
-      <span class="label">Richieste Online</span>
+      <span class="label">I Miei Servizi</span>
       <span class="dline dline-c"></span>
-      <h2>Servizi su <em style="font-weight:300;color:var(--accent)">Richiesta</em></h2>
-      <p>Compila il modulo dedicato al servizio che ti interessa: dati immobile,
-         allegati e preferenza per il sopralluogo. Ti rispondo entro 24 ore con
-         un preventivo personalizzato.</p>
+      <h2>Quattro <em style="font-weight:300;color:var(--accent)">Specializzazioni</em></h2>
+      <p>Velocità, consulenza e sopralluogo nel raggio di 15 km da Borgoricco
+         (anche fuori area, su richiesta). Scegli il servizio: ti rispondo
+         entro 24 ore con preventivo e disponibilità.</p>
     </div>
   </div>
 
-  <div class="req-hub-grid stagger-parent">
-    <a href="richiesta-ape.html" class="req-hub-card stagger-item">
-      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-        <path d="M14 4h16l8 8v28a2 2 0 01-2 2H14a2 2 0 01-2-2V6a2 2 0 012-2z"/>
-        <polyline points="30 4 30 12 38 12"/>
-        <path d="M18 24l4 4 8-8"/>
+  <!-- 4 pulsanti grandi -->
+  <div class="svc-big-grid">
+
+    <a href="richiesta-ape.html" class="svc-big">
+      <span class="svc-big-tag">48h</span>
+      <svg class="svc-big-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+        <rect x="14" y="8" width="36" height="48" rx="2"/>
+        <rect x="20" y="14" width="24" height="6" fill="#7CB342" stroke="none"/>
+        <rect x="20" y="22" width="22" height="6" fill="#C0CA33" stroke="none"/>
+        <rect x="20" y="30" width="20" height="6" fill="#FBC02D" stroke="none"/>
+        <rect x="20" y="38" width="18" height="6" fill="#F57C00" stroke="none"/>
+        <rect x="20" y="46" width="16" height="6" fill="#E53935" stroke="none"/>
+        <text x="32" y="60" text-anchor="middle" font-size="5" fill="currentColor" font-family="Inter, sans-serif" font-weight="600">A B C D E</text>
       </svg>
-      <h3>Certificazione APE</h3>
-      <p>Attestato di Prestazione Energetica per compravendita, locazione, banca o Superbonus.</p>
-      <span class="req-hub-cta">Richiedi APE
+      <h3>Certificazione Energetica<br>e Check-up Casa</h3>
+      <p>APE per compravendita, locazione, banca o Superbonus. Non solo un
+         documento: un check-up completo per migliorare l'efficienza dell'immobile.</p>
+      <span class="svc-big-cta">Richiedi APE in 48h
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </span>
     </a>
 
-    <a href="richiesta-termografia.html" class="req-hub-card stagger-item">
-      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-        <rect x="8" y="6" width="32" height="36" rx="2"/>
-        <circle cx="24" cy="24" r="8"/>
-        <circle cx="24" cy="24" r="4"/>
-        <line x1="16" y1="14" x2="32" y2="14"/>
+    <a href="richiesta-perizia.html" class="svc-big">
+      <span class="svc-big-tag">CTU</span>
+      <svg class="svc-big-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+        <rect x="10" y="14" width="40" height="40" rx="1"/>
+        <line x1="16" y1="22" x2="40" y2="22"/>
+        <line x1="16" y1="28" x2="40" y2="28"/>
+        <line x1="16" y1="34" x2="32" y2="34"/>
+        <circle cx="46" cy="46" r="10" stroke-width="2"/>
+        <line x1="53" y1="53" x2="58" y2="58" stroke-width="2.5"/>
+        <line x1="42" y1="46" x2="50" y2="46" stroke-width="1"/>
+        <line x1="46" y1="42" x2="46" y2="50" stroke-width="1"/>
       </svg>
-      <h3>Indagine Termografica</h3>
-      <p>Analisi a infrarossi per individuare dispersioni, ponti termici e infiltrazioni.</p>
-      <span class="req-hub-cta">Richiedi Termografia
+      <h3>Perizie, Stime<br>e Assistenza all'Acquisto</h3>
+      <p>Perito del Tribunale di Padova da oltre 10 anni. Stime, perizie su vizi
+         costruttivi, muffe e Due Diligence pre-acquisto.</p>
+      <span class="svc-big-cta">Prenota Consulenza
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </span>
     </a>
 
-    <a href="richiesta-perizia.html" class="req-hub-card stagger-item">
-      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
-        <path d="M12 4h18l8 8v32a2 2 0 01-2 2H12a2 2 0 01-2-2V6a2 2 0 012-2z"/>
-        <polyline points="30 4 30 12 38 12"/>
-        <line x1="18" y1="22" x2="32" y2="22"/>
-        <line x1="18" y1="28" x2="32" y2="28"/>
-        <line x1="18" y1="34" x2="26" y2="34"/>
+    <a href="richiesta-termografia.html" class="svc-big">
+      <span class="svc-big-tag">IR</span>
+      <svg class="svc-big-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+        <path d="M10 30L32 12l22 18v22a2 2 0 01-2 2H12a2 2 0 01-2-2V30z"/>
+        <rect x="22" y="36" width="8" height="16" fill="#E53935" stroke="none" opacity=".85"/>
+        <rect x="34" y="40" width="8" height="12" fill="#FBC02D" stroke="none" opacity=".85"/>
+        <rect x="22" y="20" width="6" height="8" fill="#F57C00" stroke="none" opacity=".85"/>
+        <rect x="32" y="22" width="6" height="6" fill="#7CB342" stroke="none" opacity=".7"/>
+        <line x1="10" y1="58" x2="54" y2="58"/>
       </svg>
-      <h3>Perizie Tecniche</h3>
-      <p>Perizie estimative, CTU, valutazioni per mutuo, vizi costruttivi e successioni.</p>
-      <span class="req-hub-cta">Richiedi Perizia
+      <h3>Diagnosi Termografica<br>Vedere l'Invisibile</h3>
+      <p>Individuo infiltrazioni, muffe, ponti termici e perdite d'acqua senza
+         interventi invasivi. Check-up post-cappotto e analisi pre-acquisto.</p>
+      <span class="svc-big-cta">Scopri le Dispersioni
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </span>
     </a>
 
-    <a href="consulenza-arredo.html" class="req-hub-card stagger-item">
-      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+    <a href="richiesta-progetti.html" class="svc-big">
+      <span class="svc-big-tag">CILA · SCIA</span>
+      <svg class="svc-big-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+        <rect x="8" y="14" width="40" height="40" rx="1"/>
+        <line x1="8" y1="22" x2="48" y2="22"/>
+        <line x1="14" y1="14" x2="14" y2="54"/>
+        <path d="M20 30h8v8h-8z"/>
+        <path d="M32 30h12v6h-12z"/>
+        <path d="M32 40h12v6h-12z"/>
+        <path d="M20 42h8v6h-8z"/>
+        <line x1="50" y1="10" x2="58" y2="18" stroke-width="1.6"/>
+        <circle cx="58" cy="18" r="2.5" fill="currentColor" stroke="none"/>
+        <line x1="48" y1="12" x2="52" y2="16"/>
+      </svg>
+      <h3>Progetti e Pratiche<br>Dalla Visione al Cantiere</h3>
+      <p>Ristrutturazioni, sanatorie e regolarizzazioni catastali. Presento CILA,
+         SCIA e Permesso di Costruire seguendo ogni iter in Comune e al Catasto.</p>
+      <span class="svc-big-cta">Inizia il Progetto
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+
+  </div>
+
+  <!-- riga inferiore: servizi secondari -->
+  <div class="svc-extra-grid">
+    <a href="consulenza-arredo.html" class="svc-extra">
+      <svg class="svc-extra-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
         <path d="M8 24v16h32V24"/>
         <path d="M4 24h40"/>
         <path d="M12 24V12a4 4 0 014-4h16a4 4 0 014 4v12"/>
-        <line x1="14" y1="40" x2="14" y2="44"/>
-        <line x1="34" y1="40" x2="34" y2="44"/>
       </svg>
-      <h3>Consulenza Arredo</h3>
-      <p>Progettazione d'interni, scelta materiali, planimetrie funzionali e render 3D.</p>
-      <span class="req-hub-cta">Richiedi Consulenza
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </span>
+      <div>
+        <h4>Consulenza Arredo</h4>
+        <p>Interior design, render 3D e materiali</p>
+      </div>
+      <svg class="svc-extra-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
-  </div>
-
-  <div class="req-hub-extra">
-    <a href="partner.html" class="req-hub-card">
-      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+    <a href="partner.html" class="svc-extra">
+      <svg class="svc-extra-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
         <circle cx="16" cy="18" r="6"/>
         <circle cx="32" cy="18" r="6"/>
         <path d="M4 40c0-6 5-10 12-10s12 4 12 10"/>
         <path d="M28 30c5 0 12 4 12 10"/>
       </svg>
-      <h3>Agenzie &amp; Studi Professionali</h3>
-      <p>Programma di collaborazioni continuative con condizioni dedicate e fidelity per partner.</p>
-      <span class="req-hub-cta">Diventa Partner
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </span>
+      <div>
+        <h4>Agenzie &amp; Studi</h4>
+        <p>Programma fidelity per partner professionali</p>
+      </div>
+      <svg class="svc-extra-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
-
-    <a href="recensioni.html" class="req-hub-card">
-      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+    <a href="recensioni.html" class="svc-extra">
+      <svg class="svc-extra-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
         <polygon points="24 6 30 18 44 20 34 30 36 44 24 38 12 44 14 30 4 20 18 18"/>
       </svg>
-      <h3>Recensioni Clienti</h3>
-      <p>Tutte le recensioni di chi mi ha scelto e l'invito a lasciare la tua dopo il lavoro.</p>
-      <span class="req-hub-cta">Leggi le Recensioni
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </span>
+      <div>
+        <h4>Recensioni Clienti</h4>
+        <p>Le testimonianze di chi mi ha scelto</p>
+      </div>
+      <svg class="svc-extra-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </div>
 </section>
