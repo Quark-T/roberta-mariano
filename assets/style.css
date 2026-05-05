@@ -552,6 +552,100 @@ footer {
    content-visibility: auto era qui ma poteva interferire con ScrollTrigger
    creando edge case in cui sezioni restavano renderizzate a opacity 0. */
 
+/* ── NAV DROPDOWN ── */
+.nav-links li.has-dropdown {
+  position: relative;
+}
+.nav-links .dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.nav-links .dropdown-trigger::after {
+  content: '';
+  width: 7px; height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .25s ease;
+  margin-left: 2px;
+}
+.nav-links li.has-dropdown:hover .dropdown-trigger::after,
+.nav-links li.has-dropdown.open .dropdown-trigger::after {
+  transform: rotate(-135deg) translateY(2px);
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 240px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: 0 14px 40px -10px rgba(0,0,0,.18);
+  padding: .6rem 0;
+  list-style: none;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, transform .25s ease, visibility .25s;
+  z-index: 1000;
+}
+.nav-links li.has-dropdown:hover .dropdown-menu,
+.nav-links li.has-dropdown.open .dropdown-menu,
+.nav-links li.has-dropdown:focus-within .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.dropdown-menu li { margin: 0; }
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .7rem 1.2rem;
+  font-size: .9rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+  border: none;
+  white-space: nowrap;
+}
+.dropdown-menu a:hover {
+  background: var(--bg-alt);
+  color: var(--accent);
+}
+.dropdown-menu a small {
+  display: block;
+  font-size: .72rem;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+.dropdown-menu a > div { display: flex; flex-direction: column; }
+.dropdown-menu a svg {
+  width: 18px; height: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* mobile: dropdown items inline */
+@media (max-width: 900px) {
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    padding: 0 0 0 1rem;
+    min-width: 0;
+  }
+  .nav-links .dropdown-trigger::after { display: none; }
+}
+
 /* ── REDUCED MOTION ── */
 @media(prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
