@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulenza Arredo &amp; Interior Design — Arch. Roberta Mariano</title>
+<meta name="description" content="Consulenza di interior design e arredo: progettazione spazi, scelta materiali, render 3D. Studio Arch. Roberta Mariano, Padova.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.how-step {
+  background: var(--white);
+  padding: 2.4rem 1.8rem;
+  position: relative;
+}
+.how-step .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: block;
+}
+.how-step h3 { font-size: 1.1rem; margin-bottom: .5rem; }
+.how-step p { font-size: .88rem; color: var(--muted); margin: 0; line-height: 1.6; }
+@media(max-width:900px) { .how-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:480px) { .how-grid { grid-template-columns: 1fr; } }
+
+.includes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  max-width: var(--max);
+  margin: 0 auto;
+  align-items: start;
+}
+.includes ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.includes li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .95rem;
+  color: var(--muted);
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+}
+.includes li svg {
+  width: 18px; height: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.includes li strong { color: var(--text); display: block; margin-bottom: .15rem; }
+@media(max-width:768px) { .includes { grid-template-columns: 1fr; } }
+
+.req-form {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: clamp(2rem,4vw,3rem);
+  border: 1px solid var(--border);
+}
+.req-form h3 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="#form" class="btn nav-cta">Richiedi</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/architetto-esperto-per-interni.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><a href="servizi.html">Servizi</a><span>/</span><span>Consulenza Arredo</span>
+    </div>
+    <h1>Consulenza<br><em style="font-weight:300;color:var(--accent)">Arredo &amp; Interior</em></h1>
+    <p class="page-hero-sub">
+      Da una stanza all'intera casa: ti aiuto a progettare ambienti coerenti,
+      funzionali e personali. Sopralluogo, planimetrie, scelta materiali e render 3D.
+    </p>
+  </div>
+</header>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Come Funziona</span>
+      <span class="dline dline-c"></span>
+      <h2>Il Percorso di Consulenza</h2>
+      <p>Quattro passaggi chiari, dal primo incontro al progetto finale.
+         Nessun impegno per la prima consulenza.</p>
+    </div>
+  </div>
+  <div class="how-grid stagger-parent">
+    <div class="how-step stagger-item">
+      <span class="num">01</span>
+      <h3>Primo Incontro</h3>
+      <p>Conosciamoci: quali sono le tue abitudini, i tuoi gusti, il tuo budget.
+         Sopralluogo gratuito nel raggio di 30 km.</p>
+    </div>
+    <div class="how-step stagger-item">
+      <span class="num">02</span>
+      <h3>Concept &amp; Moodboard</h3>
+      <p>Una proposta di stile, palette colori, materiali e atmosfera. Da approvare
+         insieme prima di andare avanti.</p>
+    </div>
+    <div class="how-step stagger-item">
+      <span class="num">03</span>
+      <h3>Planimetrie &amp; Render 3D</h3>
+      <p>Distribuzione spazi, arredi, illuminazione. Visualizzazioni fotorealistiche
+         per "vedere" la casa prima di realizzarla.</p>
+    </div>
+    <div class="how-step stagger-item">
+      <span class="num">04</span>
+      <h3>Esecuzione</h3>
+      <p>Capitolato materiali, lista fornitori selezionati, supporto durante l'acquisto
+         e direzione lavori se richiesta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDES -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Cosa Comprende</span>
+      <span class="dline dline-c"></span>
+      <h2>Servizi Inclusi</h2>
+    </div>
+  </div>
+  <div class="includes">
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><strong>Sopralluogo iniziale</strong>Rilievi misure, foto, valutazione esposizione e luce naturale.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><strong>Planimetria distributiva</strong>Disposizione ottimale degli spazi e degli arredi.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><strong>Moodboard di stile</strong>Concept visivo con materiali, colori e atmosfera del progetto.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><strong>Capitolato materiali</strong>Specifiche tecniche di rivestimenti, finiture e arredi.</span></li>
+    </ul>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><strong>Render 3D fotorealistici</strong>Vedi gli ambienti come saranno prima di iniziare i lavori.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><strong>Progetto illuminotecnico</strong>Posizionamento punti luce, scelta corpi illuminanti e scenari.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><strong>Lista fornitori</strong>Artigiani, falegnami e showroom selezionati e affidabili.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        <span><strong>Direzione lavori (opzionale)</strong>Supervisione del cantiere e coordinamento maestranze.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section bg-white" id="form">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Modulo Online</span>
+      <span class="dline dline-c"></span>
+      <h2>Richiedi Consulenza</h2>
+      <p>Raccontami il tuo progetto: ti rispondo entro 24 ore con un primo
+         orientamento e una proposta di sopralluogo.</p>
+    </div>
+  </div>
+
+  <form class="req-form" id="arredoForm" novalidate>
+    <h3>Il tuo progetto</h3>
+    <div class="fg">
+      <label for="ambito">Cosa vorresti progettare? *</label>
+      <select id="ambito" name="ambito" required>
+        <option value="">— Seleziona —</option>
+        <option>Una singola stanza (cucina, bagno, camera…)</option>
+        <option>Un appartamento completo</option>
+        <option>Una villa / casa indipendente</option>
+        <option>Un locale commerciale / ufficio</option>
+        <option>Solo consulenza colore / materiali</option>
+        <option>Render 3D di un progetto già esistente</option>
+        <option>Altro</option>
+      </select>
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="mq">Superficie indicativa (m²)</label>
+        <input type="number" id="mq" name="mq" min="5" max="2000" placeholder="es. 80">
+      </div>
+      <div class="fg">
+        <label for="stato">Stato dei lavori</label>
+        <select id="stato" name="stato">
+          <option>Progetto in fase iniziale</option>
+          <option>Casa nuova da arredare</option>
+          <option>Ristrutturazione in corso</option>
+          <option>Voglio cambiare arredamento esistente</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg">
+      <label for="budget">Budget orientativo</label>
+      <select id="budget" name="budget">
+        <option>Non l'ho ancora definito</option>
+        <option>Fino a € 10.000</option>
+        <option>€ 10.000 – € 30.000</option>
+        <option>€ 30.000 – € 70.000</option>
+        <option>Oltre € 70.000</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label for="indirizzo">Comune dell'immobile *</label>
+      <input type="text" id="indirizzo" name="indirizzo" placeholder="Es. Padova (PD)" required>
+    </div>
+    <div class="fg">
+      <label for="stile">Stile preferito (se ne hai uno in mente)</label>
+      <input type="text" id="stile" name="stile" placeholder="Es. moderno, scandinavo, industriale, classico…">
+    </div>
+    <div class="fg">
+      <label for="note">Raccontami il tuo progetto</label>
+      <textarea id="note" name="note" placeholder="Quali stanze ti preoccupano di più, cosa vorresti cambiare, ispirazioni che ti piacciono, vincoli che ho bisogno di conoscere…"></textarea>
+    </div>
+
+    <h3 style="margin-top:2rem">I tuoi recapiti</h3>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="fn">Nome e cognome *</label>
+        <input type="text" id="fn" name="nome" required autocomplete="name">
+      </div>
+      <div class="fg">
+        <label for="em">Email *</label>
+        <input type="email" id="em" name="email" required autocomplete="email">
+      </div>
+    </div>
+    <div class="fg">
+      <label for="tel">Telefono / WhatsApp *</label>
+      <input type="tel" id="tel" name="telefono" required autocomplete="tel">
+    </div>
+    <div class="privacy-row" style="margin-top:1.4rem">
+      <input type="checkbox" id="prv" name="privacy" required>
+      <label for="prv">Accetto il trattamento dei miei dati personali (Reg. UE 2016/679 — GDPR).</label>
+    </div>
+    <button type="submit" class="btn" style="margin-top:1.5rem">
+      Invia Richiesta
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+</section>
+
+<div class="cta-band">
+  <h2>Vuoi vedere<br><em style="font-weight:300">progetti realizzati?</em></h2>
+  <p>Sfoglia il portfolio per ispirarti e capire il mio stile.</p>
+  <a href="portfolio.html" class="btn btn-light">
+    Vai al Portfolio
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script>
+document.getElementById('arredoForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+  btn.disabled = true; btn.textContent = 'Invio in corso…';
+  // TODO: POST a /api/richiesta-arredo
+  await new Promise(r => setTimeout(r, 600));
+  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Richiesta inviata</h2><p>Grazie! Ti rispondo entro 24 ore con un primo orientamento e una proposta di sopralluogo.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+});
+</script>
+<script type="module">
+if (window.gsap) {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.page-hero h1, .page-hero-sub', { opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2 });
+    gsap.from('.how-step', { opacity: 0, y: 20, duration: .6, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.how-grid', start: 'top 80%', once: true } });
+    gsap.from('.includes li', { opacity: 0, x: -20, duration: .5, stagger: .06, ease: 'power3.out', scrollTrigger: { trigger: '.includes', start: 'top 80%', once: true } });
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richiesta Indagine Termografica — Arch. Roberta Mariano</title>
+<meta name="description" content="Richiedi un'indagine termografica online: dispersioni termiche, ponti termici, infiltrazioni d'acqua. Studio Arch. Roberta Mariano, Padova.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ── PRICING ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.price-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2.4rem 1.8rem;
+  position: relative;
+  transition: transform .3s ease, border-color .3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.price-card.featured {
+  border-color: var(--accent);
+  transform: scale(1.02);
+}
+.price-card.featured::before {
+  content: 'Più richiesto';
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: var(--white);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .35rem 1rem;
+}
+.price-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  margin: .8rem 0;
+}
+.price-tag small {
+  font-size: .9rem;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+}
+.price-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: .3rem;
+}
+.price-card p.lead {
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+.price-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.8rem;
+  font-size: .88rem;
+  color: var(--muted);
+  flex-grow: 1;
+}
+.price-card ul li {
+  display: flex;
+  align-items: baseline;
+  gap: .55rem;
+  margin-bottom: .55rem;
+}
+.price-card ul li::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.price-card .btn { width: 100%; justify-content: center; }
+@media(max-width:900px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+/* ── FORM (riuso classi req-* da richiesta-ape) ── */
+.req-form {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: clamp(2rem,4vw,3rem);
+  border: 1px solid var(--border);
+}
+.req-form h3 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="#form" class="btn nav-cta">Richiedi</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/image18.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><a href="termografia-padova.html">Termografia</a><span>/</span><span>Richiesta</span>
+    </div>
+    <h1>Indagine<br><em style="font-weight:300;color:var(--accent)">Termografica</em></h1>
+    <p class="page-hero-sub">
+      Tre pacchetti, prezzi trasparenti. Scegli il tipo di analisi adatta al tuo immobile,
+      compila il modulo e ti contatto entro 24 ore per fissare il sopralluogo.
+    </p>
+  </div>
+</header>
+
+<!-- PRICING -->
+<section class="section">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Listino</span>
+      <span class="dline dline-c"></span>
+      <h2>Tipologie di Indagine</h2>
+      <p>Prezzi indicativi a partire da. Il preventivo definitivo viene
+         comunicato sulla base della superficie e della complessità.</p>
+    </div>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Indagine Base</h3>
+      <p class="lead">Singolo immobile residenziale fino a 100 m².</p>
+      <span class="price-tag">€ 250 <small>+ IVA</small></span>
+      <ul>
+        <li>Sopralluogo con termocamera professionale</li>
+        <li>Analisi dispersioni termiche</li>
+        <li>Report fotografico (10–15 termogrammi)</li>
+        <li>Consegna in PDF entro 7 giorni</li>
+      </ul>
+      <a href="#form" class="btn" data-pacchetto="Base">Scegli Base</a>
+    </div>
+
+    <div class="price-card featured">
+      <h3>Indagine Completa</h3>
+      <p class="lead">Immobile residenziale o commerciale fino a 200 m².</p>
+      <span class="price-tag">€ 450 <small>+ IVA</small></span>
+      <ul>
+        <li>Tutto quello incluso in "Base"</li>
+        <li>Analisi ponti termici</li>
+        <li>Verifica infiltrazioni d'aria e umidità</li>
+        <li>Relazione tecnica firmata</li>
+        <li>Suggerimenti per la riqualificazione</li>
+      </ul>
+      <a href="#form" class="btn" data-pacchetto="Completa">Scegli Completa</a>
+    </div>
+
+    <div class="price-card">
+      <h3>Indagine Estesa</h3>
+      <p class="lead">Edifici grandi, condomini, capannoni, contenziosi.</p>
+      <span class="price-tag">Su preventivo</span>
+      <ul>
+        <li>Tutto quello incluso in "Completa"</li>
+        <li>Termogrammi multipli su tutte le facciate</li>
+        <li>Rilievi in più momenti del giorno</li>
+        <li>Perizia legale e relazione CTU/CTP</li>
+        <li>Assistenza in causa o sopralluogo congiunto</li>
+      </ul>
+      <a href="#form" class="btn btn-o" data-pacchetto="Estesa">Richiedi Preventivo</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section bg-white" id="form">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Modulo Online</span>
+      <span class="dline dline-c"></span>
+      <h2>Richiedi Termografia</h2>
+      <p>Compila i dati: ti contatto entro 24 ore con conferma e data del sopralluogo.</p>
+    </div>
+  </div>
+
+  <form class="req-form" id="termoForm" novalidate>
+    <h3>Dati richiesta</h3>
+    <div class="fg">
+      <label for="pacchetto">Pacchetto scelto *</label>
+      <select id="pacchetto" name="pacchetto" required>
+        <option value="">— Seleziona —</option>
+        <option>Indagine Base — € 250</option>
+        <option>Indagine Completa — € 450</option>
+        <option>Indagine Estesa — su preventivo</option>
+        <option>Non lo so, valutiamo insieme</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label for="motivo">Motivo dell'indagine *</label>
+      <select id="motivo" name="motivo" required>
+        <option value="">— Seleziona —</option>
+        <option>Verifica isolamento prima di ristrutturazione</option>
+        <option>Controllo qualità lavori (Superbonus / cappotto)</option>
+        <option>Infiltrazioni d'acqua o umidità</option>
+        <option>Contenzioso edilizio / vizi costruttivi</option>
+        <option>Compravendita — verifica pre-acquisto</option>
+        <option>Altro</option>
+      </select>
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="tipologia">Tipologia immobile *</label>
+        <select id="tipologia" name="tipologia" required>
+          <option value="">— Seleziona —</option>
+          <option>Appartamento</option>
+          <option>Villa singola / villetta</option>
+          <option>Condominio</option>
+          <option>Locale commerciale</option>
+          <option>Capannone industriale</option>
+          <option>Altro</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="mq">Superficie (m²) *</label>
+        <input type="number" id="mq" name="mq" min="10" max="10000" placeholder="es. 120" required>
+      </div>
+    </div>
+    <div class="fg">
+      <label for="indirizzo">Indirizzo immobile *</label>
+      <input type="text" id="indirizzo" name="indirizzo" placeholder="Via, civico, comune, provincia" required>
+    </div>
+    <div class="fg">
+      <label for="note">Descrizione del problema o dell'esigenza</label>
+      <textarea id="note" name="note" placeholder="Es: macchia di umidità sul muro nord, ponte termico sospetto in cucina, controllo cappotto post-Superbonus…"></textarea>
+    </div>
+
+    <h3 style="margin-top:2rem">I tuoi recapiti</h3>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="fn">Nome e cognome *</label>
+        <input type="text" id="fn" name="nome" required autocomplete="name">
+      </div>
+      <div class="fg">
+        <label for="em">Email *</label>
+        <input type="email" id="em" name="email" required autocomplete="email">
+      </div>
+    </div>
+    <div class="fg">
+      <label for="tel">Telefono / WhatsApp *</label>
+      <input type="tel" id="tel" name="telefono" required autocomplete="tel">
+    </div>
+    <div class="privacy-row" style="margin-top:1.4rem">
+      <input type="checkbox" id="prv" name="privacy" required>
+      <label for="prv">Accetto il trattamento dei miei dati personali (Reg. UE 2016/679 — GDPR).</label>
+    </div>
+    <button type="submit" class="btn" style="margin-top:1.5rem">
+      Invia Richiesta
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+</section>
+
+<div class="cta-band">
+  <h2>Hai dubbi su quale<br><em style="font-weight:300">pacchetto scegliere?</em></h2>
+  <p>Scrivimi su WhatsApp con due foto del muro o dell'edificio: ti dico subito quale indagine ha senso.</p>
+  <a href="https://wa.me/393476622673" class="btn btn-light" target="_blank" rel="noopener">
+    Scrivimi su WhatsApp
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script>
+// Pre-fill pacchetto from card click
+document.querySelectorAll('[data-pacchetto]').forEach(a => {
+  a.addEventListener('click', () => {
+    const v = a.dataset.pacchetto;
+    const sel = document.getElementById('pacchetto');
+    if (!sel) return;
+    const opt = [...sel.options].find(o => o.text.startsWith('Indagine ' + v));
+    if (opt) sel.value = opt.value || opt.text;
+  });
+});
+// Submit placeholder
+document.getElementById('termoForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+  btn.disabled = true; btn.textContent = 'Invio in corso…';
+  // TODO: POST a /api/richiesta-termografia
+  await new Promise(r => setTimeout(r, 600));
+  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Richiesta inviata</h2><p>Grazie! Ti rispondo entro 24 ore con la conferma e la data del sopralluogo.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+});
+</script>
+<script type="module">
+if (window.gsap) {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.page-hero h1, .page-hero-sub', { opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2 });
+    gsap.from('.price-card', { opacity: 0, y: 30, duration: .7, stagger: .12, ease: 'power3.out', scrollTrigger: { trigger: '.pricing-grid', start: 'top 80%', once: true } });
+  });
+}
+</script>
+</body>
+</html>

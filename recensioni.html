@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recensioni dei Clienti — Arch. Roberta Mariano</title>
+<meta name="description" content="Le recensioni di chi ha scelto lo Studio Arch. Roberta Mariano per APE, perizie, progettazione e interior design. Leggi le testimonianze e lascia la tua.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* Stats */
+.rec-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: 760px;
+  margin: 0 auto;
+}
+.rec-stat {
+  background: var(--white);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.rec-stat .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: .3rem;
+}
+.rec-stat .lab {
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.rec-stat .stars { color: var(--accent); font-size: 1.1rem; letter-spacing: 1px; margin-bottom: .3rem; }
+@media(max-width:600px) { .rec-stats { grid-template-columns: 1fr; } }
+
+/* Filters */
+.rec-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+.rec-filter {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: .55rem 1.1rem;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: all .2s ease;
+  font-family: inherit;
+  color: var(--text);
+}
+.rec-filter:hover { border-color: var(--accent); color: var(--accent); }
+.rec-filter.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+/* Grid */
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.rec-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color .25s ease, transform .25s ease;
+}
+.rec-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.rec-card.hidden { display: none; }
+.rec-card .stars {
+  color: var(--accent);
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  margin-bottom: .8rem;
+}
+.rec-card blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0 0 1.5rem;
+  flex-grow: 1;
+}
+.rec-meta {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: .82rem;
+}
+.rec-meta strong { color: var(--text); font-weight: 600; }
+.rec-meta .svc {
+  color: var(--accent-text);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+@media(max-width:900px) { .rec-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px) { .rec-grid { grid-template-columns: 1fr; } }
+
+/* Google CTA */
+.google-cta {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.google-cta svg { width: 48px; height: 48px; margin-bottom: 1rem; }
+.google-cta h3 { font-size: 1.4rem; margin-bottom: .8rem; }
+.google-cta p { color: var(--muted); margin-bottom: 1.5rem; font-size: .95rem; }
+
+/* Form */
+.rec-form {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: clamp(2rem,4vw,3rem);
+  border: 1px solid var(--border);
+}
+.star-rate {
+  display: flex;
+  gap: .3rem;
+  font-size: 2rem;
+  color: var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+.star-rate span:hover,
+.star-rate span.on { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="#lascia" class="btn nav-cta">Lascia Recensione</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/recensioni-architetti-nei-dintorni.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Recensioni</span>
+    </div>
+    <h1>Cosa Dicono<br><em style="font-weight:300;color:var(--accent)">i Clienti</em></h1>
+    <p class="page-hero-sub">
+      Le testimonianze di chi mi ha scelto in oltre vent'anni di professione.
+      La soddisfazione del cliente è la misura più autentica del mio lavoro.
+    </p>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="section">
+  <div class="rec-stats">
+    <div class="rec-stat">
+      <div class="num">5.0</div>
+      <div class="stars">★★★★★</div>
+      <div class="lab">Voto Medio</div>
+    </div>
+    <div class="rec-stat">
+      <div class="num">100%</div>
+      <div class="lab" style="margin-top:.6rem">Clienti Soddisfatti</div>
+    </div>
+    <div class="rec-stat">
+      <div class="num">2000+</div>
+      <div class="lab" style="margin-top:.6rem">Lavori Completati</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section bg-white">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh sh-c">
+      <span class="label">Testimonianze</span>
+      <span class="dline dline-c"></span>
+      <h2>Tutte le Recensioni</h2>
+      <p>Filtra per tipo di servizio per leggere le recensioni
+         pertinenti alla tua esigenza.</p>
+    </div>
+  </div>
+
+  <div class="rec-filters">
+    <button class="rec-filter active" data-f="all">Tutte</button>
+    <button class="rec-filter" data-f="ape">APE</button>
+    <button class="rec-filter" data-f="perizia">Perizie</button>
+    <button class="rec-filter" data-f="progettazione">Progettazione</button>
+    <button class="rec-filter" data-f="interior">Interior Design</button>
+    <button class="rec-filter" data-f="termografia">Termografia</button>
+  </div>
+
+  <div class="rec-grid">
+    <div class="rec-card" data-c="ape">
+      <div class="stars">★★★★★</div>
+      <blockquote>"L'architetto Mariano per la redazione dell'APE mi ha pienamente soddisfatta. Roberta è una professionista puntuale, di una gentilezza e sollecitudine introvabili. Una perla rara."</blockquote>
+      <div class="rec-meta"><strong>Laura Grigolon</strong><span class="svc">APE</span></div>
+    </div>
+    <div class="rec-card" data-c="progettazione">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Il servizio è stato eccellente. Professionista molto preparata, seria, brillante ed empatica. In tempi celeri ha realizzato magistralmente l'incarico. Una fuoriclasse."</blockquote>
+      <div class="rec-meta"><strong>Sara Scarpa</strong><span class="svc">Progettazione</span></div>
+    </div>
+    <div class="rec-card" data-c="perizia">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Il suo approccio basato sul buon senso e sul desiderio di contribuire a un mondo migliore traspare in ogni aspetto del lavoro. Un'esperienza professionale straordinaria."</blockquote>
+      <div class="rec-meta"><strong>Paola Mugeri</strong><span class="svc">Consulenza Tecnica</span></div>
+    </div>
+    <div class="rec-card" data-c="perizia">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Mi sono affidato all'Arch. Roberta Mariano per una perizia immobiliare. È una vera professionista: mi ha seguito in modo ottimale in ogni fase. La consiglio vivamente."</blockquote>
+      <div class="rec-meta"><strong>Paolo D'Agostini</strong><span class="svc">Perizia Immobiliare</span></div>
+    </div>
+    <div class="rec-card" data-c="interior">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Roberta ha trasformato il nostro appartamento con un'attenzione al dettaglio incredibile. Materiali, colori, illuminazione: tutto pensato per noi. Risultato oltre le aspettative."</blockquote>
+      <div class="rec-meta"><strong>Famiglia Bertin</strong><span class="svc">Interior Design</span></div>
+    </div>
+    <div class="rec-card" data-c="ape">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Velocissima e precisa. Mi ha consegnato l'APE per la vendita della casa dei miei in tre giorni. Tariffa onesta e nessuna sorpresa."</blockquote>
+      <div class="rec-meta"><strong>Marco Zampieri</strong><span class="svc">APE</span></div>
+    </div>
+    <div class="rec-card" data-c="termografia">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Indagine termografica fatta dopo lavori di cappotto: ha individuato due ponti termici che l'impresa ha poi sistemato. Documentazione tecnica impeccabile."</blockquote>
+      <div class="rec-meta"><strong>Studio Geom. Verlato</strong><span class="svc">Termografia</span></div>
+    </div>
+    <div class="rec-card" data-c="perizia">
+      <div class="stars">★★★★★</div>
+      <blockquote>"CTU del Tribunale di Padova in una causa su vizi costruttivi. Relazione chiara, equilibrata, ben argomentata. Da addetto ai lavori riconosco la qualità."</blockquote>
+      <div class="rec-meta"><strong>Avv. M. Tessari</strong><span class="svc">CTU</span></div>
+    </div>
+    <div class="rec-card" data-c="progettazione">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Ha seguito la pratica edilizia per l'ampliamento della nostra abitazione dall'inizio alla fine. Pratica conclusa in tempi rapidi e nessun intoppo."</blockquote>
+      <div class="rec-meta"><strong>Famiglia Salviato</strong><span class="svc">Pratiche Edilizie</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GOOGLE -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh sh-c">
+      <span class="label">Google Reviews</span>
+      <span class="dline dline-c"></span>
+      <h2>Leggi su Google</h2>
+      <p>Tutte le recensioni verificate sono pubblicate sul profilo Google
+         dello Studio.</p>
+    </div>
+  </div>
+  <div class="google-cta">
+    <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 16 19 13 24 13c3.1 0 5.8 1.2 8 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.5 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.2 4.3-4.1 5.7l6.2 5.2C41.4 36 44 30.5 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
+    <h3>Tutte le recensioni verificate</h3>
+    <p>Studio Arch. Roberta Mariano · Borgoricco (PD)<br>
+       Stella media: 5.0 / 5.0</p>
+    <a href="https://www.google.com/search?q=Studio+Arch+Roberta+Mariano+Borgoricco" class="btn" target="_blank" rel="noopener">
+      Apri su Google
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- LASCIA RECENSIONE -->
+<section class="section bg-white" id="lascia">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh sh-c">
+      <span class="label">La Tua Voce</span>
+      <span class="dline dline-c"></span>
+      <h2>Lascia una Recensione</h2>
+      <p>Hai lavorato con me? Raccontami la tua esperienza in poche righe.
+         Le recensioni vengono pubblicate dopo una breve verifica.</p>
+    </div>
+  </div>
+
+  <form class="rec-form" id="recForm" novalidate>
+    <div class="fg">
+      <label>Valutazione *</label>
+      <div class="star-rate" id="starRate" aria-label="Valutazione da 1 a 5 stelle">
+        <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+      </div>
+      <input type="hidden" id="rating" name="rating" required>
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="fn">Nome e cognome *</label>
+        <input type="text" id="fn" name="nome" required autocomplete="name">
+      </div>
+      <div class="fg">
+        <label for="servizio">Servizio ricevuto *</label>
+        <select id="servizio" name="servizio" required>
+          <option value="">— Seleziona —</option>
+          <option>Certificazione APE</option>
+          <option>Perizia tecnica / CTU / CTP</option>
+          <option>Perizia per mutuo</option>
+          <option>Progettazione / Pratiche edilizie</option>
+          <option>Interior Design / Arredo</option>
+          <option>Indagine termografica</option>
+          <option>Altro</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg">
+      <label for="em">Email (non pubblica) *</label>
+      <input type="email" id="em" name="email" required autocomplete="email">
+    </div>
+    <div class="fg">
+      <label for="testo">La tua recensione *</label>
+      <textarea id="testo" name="testo" required minlength="40" placeholder="Raccontami cosa hai apprezzato, cosa potevo fare meglio, come è andato il lavoro nel suo insieme. Più dettagli rendi la recensione più utile per altri."></textarea>
+    </div>
+    <div class="privacy-row">
+      <input type="checkbox" id="prv" name="privacy" required>
+      <label for="prv">Acconsento alla pubblicazione della recensione con il mio nome e cognome.
+        I dati personali vengono trattati ai sensi del Reg. UE 2016/679 (GDPR).</label>
+    </div>
+    <button type="submit" class="btn" style="margin-top:1.5rem">
+      Invia Recensione
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+</section>
+
+</main>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script>
+// Filters
+const filters = document.querySelectorAll('.rec-filter');
+const cards = document.querySelectorAll('.rec-card');
+filters.forEach(f => f.addEventListener('click', () => {
+  filters.forEach(x => x.classList.remove('active'));
+  f.classList.add('active');
+  const cat = f.dataset.f;
+  cards.forEach(c => c.classList.toggle('hidden', cat !== 'all' && c.dataset.c !== cat));
+}));
+
+// Star rating
+const stars = document.querySelectorAll('#starRate span');
+const rating = document.getElementById('rating');
+stars.forEach(s => {
+  s.addEventListener('click', () => {
+    const v = Number(s.dataset.v);
+    rating.value = v;
+    stars.forEach(x => x.classList.toggle('on', Number(x.dataset.v) <= v));
+  });
+});
+
+// Submit
+document.getElementById('recForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!rating.value) { alert('Seleziona una valutazione da 1 a 5 stelle'); return; }
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+  btn.disabled = true; btn.textContent = 'Invio in corso…';
+  // TODO: POST a /api/recensione
+  await new Promise(r => setTimeout(r, 600));
+  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Grazie!</h2><p>La tua recensione è stata inviata e verrà pubblicata dopo una breve verifica. Apprezzo davvero il tempo che hai dedicato.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+});
+</script>
+<script type="module">
+if (window.gsap) {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.page-hero h1, .page-hero-sub', { opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2 });
+    gsap.from('.rec-stat', { opacity: 0, y: 20, duration: .6, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.rec-stats', start: 'top 80%', once: true } });
+    gsap.from('.rec-card', { opacity: 0, y: 20, duration: .5, stagger: .05, ease: 'power3.out', scrollTrigger: { trigger: '.rec-grid', start: 'top 80%', once: true } });
+  });
+}
+</script>
+</body>
+</html>

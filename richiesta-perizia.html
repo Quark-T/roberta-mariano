@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richiesta Perizia Tecnica — Arch. Roberta Mariano</title>
+<meta name="description" content="Richiedi una perizia tecnica online: CTU, CTP, perizia per mutuo, valutazione immobiliare, vizi costruttivi. Studio Arch. Roberta Mariano, Padova.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.tipo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.tipo-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 1.8rem 1.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  transition: border-color .25s ease, background .25s ease;
+}
+.tipo-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-alt);
+}
+.tipo-ico {
+  width: 38px; height: 38px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.tipo-card h3 { font-size: 1.05rem; margin-bottom: .35rem; }
+.tipo-card p { font-size: .85rem; color: var(--muted); margin: 0; line-height: 1.55; }
+.tipo-card span.from {
+  display: block;
+  margin-top: .6rem;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  font-weight: 600;
+}
+@media(max-width:768px) { .tipo-grid { grid-template-columns: 1fr; } }
+
+.req-form {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: clamp(2rem,4vw,3rem);
+  border: 1px solid var(--border);
+}
+.req-form h3 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="#form" class="btn nav-cta">Richiedi</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/architetto-perizie-techiche-estimative.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><a href="servizi.html">Servizi</a><span>/</span><span>Richiesta Perizia</span>
+    </div>
+    <h1>Perizie<br><em style="font-weight:300;color:var(--accent)">Tecniche</em></h1>
+    <p class="page-hero-sub">
+      Oltre 1.000 perizie prodotte in più di un decennio. Seleziona il tipo di
+      perizia che ti serve e ricevi un preventivo entro 24 ore.
+    </p>
+  </div>
+</header>
+
+<section class="section">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Tipologie</span>
+      <span class="dline dline-c"></span>
+      <h2>Che Tipo di Perizia ti Serve?</h2>
+      <p>Ogni perizia segue procedure e tempi diversi. Identifica la tua
+         e poi compila il modulo qui sotto.</p>
+    </div>
+  </div>
+  <div class="tipo-grid">
+    <div class="tipo-card">
+      <svg class="tipo-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="8" y="6" width="32" height="36" rx="2"/>
+        <line x1="14" y1="16" x2="34" y2="16"/>
+        <line x1="14" y1="24" x2="34" y2="24"/>
+        <line x1="14" y1="32" x2="26" y2="32"/>
+      </svg>
+      <div>
+        <h3>Perizia per Mutuo / Banca</h3>
+        <p>Valutazione immobiliare richiesta da banche o finanziarie per la concessione di mutui ipotecari.</p>
+        <span class="from">A partire da € 280</span>
+      </div>
+    </div>
+    <div class="tipo-card">
+      <svg class="tipo-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M24 6l-18 8v12c0 10 8 18 18 20 10-2 18-10 18-20V14L24 6z"/>
+        <path d="M16 24l6 6 12-12"/>
+      </svg>
+      <div>
+        <h3>Perizia CTU (Tribunale)</h3>
+        <p>Consulenza Tecnica d'Ufficio nominata dal Tribunale di Padova in cause civili edilizie e immobiliari.</p>
+        <span class="from">Su nomina giudiziale</span>
+      </div>
+    </div>
+    <div class="tipo-card">
+      <svg class="tipo-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="16" cy="20" r="6"/>
+        <circle cx="32" cy="20" r="6"/>
+        <path d="M4 40c0-6 5-10 12-10s12 4 12 10"/>
+        <path d="M28 30c5 0 12 4 12 10"/>
+      </svg>
+      <div>
+        <h3>Perizia CTP (di Parte)</h3>
+        <p>Assistenza tecnica a privati o aziende coinvolti in cause edilizie come consulente di parte.</p>
+        <span class="from">A partire da € 600</span>
+      </div>
+    </div>
+    <div class="tipo-card">
+      <svg class="tipo-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M8 18h32v22a2 2 0 01-2 2H10a2 2 0 01-2-2V18z"/>
+        <path d="M14 18V12a4 4 0 014-4h12a4 4 0 014 4v6"/>
+        <line x1="20" y1="26" x2="28" y2="26"/>
+      </svg>
+      <div>
+        <h3>Stima Immobiliare</h3>
+        <p>Valore di mercato per compravendite, successioni, divisioni ereditarie, donazioni.</p>
+        <span class="from">A partire da € 350</span>
+      </div>
+    </div>
+    <div class="tipo-card">
+      <svg class="tipo-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M6 30l12-12 8 8 16-16"/>
+        <polyline points="32 10 42 10 42 20"/>
+        <line x1="6" y1="42" x2="42" y2="42"/>
+      </svg>
+      <div>
+        <h3>Vizi Costruttivi</h3>
+        <p>Analisi tecnica di difetti, infiltrazioni, crepe, difformità rispetto al progetto o al contratto d'appalto.</p>
+        <span class="from">Su preventivo</span>
+      </div>
+    </div>
+    <div class="tipo-card">
+      <svg class="tipo-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="6" y="10" width="36" height="32" rx="2"/>
+        <line x1="6" y1="20" x2="42" y2="20"/>
+        <line x1="14" y1="6" x2="14" y2="14"/>
+        <line x1="34" y1="6" x2="34" y2="14"/>
+        <path d="M14 30l4 4 8-8"/>
+      </svg>
+      <div>
+        <h3>Conformità Urbanistico-Catastale</h3>
+        <p>Verifica della corrispondenza tra stato di fatto, planimetria catastale e titoli edilizi.</p>
+        <span class="from">A partire da € 250</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-white" id="form">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Modulo Online</span>
+      <span class="dline dline-c"></span>
+      <h2>Richiesta Perizia</h2>
+      <p>Compila il modulo: ti contatto entro 24 ore con preventivo e tempi.</p>
+    </div>
+  </div>
+
+  <form class="req-form" id="periziaForm" novalidate>
+    <h3>Tipologia di perizia</h3>
+    <div class="fg">
+      <label for="tipo">Tipo di perizia *</label>
+      <select id="tipo" name="tipo" required>
+        <option value="">— Seleziona —</option>
+        <option>Perizia per Mutuo / Banca</option>
+        <option>Perizia CTU (Tribunale)</option>
+        <option>Perizia CTP (di parte)</option>
+        <option>Stima per compravendita / successione</option>
+        <option>Vizi costruttivi / contenzioso edilizio</option>
+        <option>Conformità urbanistico-catastale</option>
+        <option>Altro / Da valutare</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label for="contesto">Contesto della richiesta *</label>
+      <select id="contesto" name="contesto" required>
+        <option value="">— Seleziona —</option>
+        <option>Richiesta di un privato</option>
+        <option>Banca o finanziaria</option>
+        <option>Studio legale / Notaio</option>
+        <option>Agenzia immobiliare</option>
+        <option>Tribunale</option>
+        <option>Impresa / Azienda</option>
+      </select>
+    </div>
+
+    <h3 style="margin-top:2rem">Dati immobile</h3>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="tipologia">Tipologia *</label>
+        <select id="tipologia" name="tipologia" required>
+          <option value="">— Seleziona —</option>
+          <option>Appartamento</option>
+          <option>Villa / villetta</option>
+          <option>Locale commerciale</option>
+          <option>Capannone industriale</option>
+          <option>Terreno</option>
+          <option>Altro</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="mq">Superficie indicativa (m²)</label>
+        <input type="number" id="mq" name="mq" min="10" max="50000" placeholder="es. 110">
+      </div>
+    </div>
+    <div class="fg">
+      <label for="indirizzo">Indirizzo immobile *</label>
+      <input type="text" id="indirizzo" name="indirizzo" placeholder="Via, civico, comune, provincia" required>
+    </div>
+    <div class="fg">
+      <label for="urgenza">Tempistica</label>
+      <select id="urgenza" name="urgenza">
+        <option>Standard (15–20 giorni)</option>
+        <option>Urgente (entro 7 giorni — costo maggiorato)</option>
+        <option>Già definita dal Tribunale</option>
+        <option>Nessuna scadenza specifica</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label for="note">Descrivi la situazione</label>
+      <textarea id="note" name="note" placeholder="Es: il giudice ha nominato CTU; l'immobile presenta crepe nella facciata sud; serve perizia per richiesta mutuo prima casa…"></textarea>
+    </div>
+
+    <h3 style="margin-top:2rem">I tuoi recapiti</h3>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="fn">Nome e cognome *</label>
+        <input type="text" id="fn" name="nome" required autocomplete="name">
+      </div>
+      <div class="fg">
+        <label for="em">Email *</label>
+        <input type="email" id="em" name="email" required autocomplete="email">
+      </div>
+    </div>
+    <div class="fg">
+      <label for="tel">Telefono / WhatsApp *</label>
+      <input type="tel" id="tel" name="telefono" required autocomplete="tel">
+    </div>
+    <div class="privacy-row" style="margin-top:1.4rem">
+      <input type="checkbox" id="prv" name="privacy" required>
+      <label for="prv">Accetto il trattamento dei miei dati personali (Reg. UE 2016/679 — GDPR).</label>
+    </div>
+    <button type="submit" class="btn" style="margin-top:1.5rem">
+      Invia Richiesta
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+</section>
+
+<div class="cta-band">
+  <h2>Caso urgente o<br><em style="font-weight:300">complicato?</em></h2>
+  <p>Per perizie con scadenze brevi o casi articolati, scrivimi direttamente.</p>
+  <a href="https://wa.me/393476622673" class="btn btn-light" target="_blank" rel="noopener">
+    Scrivimi su WhatsApp
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+  </a>
+</div>
+
+</main>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script>
+document.getElementById('periziaForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+  btn.disabled = true; btn.textContent = 'Invio in corso…';
+  // TODO: POST a /api/richiesta-perizia
+  await new Promise(r => setTimeout(r, 600));
+  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Richiesta inviata</h2><p>Grazie! Ti risponderò entro 24 ore con preventivo e tempi.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+});
+</script>
+<script type="module">
+if (window.gsap) {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.page-hero h1, .page-hero-sub', { opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2 });
+    gsap.from('.tipo-card', { opacity: 0, y: 20, duration: .6, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.tipo-grid', start: 'top 80%', once: true } });
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner — Agenzie e Studi Professionali — Arch. Roberta Mariano</title>
+<meta name="description" content="Programma di collaborazione per agenzie immobiliari, studi notarili, banche e studi legali. Tariffe dedicate, tempi rapidi e premi fidelity. Studio Arch. Roberta Mariano, Padova.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.who-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.who-card {
+  background: var(--white);
+  padding: 2.4rem 1.6rem;
+  text-align: center;
+}
+.who-ico {
+  width: 42px; height: 42px;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.who-card h3 { font-size: 1.1rem; margin-bottom: .4rem; }
+.who-card p  { font-size: .85rem; color: var(--muted); margin: 0; line-height: 1.55; }
+@media(max-width:900px) { .who-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:480px) { .who-grid { grid-template-columns: 1fr; } }
+
+/* Tiers fidelity */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.tier-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2.4rem 1.8rem;
+  text-align: center;
+  position: relative;
+}
+.tier-card.gold {
+  border-color: var(--accent);
+}
+.tier-card .tier-name {
+  font-size: .8rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  font-weight: 600;
+  margin-bottom: .8rem;
+  display: block;
+}
+.tier-card .tier-perks {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+.tier-card p.lead {
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+.tier-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  font-size: .88rem;
+  color: var(--muted);
+}
+.tier-card ul li {
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: .55rem;
+}
+.tier-card ul li::before {
+  content: '✓'; color: var(--accent); font-weight: 600; flex-shrink: 0;
+}
+.tier-card ul li:last-child { border-bottom: none; }
+@media(max-width:900px) { .tier-grid { grid-template-columns: 1fr; } }
+
+/* Benefits */
+.benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem,5vw,4rem);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.benefits .ben-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.benefits .ben-item:last-child { border-bottom: none; }
+.benefits svg {
+  width: 28px; height: 28px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.benefits h4 { font-size: 1.05rem; margin-bottom: .3rem; }
+.benefits p { font-size: .88rem; color: var(--muted); margin: 0; line-height: 1.6; }
+@media(max-width:768px) { .benefits { grid-template-columns: 1fr; } }
+
+.req-form {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: clamp(2rem,4vw,3rem);
+  border: 1px solid var(--border);
+}
+.req-form h3 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="#form" class="btn nav-cta">Diventa Partner</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/migliori-architetti-italiani.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><span>Partner</span>
+    </div>
+    <h1>Programma<br><em style="font-weight:300;color:var(--accent)">Partner</em></h1>
+    <p class="page-hero-sub">
+      Una collaborazione strutturata per agenzie immobiliari, studi notarili,
+      banche e studi legali. Tempi rapidi, tariffe dedicate, premi fidelity progressivi.
+    </p>
+  </div>
+</header>
+
+<!-- WHO -->
+<section class="section">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">A Chi è Rivolto</span>
+      <span class="dline dline-c"></span>
+      <h2>Partner Ideali</h2>
+      <p>Professionisti e aziende che generano richieste tecniche ricorrenti
+         e cercano un tecnico affidabile e veloce.</p>
+    </div>
+  </div>
+  <div class="who-grid stagger-parent">
+    <div class="who-card stagger-item">
+      <svg class="who-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M8 18l16-12 16 12v22a2 2 0 01-2 2H10a2 2 0 01-2-2V18z"/>
+        <path d="M18 42V28h12v14"/>
+      </svg>
+      <h3>Agenzie Immobiliari</h3>
+      <p>APE, perizie estimative e visure rapide per ogni compravendita.</p>
+    </div>
+    <div class="who-card stagger-item">
+      <svg class="who-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="8" y="8" width="32" height="32" rx="2"/>
+        <path d="M16 16h16M16 24h16M16 32h10"/>
+      </svg>
+      <h3>Studi Notarili &amp; Legali</h3>
+      <p>Perizie giurate, conformità urbanistico-catastale, CTP per controversie.</p>
+    </div>
+    <div class="who-card stagger-item">
+      <svg class="who-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M4 18h40v22H4z"/>
+        <path d="M12 18V10a4 4 0 014-4h16a4 4 0 014 4v8"/>
+        <line x1="20" y1="28" x2="28" y2="28"/>
+      </svg>
+      <h3>Banche &amp; Mediatori</h3>
+      <p>Perizie per mutui ipotecari conformi alle linee guida bancarie.</p>
+    </div>
+    <div class="who-card stagger-item">
+      <svg class="who-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="6" y="14" width="36" height="22"/>
+        <path d="M14 14V8h20v6"/>
+        <line x1="14" y1="22" x2="34" y2="22"/>
+      </svg>
+      <h3>Imprese Edili &amp; Serramentisti</h3>
+      <p>Tecnico di fiducia per APE, collaudi e indagini termografiche post-cantiere.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Vantaggi</span>
+      <span class="dline dline-c"></span>
+      <h2>Perché Diventare Partner</h2>
+    </div>
+  </div>
+  <div class="benefits">
+    <div class="ben-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div><h4>Tempi rapidi garantiti</h4><p>APE in 3–5 giorni, perizie estimative in 7 giorni, risposta su richieste urgenti entro 4 ore lavorative.</p></div>
+    </div>
+    <div class="ben-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <div><h4>Tariffe dedicate</h4><p>Listino partner con sconti progressivi sul volume di pratiche affidate annualmente.</p></div>
+    </div>
+    <div class="ben-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5"/></svg>
+      <div><h4>Premi fidelity</h4><p>Bonus crescenti al raggiungimento di soglie di pratiche: pratiche gratuite, perizie omaggio, formazione tecnica.</p></div>
+    </div>
+    <div class="ben-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+      <div><h4>Modulistica condivisa</h4><p>Format pratiche pre-impostati, comunicazioni standardizzate, gestione documentale online.</p></div>
+    </div>
+    <div class="ben-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      <div><h4>Linea diretta</h4><p>Numero WhatsApp riservato, risposta in tempi brevi anche fuori orario per urgenze.</p></div>
+    </div>
+    <div class="ben-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+      <div><h4>Fatturazione mensile</h4><p>Riepilogo unico delle pratiche del mese con condizioni di pagamento agevolate.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="section">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Programma Fidelity</span>
+      <span class="dline dline-c"></span>
+      <h2>Livelli di Collaborazione</h2>
+      <p>Più volume di pratiche affidate, più vantaggi. Il tuo livello sale
+         automaticamente al raggiungimento delle soglie annuali.</p>
+    </div>
+  </div>
+  <div class="tier-grid">
+    <div class="tier-card">
+      <span class="tier-name">Silver</span>
+      <div class="tier-perks">5%</div>
+      <p class="lead">Da 5 pratiche / anno</p>
+      <ul>
+        <li>Sconto 5% sul listino</li>
+        <li>Tempi prioritari</li>
+        <li>Linea WhatsApp dedicata</li>
+        <li>Modulistica condivisa</li>
+      </ul>
+    </div>
+    <div class="tier-card gold">
+      <span class="tier-name" style="color:var(--accent)">Gold</span>
+      <div class="tier-perks">10%</div>
+      <p class="lead">Da 15 pratiche / anno</p>
+      <ul>
+        <li>Tutto Silver</li>
+        <li>Sconto 10% sul listino</li>
+        <li>1 perizia omaggio ogni 10</li>
+        <li>Fatturazione mensile</li>
+        <li>Sopralluoghi entro 48h</li>
+      </ul>
+    </div>
+    <div class="tier-card">
+      <span class="tier-name">Platinum</span>
+      <div class="tier-perks">15%</div>
+      <p class="lead">Da 40 pratiche / anno</p>
+      <ul>
+        <li>Tutto Gold</li>
+        <li>Sconto 15% sul listino</li>
+        <li>2 pratiche APE omaggio</li>
+        <li>Formazione tecnica annuale</li>
+        <li>Disponibilità su urgenze 24/7</li>
+        <li>Co-marketing dedicato</li>
+      </ul>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:.82rem;color:var(--muted);margin-top:2rem;max-width:680px;margin-left:auto;margin-right:auto">
+    Soglie e condizioni indicative, personalizzabili in base al tipo di partnership.
+    Vengono formalizzate in una convenzione scritta condivisa con ogni partner.
+  </p>
+</section>
+
+<!-- FORM -->
+<section class="section bg-white" id="form">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Candidatura</span>
+      <span class="dline dline-c"></span>
+      <h2>Diventa Partner</h2>
+      <p>Compila il modulo: ti contatto entro 48 ore per fissare un primo
+         incontro conoscitivo (di persona o in video-call) senza impegno.</p>
+    </div>
+  </div>
+
+  <form class="req-form" id="partnerForm" novalidate>
+    <h3>La tua attività</h3>
+    <div class="fg">
+      <label for="azienda">Nome dello studio / azienda *</label>
+      <input type="text" id="azienda" name="azienda" required>
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="settore">Settore *</label>
+        <select id="settore" name="settore" required>
+          <option value="">— Seleziona —</option>
+          <option>Agenzia immobiliare</option>
+          <option>Studio notarile</option>
+          <option>Studio legale</option>
+          <option>Banca / Mediatore creditizio</option>
+          <option>Impresa edile</option>
+          <option>Serramentista / Cappotto</option>
+          <option>Altro</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="sede">Sede (città) *</label>
+        <input type="text" id="sede" name="sede" placeholder="Es. Padova" required>
+      </div>
+    </div>
+    <div class="fg">
+      <label for="volume">Volume stimato di pratiche / anno</label>
+      <select id="volume" name="volume">
+        <option>Meno di 5</option>
+        <option>5 – 15</option>
+        <option>15 – 40</option>
+        <option>Oltre 40</option>
+        <option>Non lo so ancora</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label for="servizi">Quali servizi ti interessano di più?</label>
+      <textarea id="servizi" name="servizi" placeholder="Es. APE per compravendite, perizie per mutuo, indagini termografiche post-cantiere, conformità catastali…"></textarea>
+    </div>
+
+    <h3 style="margin-top:2rem">Referente</h3>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="fn">Nome e cognome *</label>
+        <input type="text" id="fn" name="nome" required autocomplete="name">
+      </div>
+      <div class="fg">
+        <label for="ruolo">Ruolo *</label>
+        <input type="text" id="ruolo" name="ruolo" placeholder="Es. titolare, broker, segreteria" required>
+      </div>
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label for="em">Email *</label>
+        <input type="email" id="em" name="email" required autocomplete="email">
+      </div>
+      <div class="fg">
+        <label for="tel">Telefono *</label>
+        <input type="tel" id="tel" name="telefono" required autocomplete="tel">
+      </div>
+    </div>
+    <div class="privacy-row" style="margin-top:1.4rem">
+      <input type="checkbox" id="prv" name="privacy" required>
+      <label for="prv">Accetto il trattamento dei miei dati personali (Reg. UE 2016/679 — GDPR).</label>
+    </div>
+    <button type="submit" class="btn" style="margin-top:1.5rem">
+      Invia Candidatura
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+</section>
+
+</main>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script>
+document.getElementById('partnerForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+  btn.disabled = true; btn.textContent = 'Invio in corso…';
+  // TODO: POST a /api/partner
+  await new Promise(r => setTimeout(r, 600));
+  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Candidatura ricevuta</h2><p>Grazie! Ti contatto entro 48 ore per fissare un primo incontro conoscitivo.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+});
+</script>
+<script type="module">
+if (window.gsap) {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.page-hero h1, .page-hero-sub', { opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2 });
+    gsap.from('.who-card', { opacity: 0, y: 20, duration: .6, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '.who-grid', start: 'top 80%', once: true } });
+    gsap.from('.tier-card', { opacity: 0, y: 30, duration: .7, stagger: .12, ease: 'power3.out', scrollTrigger: { trigger: '.tier-grid', start: 'top 80%', once: true } });
+  });
+}
+</script>
+</body>
+</html>
