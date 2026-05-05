@@ -2,7 +2,27 @@
    STUDIO ARCH. ROBERTA MARIANO — Shared JS 2026
    ============================================================ */
 
-gsap.registerPlugin(ScrollTrigger);
+// Safety net: se GSAP non si è caricato (CDN bloccato, rete lenta) o se
+// l'utente ha "riduci movimento" attivo, dopo 2s rendiamo visibile tutto
+// quello che il CSS ha lasciato invisibile in attesa dell'animazione.
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.done)').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+  document.querySelectorAll('.hero-pre, .hero-h1, .hero-sub, .hero-btns, .hero-scroll').forEach(el => {
+    if (getComputedStyle(el).opacity === '0') {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    }
+  });
+}, 2000);
+
+if (typeof gsap === 'undefined') {
+  console.warn('GSAP non caricato — animazioni disabilitate');
+} else {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 /* ══════════════════════════════════════════════════════════
    PAGE LOADER — transizione elegante tra pagine

@@ -554,7 +554,16 @@ footer {
 /* ── REDUCED MOTION ── */
 @media(prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .reveal, .reveal-clip { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .hero-pre, .hero-h1, .hero-sub, .hero-btns, .hero-scroll { opacity: 1 !important; transform: none !important; }
+  .hero-htitle { overflow: visible !important; }
+  .hero-right img, .studio-img, .intro-img, .svc-block-img, .page-hero-img { clip-path: none !important; }
 }
+
+/* ── NOSCRIPT FALLBACK: se JS è disabilitato, mostra contenuto ── */
+.no-js .reveal, .no-js .reveal-clip { opacity: 1; transform: none; clip-path: none; }
+.no-js .hero-pre, .no-js .hero-h1, .no-js .hero-sub, .no-js .hero-btns, .no-js .hero-scroll { opacity: 1; transform: none; }
+.no-js .hero-right img, .no-js .studio-img, .no-js .intro-img, .no-js .svc-block-img, .no-js .page-hero-img { clip-path: none; }
 
 /* ── PAGE LOADER ── */
 #loader {
