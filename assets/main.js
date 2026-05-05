@@ -233,23 +233,13 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
     });
   });
 
-  /* h2 fade-up */
-  gsap.utils.toArray('h2').forEach(h => {
-    if (h.closest('.hero, .page-hero')) return; // skip hero headings
-    gsap.from(h, {
-      opacity: 0, y: 28, duration: .75, ease: 'power3.out',
-      scrollTrigger: { trigger: h, start: 'top 86%', once: true },
-    });
-  });
+  /* h2 fade-up: rimosso per evitare lo stesso bug del .reveal — i titoli
+     restano sempre visibili. */
 
-  /* .reveal elements */
-  gsap.utils.toArray('.reveal').forEach((el, i) => {
-    const delay = parseFloat(el.dataset.delay || 0);
-    gsap.from(el, {
-      opacity: 0, y: 30, duration: .7, ease: 'power3.out', delay,
-      scrollTrigger: { trigger: el, start: 'top 87%', once: true },
-    });
-  });
+  /* .reveal elements — gestito da IntersectionObserver fuori da matchMedia,
+     così funziona anche con prefers-reduced-motion. Niente gsap.from() qui:
+     gsap.from() con opacity:0 su elementi che potrebbero non triggerare
+     correttamente lo scrollTrigger lasciava il contenuto invisibile. */
 
   /* .stagger-parent → children with [data-stagger] */
   gsap.utils.toArray('.stagger-parent').forEach(parent => {

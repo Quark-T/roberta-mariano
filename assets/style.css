@@ -548,11 +548,9 @@ footer {
 .reveal.done  { opacity: 1; transform: none; }
 .reveal-clip  { /* clip-path applicato runtime da GSAP, non più di base */ }
 
-/* ── RENDERING PERFORMANCE ── */
-.section, .stats, .cta-band {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
-}
+/* ── RENDERING PERFORMANCE ──
+   content-visibility: auto era qui ma poteva interferire con ScrollTrigger
+   creando edge case in cui sezioni restavano renderizzate a opacity 0. */
 
 /* ── REDUCED MOTION ── */
 @media(prefers-reduced-motion: reduce) {
