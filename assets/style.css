@@ -540,10 +540,13 @@ footer {
 }
 @media(max-width:480px) { .pf-grid { grid-template-columns: 1fr; } }
 
-/* ── GENERIC REVEAL CLASSES (driven by main.js) ── */
-.reveal       { opacity: 0; transform: translateY(28px); }
-.reveal.done  { opacity: 1; transform: translateY(0); transition: opacity .7s ease, transform .7s var(--ease); }
-.reveal-clip  { clip-path: inset(0% 0% 100% 0%); }
+/* ── GENERIC REVEAL CLASSES (driven by main.js) ──
+   NB: visibili di default. GSAP gestisce stato iniziale tramite gsap.from(),
+   così se il JS non parte (no GSAP / reduced motion / errore) il contenuto
+   resta comunque visibile. */
+.reveal       { opacity: 1; transform: none; }
+.reveal.done  { opacity: 1; transform: none; }
+.reveal-clip  { /* clip-path applicato runtime da GSAP, non più di base */ }
 
 /* ── RENDERING PERFORMANCE ── */
 .section, .stats, .cta-band {
