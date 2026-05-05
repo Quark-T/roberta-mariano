@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richiesta APE Online — Arch. Roberta Mariano</title>
+<meta name="description" content="Richiedi online il tuo Attestato di Prestazione Energetica (APE). Compila i dati dell'immobile, prenota il sopralluogo e carica gli allegati. Studio Arch. Roberta Mariano, Padova.">
+<link rel="icon" type="image/webp" href="assets/img/logo-RM.webp">
+<link rel="apple-touch-icon" href="assets/img/logo-RM.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* ── INFO STRIP ── */
+.info-strip {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: var(--max);
+  margin: 0 auto 3rem;
+}
+.info-cell {
+  background: var(--white);
+  padding: 2rem 1.6rem;
+  text-align: center;
+}
+.info-cell svg {
+  width: 32px; height: 32px; color: var(--accent);
+  margin-bottom: .8rem;
+}
+.info-cell h4 {
+  font-size: 1rem;
+  margin-bottom: .3rem;
+}
+.info-cell p {
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+@media(max-width:768px) { .info-strip { grid-template-columns: 1fr; } }
+
+/* ── REQUEST FORM ── */
+.req-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.req-form {
+  background: var(--white);
+  padding: clamp(2rem,4vw,3.5rem);
+  border: 1px solid var(--border);
+}
+.req-step {
+  display: none;
+}
+.req-step.active { display: block; }
+.req-step-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.req-step-num {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600;
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+.req-step-head h3 {
+  margin: 0;
+  font-size: clamp(1.3rem,2vw,1.7rem);
+}
+
+/* progress bar */
+.req-progress {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 2rem;
+}
+.req-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.req-progress-bar.done { background: var(--accent); }
+.req-progress-bar.current::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  width: 50%;
+}
+
+/* file dropzone */
+.dropzone {
+  border: 2px dashed var(--border);
+  background: var(--bg-alt);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .25s ease, background .25s ease;
+  border-radius: 4px;
+}
+.dropzone:hover, .dropzone.drag {
+  border-color: var(--accent);
+  background: var(--white);
+}
+.dropzone svg {
+  width: 42px; height: 42px;
+  color: var(--accent);
+  margin-bottom: .8rem;
+}
+.dropzone p {
+  margin: 0;
+  font-size: .92rem;
+  color: var(--muted);
+}
+.dropzone strong { color: var(--text); }
+.dropzone input[type="file"] {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0; pointer-events: none;
+}
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex; flex-direction: column; gap: .4rem;
+}
+.file-list li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .55rem .8rem;
+  background: var(--bg-alt);
+  font-size: .85rem;
+  color: var(--text);
+}
+.file-list li svg {
+  width: 16px; height: 16px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.file-list li button {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.file-list li button:hover { color: var(--text); }
+
+/* calendar */
+.cal-embed {
+  width: 100%;
+  min-height: 600px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cal-fallback {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+}
+.cal-fallback svg {
+  width: 48px; height: 48px;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* nav buttons */
+.req-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.req-nav .btn-o { margin-right: auto; }
+
+/* sidebar summary */
+.req-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  align-items: start;
+}
+.req-summary {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 1.8rem 1.6rem;
+  position: sticky;
+  top: calc(var(--nav-h) + 1rem);
+}
+.req-summary h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid var(--border);
+}
+.req-summary dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .5rem 1rem;
+  font-size: .85rem;
+}
+.req-summary dt {
+  color: var(--muted);
+  font-weight: 500;
+}
+.req-summary dd {
+  margin: 0;
+  color: var(--text);
+  text-align: right;
+  word-break: break-word;
+}
+.req-summary dd:empty::after {
+  content: '—';
+  color: var(--border);
+}
+@media(max-width:900px) {
+  .req-grid { grid-template-columns: 1fr; }
+  .req-summary { position: static; }
+}
+
+/* success state */
+.req-done {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.req-done-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--accent-l, #f0e8df);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.req-done-icon svg { width: 36px; height: 36px; }
+.req-done h2 { margin-bottom: 1rem; }
+.req-done p { color: var(--muted); max-width: 520px; margin: 0 auto 1.5rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/img/logo-RM.webp" alt="RM" width="30" height="30" onerror="this.style.display='none'">
+    <span class="nav-logo-t">Roberta Mariano</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi Sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="termografia-padova.html">Termografia</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contatti.html">Contatti</a></li>
+  </ul>
+  <a href="#form" class="btn nav-cta">Compila Richiesta</a>
+  <button class="nav-ham" id="ham" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mob" id="navMob">
+  <a href="chi-sono.html">Chi Sono</a>
+  <a href="servizi.html">Servizi</a>
+  <a href="termografia-padova.html">Termografia</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contatti.html">Contatti</a>
+</div>
+
+<main id="content">
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <img class="page-hero-img" src="assets/img/architettura-e-energia-rinnovabile.webp" alt="" loading="eager">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span><a href="servizi.html">Servizi</a><span>/</span><span>Richiesta APE</span>
+    </div>
+    <h1>Richiedi il tuo<br><em style="font-weight:300;color:var(--accent)">Attestato APE</em></h1>
+    <p class="page-hero-sub">
+      Compila i dati del tuo immobile, scegli quando preferisci il sopralluogo e
+      carica i documenti che hai a disposizione. Riceverai un preventivo entro 24 ore.
+    </p>
+  </div>
+</header>
+
+
+<!-- INFO STRIP -->
+<section class="section">
+  <div class="info-strip">
+    <div class="info-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <h4>Tempi rapidi</h4>
+      <p>APE consegnata in 5–7 giorni lavorativi dal sopralluogo.</p>
+    </div>
+    <div class="info-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <h4>100% approvazioni</h4>
+      <p>Oltre 1.000 attestati emessi senza un solo rigetto.</p>
+    </div>
+    <div class="info-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <h4>Per ogni esigenza</h4>
+      <p>Compravendita, locazione, Superbonus, banca, ristrutturazione.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- REQUEST FORM -->
+<section class="section bg-white" id="form">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Modulo Online</span>
+      <span class="dline dline-c"></span>
+      <h2>Richiesta in 4 Passaggi</h2>
+      <p>Tutte le informazioni che mi servono per prepararti un preventivo
+         puntuale e organizzare il sopralluogo.</p>
+    </div>
+  </div>
+
+  <div class="req-grid">
+
+    <form class="req-form" id="apeForm" novalidate>
+      <div class="req-progress" aria-hidden="true">
+        <div class="req-progress-bar current" data-step="1"></div>
+        <div class="req-progress-bar" data-step="2"></div>
+        <div class="req-progress-bar" data-step="3"></div>
+        <div class="req-progress-bar" data-step="4"></div>
+      </div>
+
+      <!-- STEP 1: Tipologia richiesta -->
+      <div class="req-step active" data-step="1">
+        <div class="req-step-head">
+          <span class="req-step-num">1</span>
+          <h3>Motivo della richiesta</h3>
+        </div>
+        <div class="fg">
+          <label for="motivo">Per cosa ti serve l'APE? *</label>
+          <select id="motivo" name="motivo" required>
+            <option value="">— Seleziona —</option>
+            <option>Compravendita</option>
+            <option>Locazione</option>
+            <option>Ristrutturazione / Superbonus / Ecobonus</option>
+            <option>Banca / Mutuo</option>
+            <option>Successione / Divisione</option>
+            <option>Altro</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="urgenza">Urgenza</label>
+          <select id="urgenza" name="urgenza">
+            <option>Standard (5–7 giorni)</option>
+            <option>Urgente (entro 3 giorni — costo maggiorato)</option>
+            <option>Nessuna scadenza specifica</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- STEP 2: Dati immobile -->
+      <div class="req-step" data-step="2">
+        <div class="req-step-head">
+          <span class="req-step-num">2</span>
+          <h3>Dati dell'immobile</h3>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="tipologia">Tipologia *</label>
+            <select id="tipologia" name="tipologia" required>
+              <option value="">— Seleziona —</option>
+              <option>Appartamento</option>
+              <option>Villa singola</option>
+              <option>Villetta a schiera / bifamiliare</option>
+              <option>Negozio / Locale commerciale</option>
+              <option>Ufficio / Direzionale</option>
+              <option>Capannone / Industriale</option>
+              <option>Altro</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="mq">Superficie (m²) *</label>
+            <input type="number" id="mq" name="mq" min="10" max="5000" placeholder="es. 95" required>
+          </div>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="indirizzo">Indirizzo *</label>
+            <input type="text" id="indirizzo" name="indirizzo" placeholder="Via, numero civico" required>
+          </div>
+          <div class="fg">
+            <label for="citta">Comune e provincia *</label>
+            <input type="text" id="citta" name="citta" placeholder="es. Padova (PD)" required>
+          </div>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="anno">Anno di costruzione</label>
+            <input type="number" id="anno" name="anno" min="1800" max="2030" placeholder="es. 1985">
+          </div>
+          <div class="fg">
+            <label for="riscaldamento">Tipo di riscaldamento</label>
+            <select id="riscaldamento" name="riscaldamento">
+              <option value="">— Non lo so —</option>
+              <option>Caldaia a gas (autonoma)</option>
+              <option>Caldaia a gas (centralizzata)</option>
+              <option>Pompa di calore</option>
+              <option>Stufa / Camino</option>
+              <option>Pavimento radiante</option>
+              <option>Altro</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label for="note">Note aggiuntive</label>
+          <textarea id="note" name="note" placeholder="Aggiungi tutto quello che ritieni utile: ristrutturazioni recenti, impianti fotovoltaici, infissi sostituiti, ecc."></textarea>
+        </div>
+      </div>
+
+      <!-- STEP 3: Allegati + sopralluogo -->
+      <div class="req-step" data-step="3">
+        <div class="req-step-head">
+          <span class="req-step-num">3</span>
+          <h3>Allegati e sopralluogo</h3>
+        </div>
+        <div class="fg">
+          <label>Carica i documenti che hai (planimetria, visura catastale, foto, libretto caldaia)</label>
+          <label class="dropzone" id="dropzone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <p><strong>Trascina qui i file</strong> o clicca per selezionarli</p>
+            <p style="font-size:.78rem;margin-top:.3rem">PDF, JPG, PNG · max 10 MB ciascuno</p>
+            <input type="file" id="files" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.heic">
+          </label>
+          <ul class="file-list" id="fileList"></ul>
+        </div>
+
+        <div class="fg" style="margin-top:2rem">
+          <label>Quando preferisci il sopralluogo?</label>
+          <div class="cal-embed" id="calEmbed">
+            <div class="cal-fallback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <p>Il calendario online sarà attivo a breve.<br>
+                 Per ora indica una preferenza qui sotto e ti contatterò per concordare data e ora.</p>
+            </div>
+          </div>
+          <div class="fg-row" style="margin-top:1rem">
+            <div class="fg">
+              <label for="data1">Data preferita</label>
+              <input type="date" id="data1" name="data1">
+            </div>
+            <div class="fg">
+              <label for="fascia">Fascia oraria</label>
+              <select id="fascia" name="fascia">
+                <option>Mattina (9–12)</option>
+                <option>Pomeriggio (14–18)</option>
+                <option>Indifferente</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: Contatti -->
+      <div class="req-step" data-step="4">
+        <div class="req-step-head">
+          <span class="req-step-num">4</span>
+          <h3>I tuoi recapiti</h3>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="fn">Nome *</label>
+            <input type="text" id="fn" name="nome" required autocomplete="given-name">
+          </div>
+          <div class="fg">
+            <label for="ln">Cognome *</label>
+            <input type="text" id="ln" name="cognome" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label for="em">Email *</label>
+            <input type="email" id="em" name="email" required autocomplete="email">
+          </div>
+          <div class="fg">
+            <label for="tel">Telefono / WhatsApp *</label>
+            <input type="tel" id="tel" name="telefono" required autocomplete="tel">
+          </div>
+        </div>
+        <div class="fg">
+          <label for="ruolo">Sei… *</label>
+          <select id="ruolo" name="ruolo" required>
+            <option value="">— Seleziona —</option>
+            <option>Proprietario</option>
+            <option>Inquilino</option>
+            <option>Agenzia immobiliare</option>
+            <option>Notaio / Studio legale</option>
+            <option>Banca / Istituto di credito</option>
+            <option>Altro</option>
+          </select>
+        </div>
+        <div class="privacy-row" style="margin-top:1.4rem">
+          <input type="checkbox" id="prv" name="privacy" required>
+          <label for="prv">
+            Ho letto e accetto il trattamento dei miei dati personali ai sensi del
+            Reg. UE 2016/679 (GDPR). I dati saranno utilizzati esclusivamente per
+            evadere la presente richiesta.
+          </label>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="req-step" data-step="done">
+        <div class="req-done">
+          <div class="req-done-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2>Richiesta inviata</h2>
+          <p>Grazie! Ho ricevuto la tua richiesta. Ti risponderò entro 24 ore con
+             un preventivo personalizzato e la conferma del sopralluogo.</p>
+          <a href="index.html" class="btn btn-o">Torna alla home</a>
+        </div>
+      </div>
+
+      <div class="req-nav" id="reqNav">
+        <button type="button" class="btn btn-o" id="prevBtn" style="visibility:hidden">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+          Indietro
+        </button>
+        <button type="button" class="btn" id="nextBtn">
+          Avanti
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </form>
+
+    <aside class="req-summary" aria-label="Riepilogo richiesta">
+      <h4>Riepilogo</h4>
+      <dl>
+        <dt>Motivo</dt><dd id="sm-motivo"></dd>
+        <dt>Urgenza</dt><dd id="sm-urgenza"></dd>
+        <dt>Tipo immobile</dt><dd id="sm-tipologia"></dd>
+        <dt>Superficie</dt><dd id="sm-mq"></dd>
+        <dt>Comune</dt><dd id="sm-citta"></dd>
+        <dt>Allegati</dt><dd id="sm-files">0</dd>
+        <dt>Sopralluogo</dt><dd id="sm-data"></dd>
+      </dl>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:1.2rem;line-height:1.55">
+        Il preventivo definitivo viene comunicato dopo la verifica della documentazione.
+        Nessun importo viene addebitato al momento della richiesta.
+      </p>
+    </aside>
+
+  </div>
+</section>
+
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Hai dubbi prima<br><em style="font-weight:300">di compilare?</em></h2>
+  <p>Scrivimi su WhatsApp o per email: ti rispondo personalmente prima
+     che tu inserisca qualsiasi dato.</p>
+  <a href="https://wa.me/393476622673" class="btn btn-light" target="_blank" rel="noopener">
+    Scrivimi su WhatsApp
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+  </a>
+</div>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Roberta Mariano Architetto</div>
+    <nav class="ft-links">
+      <a href="chi-sono.html">Chi Sono</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="termografia-padova.html">Termografia</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contatti.html">Contatti</a>
+      <a href="https://it.linkedin.com/in/arch-roberta-mariano-18304036" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="ft-copy">© 2026 Studio Arch. Roberta Mariano · Ordine Architetti PPC Padova</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/main.js" defer></script>
+<script>
+(() => {
+  const form = document.getElementById('apeForm');
+  if (!form) return;
+
+  const steps = form.querySelectorAll('.req-step');
+  const bars = form.querySelectorAll('.req-progress-bar');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const reqNav = document.getElementById('reqNav');
+  const totalSteps = 4;
+  let current = 1;
+
+  const showStep = (n) => {
+    steps.forEach(s => s.classList.toggle('active', s.dataset.step === String(n)));
+    bars.forEach(b => {
+      const i = Number(b.dataset.step);
+      b.classList.toggle('done', i < n);
+      b.classList.toggle('current', i === n);
+    });
+    prevBtn.style.visibility = n === 1 ? 'hidden' : 'visible';
+    nextBtn.innerHTML = n === totalSteps
+      ? 'Invia richiesta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'
+      : 'Avanti <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>';
+  };
+
+  const validateStep = (n) => {
+    const step = form.querySelector(`.req-step[data-step="${n}"]`);
+    const required = step.querySelectorAll('[required]');
+    let ok = true;
+    required.forEach(el => {
+      if (!el.checkValidity()) {
+        el.reportValidity();
+        ok = false;
+      }
+    });
+    return ok;
+  };
+
+  prevBtn.addEventListener('click', () => {
+    if (current > 1) { current--; showStep(current); window.scrollTo({ top: form.offsetTop - 80, behavior: 'smooth' }); }
+  });
+
+  nextBtn.addEventListener('click', async () => {
+    if (!validateStep(current)) return;
+    if (current < totalSteps) {
+      current++;
+      showStep(current);
+      window.scrollTo({ top: form.offsetTop - 80, behavior: 'smooth' });
+    } else {
+      // submit (placeholder — backend Worker da configurare)
+      nextBtn.disabled = true;
+      nextBtn.textContent = 'Invio in corso…';
+      try {
+        const data = new FormData(form);
+        // TODO: POST a /api/richiesta-ape (Cloudflare Worker)
+        await new Promise(r => setTimeout(r, 600));
+        steps.forEach(s => s.classList.toggle('active', s.dataset.step === 'done'));
+        reqNav.style.display = 'none';
+        bars.forEach(b => { b.classList.add('done'); b.classList.remove('current'); });
+      } catch (e) {
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Riprova';
+        alert('Errore di invio. Riprova o contattami su WhatsApp.');
+      }
+    }
+  });
+
+  // riepilogo live
+  const sync = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value || ''; };
+  form.addEventListener('input', () => {
+    sync('sm-motivo', form.motivo.value);
+    sync('sm-urgenza', form.urgenza.value);
+    sync('sm-tipologia', form.tipologia.value);
+    sync('sm-mq', form.mq.value ? form.mq.value + ' m²' : '');
+    sync('sm-citta', form.citta.value);
+    sync('sm-data', form.data1.value);
+  });
+
+  // file dropzone
+  const dz = document.getElementById('dropzone');
+  const fileInput = document.getElementById('files');
+  const fileList = document.getElementById('fileList');
+  let files = [];
+
+  const renderFiles = () => {
+    fileList.innerHTML = '';
+    files.forEach((f, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>${f.name} <small style="color:var(--muted)">(${(f.size/1024/1024).toFixed(2)} MB)</small></span>
+        <button type="button" aria-label="Rimuovi" data-i="${i}">×</button>`;
+      fileList.appendChild(li);
+    });
+    document.getElementById('sm-files').textContent = files.length;
+  };
+
+  fileInput.addEventListener('change', (e) => {
+    files = [...files, ...Array.from(e.target.files)].slice(0, 10);
+    renderFiles();
+  });
+  fileList.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-i]');
+    if (!btn) return;
+    files.splice(Number(btn.dataset.i), 1);
+    renderFiles();
+  });
+  dz.addEventListener('dragover', (e) => { e.preventDefault(); dz.classList.add('drag'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
+  dz.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dz.classList.remove('drag');
+    files = [...files, ...Array.from(e.dataTransfer.files)].slice(0, 10);
+    renderFiles();
+  });
+})();
+</script>
+<script type="module">
+if (window.gsap) {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.from('.page-hero h1, .page-hero-sub', {
+      opacity: 0, y: 30, duration: .8, stagger: .15, ease: 'power3.out', delay: .2,
+    });
+    gsap.from('.info-cell', {
+      opacity: 0, y: 20, duration: .6, stagger: .1, ease: 'power3.out',
+      scrollTrigger: { trigger: '.info-strip', start: 'top 80%', once: true },
+    });
+  });
+}
+</script>
+</body>
+</html>

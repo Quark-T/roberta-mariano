@@ -142,6 +142,86 @@
 }
 @media(max-width:768px) { .pf-prev-grid { grid-template-columns: repeat(2,1fr); } }
 @media(max-width:480px) { .pf-prev-grid { grid-template-columns: 1fr; } }
+
+/* ── REQUESTS HUB ── */
+.req-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  max-width: var(--max);
+  margin: 0 auto 1.5rem;
+}
+.req-hub-card {
+  background: var(--white);
+  padding: 2.4rem 1.8rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background .3s ease, transform .3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.req-hub-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width .5s var(--ease);
+}
+.req-hub-card:hover::after { width: 100%; }
+.req-hub-card:hover { background: var(--bg-alt); }
+.req-hub-card .req-hub-ico {
+  width: 38px; height: 38px;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+.req-hub-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: .5rem;
+}
+.req-hub-card p {
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 0 0 1.2rem;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+.req-hub-cta {
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.req-hub-cta svg { width: 14px; height: 14px; }
+
+/* secondary row (partner / recensioni) */
+.req-hub-extra {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-top: none;
+  max-width: var(--max);
+  margin: 0 auto 3rem;
+}
+.req-hub-extra .req-hub-card { padding: 2rem 1.8rem; }
+
+@media(max-width:900px) {
+  .req-hub-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:520px) {
+  .req-hub-grid, .req-hub-extra { grid-template-columns: 1fr; }
+  .req-hub-extra { border-top: 1px solid var(--border); margin-top: -1px; }
+}
 </style>
 </head>
 <body>
@@ -223,6 +303,107 @@
     <div class="stat"><span class="stat-n"><span class="ctr" data-t="1000">0</span><span class="stat-sfx">+</span></span><span class="stat-l">Perizie Completate</span></div>
   </div>
 </div>
+
+
+<!-- ════════════════════════ RICHIESTE ONLINE ══════════════════════════ -->
+<section class="section bg-white">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sh sh-c">
+      <span class="label">Richieste Online</span>
+      <span class="dline dline-c"></span>
+      <h2>Servizi su <em style="font-weight:300;color:var(--accent)">Richiesta</em></h2>
+      <p>Compila il modulo dedicato al servizio che ti interessa: dati immobile,
+         allegati e preferenza per il sopralluogo. Ti rispondo entro 24 ore con
+         un preventivo personalizzato.</p>
+    </div>
+  </div>
+
+  <div class="req-hub-grid stagger-parent">
+    <a href="richiesta-ape.html" class="req-hub-card stagger-item">
+      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M14 4h16l8 8v28a2 2 0 01-2 2H14a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+        <polyline points="30 4 30 12 38 12"/>
+        <path d="M18 24l4 4 8-8"/>
+      </svg>
+      <h3>Certificazione APE</h3>
+      <p>Attestato di Prestazione Energetica per compravendita, locazione, banca o Superbonus.</p>
+      <span class="req-hub-cta">Richiedi APE
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+
+    <a href="richiesta-termografia.html" class="req-hub-card stagger-item">
+      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <rect x="8" y="6" width="32" height="36" rx="2"/>
+        <circle cx="24" cy="24" r="8"/>
+        <circle cx="24" cy="24" r="4"/>
+        <line x1="16" y1="14" x2="32" y2="14"/>
+      </svg>
+      <h3>Indagine Termografica</h3>
+      <p>Analisi a infrarossi per individuare dispersioni, ponti termici e infiltrazioni.</p>
+      <span class="req-hub-cta">Richiedi Termografia
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+
+    <a href="richiesta-perizia.html" class="req-hub-card stagger-item">
+      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M12 4h18l8 8v32a2 2 0 01-2 2H12a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+        <polyline points="30 4 30 12 38 12"/>
+        <line x1="18" y1="22" x2="32" y2="22"/>
+        <line x1="18" y1="28" x2="32" y2="28"/>
+        <line x1="18" y1="34" x2="26" y2="34"/>
+      </svg>
+      <h3>Perizie Tecniche</h3>
+      <p>Perizie estimative, CTU, valutazioni per mutuo, vizi costruttivi e successioni.</p>
+      <span class="req-hub-cta">Richiedi Perizia
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+
+    <a href="consulenza-arredo.html" class="req-hub-card stagger-item">
+      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <path d="M8 24v16h32V24"/>
+        <path d="M4 24h40"/>
+        <path d="M12 24V12a4 4 0 014-4h16a4 4 0 014 4v12"/>
+        <line x1="14" y1="40" x2="14" y2="44"/>
+        <line x1="34" y1="40" x2="34" y2="44"/>
+      </svg>
+      <h3>Consulenza Arredo</h3>
+      <p>Progettazione d'interni, scelta materiali, planimetrie funzionali e render 3D.</p>
+      <span class="req-hub-cta">Richiedi Consulenza
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+  </div>
+
+  <div class="req-hub-extra">
+    <a href="partner.html" class="req-hub-card">
+      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <circle cx="16" cy="18" r="6"/>
+        <circle cx="32" cy="18" r="6"/>
+        <path d="M4 40c0-6 5-10 12-10s12 4 12 10"/>
+        <path d="M28 30c5 0 12 4 12 10"/>
+      </svg>
+      <h3>Agenzie &amp; Studi Professionali</h3>
+      <p>Programma di collaborazioni continuative con condizioni dedicate e fidelity per partner.</p>
+      <span class="req-hub-cta">Diventa Partner
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+
+    <a href="recensioni.html" class="req-hub-card">
+      <svg class="req-hub-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+        <polygon points="24 6 30 18 44 20 34 30 36 44 24 38 12 44 14 30 4 20 18 18"/>
+      </svg>
+      <h3>Recensioni Clienti</h3>
+      <p>Tutte le recensioni di chi mi ha scelto e l'invito a lasciare la tua dopo il lavoro.</p>
+      <span class="req-hub-cta">Leggi le Recensioni
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+  </div>
+</section>
 
 
 <!-- ════════════════════════ STUDIO PREVIEW ════════════════════════════ -->
