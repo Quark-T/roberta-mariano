@@ -282,6 +282,23 @@
       <textarea id="note" name="note" placeholder="Quali stanze ti preoccupano di più, cosa vorresti cambiare, ispirazioni che ti piacciono, vincoli che ho bisogno di conoscere…"></textarea>
     </div>
 
+    <h3 style="margin-top:2rem">Sopralluogo</h3>
+    <div class="fg">
+      <label>Quando preferisci il sopralluogo? *</label>
+      <div data-calendar="dataAppuntamentoA"></div>
+      <input type="hidden" id="dataAppuntamentoA" name="data_sopralluogo" required>
+    </div>
+
+    <div class="acconto-box">
+      <h4>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Modalità di pagamento
+      </h4>
+      <p>Il primo sopralluogo conoscitivo è <strong>gratuito</strong>. Per avviare il
+         progetto, una volta accettato il preventivo, è richiesto un acconto del 30%
+         via bonifico bancario.</p>
+    </div>
+
     <h3 style="margin-top:2rem">I tuoi recapiti</h3>
     <div class="fg-row">
       <div class="fg">
@@ -338,14 +355,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="assets/main.js" defer></script>
 <script>
-document.getElementById('arredoForm')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
-  btn.disabled = true; btn.textContent = 'Invio in corso…';
-  // TODO: POST a /api/richiesta-arredo
-  await new Promise(r => setTimeout(r, 600));
-  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Richiesta inviata</h2><p>Grazie! Ti rispondo entro 24 ore con un primo orientamento e una proposta di sopralluogo.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+window.addEventListener('DOMContentLoaded', () => {
+  window.bindSimpleForm('arredoForm', {
+    subject: 'Richiesta Consulenza Arredo / Interior Design',
+  });
 });
 </script>
 <script type="module">

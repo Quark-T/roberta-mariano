@@ -25,6 +25,140 @@ if (typeof gsap === 'undefined') {
 }
 
 /* ══════════════════════════════════════════════════════════
+   CALENDARIO SOPRALLUOGO — vanilla JS, niente librerie
+   Auto-init su <div data-calendar="hidden-input-id">
+   ══════════════════════════════════════════════════════════ */
+class SopraCalendar {
+  constructor(container, hiddenInput) {
+    this.container = container;
+    this.hidden = hiddenInput;
+    this.today = new Date(); this.today.setHours(0,0,0,0);
+    this.view = new Date(this.today);
+    this.selected = null;
+    this.MAX_MONTHS_AHEAD = 4;
+    this.MONTHS = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+    this.DAYS  = ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
+    this.container.classList.add('calendar');
+    this.render();
+  }
+  fmt(d) {
+    return d.toLocaleDateString('it-IT', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  }
+  render() {
+    const y = this.view.getFullYear(), m = this.view.getMonth();
+    const first = new Date(y, m, 1);
+    const last  = new Date(y, m+1, 0);
+    let startWd = first.getDay() - 1; if (startWd < 0) startWd = 6;
+    const limit = new Date(this.today); limit.setMonth(limit.getMonth() + this.MAX_MONTHS_AHEAD);
+    const canPrev = (this.view.getFullYear() > this.today.getFullYear()) ||
+                    (this.view.getFullYear() === this.today.getFullYear() && this.view.getMonth() > this.today.getMonth());
+    const canNext = (this.view.getFullYear() < limit.getFullYear()) ||
+                    (this.view.getFullYear() === limit.getFullYear() && this.view.getMonth() < limit.getMonth());
+
+    let html = '<div class="cal-head">';
+    html += `<button type="button" class="cal-nav" data-dir="-1" ${canPrev ? '' : 'disabled'} aria-label="Mese precedente">‹</button>`;
+    html += `<h4>${this.MONTHS[m]} ${y}</h4>`;
+    html += `<button type="button" class="cal-nav" data-dir="1" ${canNext ? '' : 'disabled'} aria-label="Mese successivo">›</button>`;
+    html += '</div><div class="cal-grid">';
+    this.DAYS.forEach(d => html += `<div class="cal-dn">${d}</div>`);
+    for (let i = 0; i < startWd; i++) html += '<div class="cal-empty"></div>';
+    for (let d = 1; d <= last.getDate(); d++) {
+      const date = new Date(y, m, d);
+      const past = date < this.today;
+      const sun = date.getDay() === 0;
+      const isToday = +date === +this.today;
+      const isSel = this.selected && +date === +this.selected;
+      const dis = past || sun;
+      const cls = ['cal-day'];
+      if (isToday) cls.push('today');
+      if (isSel) cls.push('selected');
+      const iso = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      html += `<button type="button" class="${cls.join(' ')}" data-date="${iso}" ${dis ? 'disabled' : ''}>${d}</button>`;
+    }
+    html += '</div>';
+    if (this.selected) {
+      html += `<p class="cal-info cal-info-selected">Sopralluogo selezionato: <strong>${this.fmt(this.selected)}</strong></p>`;
+    } else {
+      html += `<p class="cal-info">Tocca un giorno disponibile per scegliere quando preferisci il sopralluogo. <strong>Domeniche e giorni passati non sono prenotabili</strong>.</p>`;
+    }
+    this.container.innerHTML = html;
+    this.attach();
+  }
+  attach() {
+    this.container.querySelectorAll('.cal-nav:not(:disabled)').forEach(b => {
+      b.addEventListener('click', () => {
+        this.view.setMonth(this.view.getMonth() + parseInt(b.dataset.dir));
+        this.render();
+      });
+    });
+    this.container.querySelectorAll('.cal-day:not(:disabled)').forEach(b => {
+      b.addEventListener('click', () => {
+        const [y,mo,d] = b.dataset.date.split('-').map(Number);
+        this.selected = new Date(y, mo-1, d);
+        if (this.hidden) {
+          this.hidden.value = b.dataset.date;
+          this.hidden.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        this.render();
+      });
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-calendar]').forEach(el => {
+    const input = document.getElementById(el.dataset.calendar);
+    new SopraCalendar(el, input);
+  });
+});
+
+/* ══════════════════════════════════════════════════════════
+   FORM SUBMIT — invio email via FormSubmit (free, no signup)
+   I form richiesta vengono identificati con classe .send-via-formsubmit
+   POST a https://formsubmit.co/quarkteam00@gmail.com
+   ══════════════════════════════════════════════════════════ */
+window.RECIPIENT_EMAIL = 'quarkteam00@gmail.com';
+
+window.handleRequestSubmit = async function(form, opts = {}) {
+  const subject = opts.subject || 'Nuova richiesta dal sito';
+  const recipient = opts.recipient || window.RECIPIENT_EMAIL;
+  const fd = new FormData(form);
+  fd.set('_subject', subject);
+  fd.set('_template', 'table');
+  fd.set('_captcha', 'false');
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${recipient}`, {
+      method: 'POST',
+      body: fd,
+    });
+    const data = await res.json();
+    if (data.success === 'true' || data.success === true) return true;
+    throw new Error(data.message || 'Errore nell\'invio');
+  } catch (e) {
+    alert('Errore di invio. Riprova o scrivimi su WhatsApp al +39 347 662 2673.\n\n' + (e.message || ''));
+    return false;
+  }
+};
+
+/* Helper "una riga": gestisce form semplici a singolo submit (perizia, termografia, progetti, arredo, partner, recensioni). */
+window.bindSimpleForm = function(formId, opts = {}) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const btn = form.querySelector('button[type="submit"]');
+    const orig = btn ? btn.innerHTML : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Invio in corso…'; }
+    const ok = await window.handleRequestSubmit(form, opts);
+    if (ok) {
+      form.innerHTML = opts.successHtml || '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Richiesta inviata</h2><p>Grazie! Ti contatto entro 24 ore con il preventivo e i dettagli per il versamento dell\'acconto.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+    } else if (btn) {
+      btn.disabled = false; btn.innerHTML = orig;
+    }
+  });
+};
+
+/* ══════════════════════════════════════════════════════════
    PAGE LOADER — transizione elegante tra pagine
    ══════════════════════════════════════════════════════════ */
 (function initLoader() {

@@ -559,21 +559,25 @@ footer {
 .nav-links .dropdown-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   cursor: pointer;
 }
 .nav-links .dropdown-trigger::after {
   content: '';
-  width: 7px; height: 7px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg) translateY(-2px);
-  transition: transform .25s ease;
-  margin-left: 2px;
+  display: inline-block;
+  width: 10px; height: 10px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><polyline points='2 4, 5 7, 8 4' stroke='%231c1c1a' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform .22s ease;
+  opacity: .55;
 }
 .nav-links li.has-dropdown:hover .dropdown-trigger::after,
-.nav-links li.has-dropdown.open .dropdown-trigger::after {
-  transform: rotate(-135deg) translateY(2px);
+.nav-links li.has-dropdown.open .dropdown-trigger::after,
+.nav-links li.has-dropdown:focus-within .dropdown-trigger::after {
+  transform: rotate(180deg);
+  opacity: .9;
 }
 .dropdown-menu {
   position: absolute;
@@ -645,6 +649,135 @@ footer {
   }
   .nav-links .dropdown-trigger::after { display: none; }
 }
+
+/* ── CALENDAR (sopralluogo) ── */
+.calendar {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 1.4rem;
+  max-width: 420px;
+}
+.cal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.cal-head h4 {
+  font-size: 1rem;
+  margin: 0;
+  text-transform: capitalize;
+  font-weight: 500;
+  letter-spacing: .04em;
+}
+.cal-nav {
+  background: none;
+  border: 1px solid var(--border);
+  width: 34px; height: 34px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  color: var(--text);
+  font-family: inherit;
+  transition: border-color .2s ease, color .2s ease, background .2s ease;
+}
+.cal-nav:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-alt);
+}
+.cal-nav:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.cal-dn {
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  text-align: center;
+  color: var(--muted);
+  padding: .45rem 0 .55rem;
+  font-weight: 600;
+}
+.cal-empty { aspect-ratio: 1; }
+.cal-day {
+  aspect-ratio: 1;
+  background: none;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: all .15s ease;
+  padding: 0;
+  position: relative;
+}
+.cal-day:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--bg-alt);
+}
+.cal-day:disabled {
+  color: var(--border);
+  cursor: not-allowed;
+}
+.cal-day.today {
+  font-weight: 700;
+  color: var(--accent);
+}
+.cal-day.today::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.cal-day.selected {
+  background: var(--accent) !important;
+  color: var(--white) !important;
+  border-color: var(--accent);
+}
+.cal-day.selected::after { background: var(--white); }
+.cal-info {
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: .85rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.cal-info strong { color: var(--accent); font-weight: 500; }
+.cal-info-selected {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── ACCONTO INFO BOX ── */
+.acconto-box {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 1.3rem 1.5rem;
+  margin: 1.5rem 0;
+  font-size: .9rem;
+  line-height: 1.6;
+}
+.acconto-box h4 {
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.acconto-box h4 svg { width: 18px; height: 18px; }
+.acconto-box p { margin: 0; color: var(--muted); }
 
 /* ── REDUCED MOTION ── */
 @media(prefers-reduced-motion: reduce) {

@@ -431,16 +431,16 @@ stars.forEach(s => {
   });
 });
 
-// Submit
-document.getElementById('recForm')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  if (!rating.value) { alert('Seleziona una valutazione da 1 a 5 stelle'); return; }
-  const btn = e.target.querySelector('button[type="submit"]');
-  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
-  btn.disabled = true; btn.textContent = 'Invio in corso…';
-  // TODO: POST a /api/recensione
-  await new Promise(r => setTimeout(r, 600));
-  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Grazie!</h2><p>La tua recensione è stata inviata e verrà pubblicata dopo una breve verifica. Apprezzo davvero il tempo che hai dedicato.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+// Submit via FormSubmit
+window.addEventListener('DOMContentLoaded', () => {
+  const recForm = document.getElementById('recForm');
+  recForm?.addEventListener('submit', (e) => {
+    if (!rating.value) { e.preventDefault(); alert('Seleziona una valutazione da 1 a 5 stelle'); }
+  });
+  window.bindSimpleForm('recForm', {
+    subject: 'Nuova recensione cliente',
+    successHtml: '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Grazie!</h2><p>La tua recensione è stata inviata e verrà pubblicata dopo una breve verifica. Apprezzo davvero il tempo che hai dedicato.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>',
+  });
 });
 </script>
 <script type="module">

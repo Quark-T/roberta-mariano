@@ -324,6 +324,23 @@
       <textarea id="note" name="note" placeholder="Es: macchia di umidità sul muro nord, ponte termico sospetto in cucina, controllo cappotto post-Superbonus…"></textarea>
     </div>
 
+    <h3 style="margin-top:2rem">Sopralluogo</h3>
+    <div class="fg">
+      <label>Quando preferisci il sopralluogo? *</label>
+      <div data-calendar="dataAppuntamentoT"></div>
+      <input type="hidden" id="dataAppuntamentoT" name="data_sopralluogo" required>
+    </div>
+
+    <div class="acconto-box">
+      <h4>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Modalità di pagamento
+      </h4>
+      <p>L'indagine viene confermata al ricevimento di un <strong>acconto del 30%</strong>
+         via bonifico bancario. Dopo la richiesta riceverai email con preventivo
+         definitivo, IBAN e dettagli per il versamento.</p>
+    </div>
+
     <h3 style="margin-top:2rem">I tuoi recapiti</h3>
     <div class="fg-row">
       <div class="fg">
@@ -390,15 +407,11 @@ document.querySelectorAll('[data-pacchetto]').forEach(a => {
     if (opt) sel.value = opt.value || opt.text;
   });
 });
-// Submit placeholder
-document.getElementById('termoForm')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
-  btn.disabled = true; btn.textContent = 'Invio in corso…';
-  // TODO: POST a /api/richiesta-termografia
-  await new Promise(r => setTimeout(r, 600));
-  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Richiesta inviata</h2><p>Grazie! Ti rispondo entro 24 ore con la conferma e la data del sopralluogo.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+// Submit via FormSubmit (vedi main.js)
+window.addEventListener('DOMContentLoaded', () => {
+  window.bindSimpleForm('termoForm', {
+    subject: 'Richiesta Indagine Termografica',
+  });
 });
 </script>
 <script type="module">

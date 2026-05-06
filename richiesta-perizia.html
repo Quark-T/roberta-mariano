@@ -314,6 +314,24 @@
       <textarea id="note" name="note" placeholder="Es: il giudice ha nominato CTU; l'immobile presenta crepe nella facciata sud; serve perizia per richiesta mutuo prima casa…"></textarea>
     </div>
 
+    <h3 style="margin-top:2rem">Sopralluogo</h3>
+    <div class="fg">
+      <label>Quando preferisci il sopralluogo? *</label>
+      <div data-calendar="dataAppuntamentoP"></div>
+      <input type="hidden" id="dataAppuntamentoP" name="data_sopralluogo" required>
+    </div>
+
+    <div class="acconto-box">
+      <h4>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Modalità di pagamento
+      </h4>
+      <p>Per avviare la perizia è richiesto un <strong>acconto del 30%</strong> via
+         bonifico bancario. Riceverai un'email di conferma con preventivo definitivo,
+         IBAN e dettagli per il versamento. Le perizie su nomina del Tribunale seguono
+         le tariffe ministeriali.</p>
+    </div>
+
     <h3 style="margin-top:2rem">I tuoi recapiti</h3>
     <div class="fg-row">
       <div class="fg">
@@ -370,14 +388,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="assets/main.js" defer></script>
 <script>
-document.getElementById('periziaForm')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
-  btn.disabled = true; btn.textContent = 'Invio in corso…';
-  // TODO: POST a /api/richiesta-perizia
-  await new Promise(r => setTimeout(r, 600));
-  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Richiesta inviata</h2><p>Grazie! Ti risponderò entro 24 ore con preventivo e tempi.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+window.addEventListener('DOMContentLoaded', () => {
+  window.bindSimpleForm('periziaForm', {
+    subject: 'Richiesta Perizia Tecnica',
+  });
 });
 </script>
 <script type="module">

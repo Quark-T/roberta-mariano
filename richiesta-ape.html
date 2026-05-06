@@ -479,33 +479,28 @@
         </div>
 
         <div class="fg" style="margin-top:2rem">
-          <label>Quando preferisci il sopralluogo?</label>
-          <div class="cal-embed" id="calEmbed">
-            <div class="cal-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              <p>Il calendario online sarà attivo a breve.<br>
-                 Per ora indica una preferenza qui sotto e ti contatterò per concordare data e ora.</p>
-            </div>
+          <label>Quando preferisci il sopralluogo? *</label>
+          <div data-calendar="dataAppuntamento" id="calAppuntamento"></div>
+          <input type="hidden" id="dataAppuntamento" name="data_sopralluogo" required>
+          <div class="fg" style="margin-top:1.2rem;max-width:420px">
+            <label for="fascia">Fascia oraria</label>
+            <select id="fascia" name="fascia">
+              <option>Mattina (9–12)</option>
+              <option>Pomeriggio (14–18)</option>
+              <option>Indifferente</option>
+            </select>
           </div>
-          <div class="fg-row" style="margin-top:1rem">
-            <div class="fg">
-              <label for="data1">Data preferita</label>
-              <input type="date" id="data1" name="data1">
-            </div>
-            <div class="fg">
-              <label for="fascia">Fascia oraria</label>
-              <select id="fascia" name="fascia">
-                <option>Mattina (9–12)</option>
-                <option>Pomeriggio (14–18)</option>
-                <option>Indifferente</option>
-              </select>
-            </div>
-          </div>
+        </div>
+
+        <div class="acconto-box">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Modalità di pagamento
+          </h4>
+          <p>Per avviare la pratica è richiesto un <strong>acconto del 30%</strong>
+             via bonifico bancario. Dopo aver inviato la richiesta, riceverai un'email
+             di conferma con preventivo definitivo, IBAN e dettagli per il versamento.
+             Nessun pagamento online viene gestito da questo modulo.</p>
         </div>
       </div>
 
@@ -686,20 +681,19 @@
       showStep(current);
       window.scrollTo({ top: form.offsetTop - 80, behavior: 'smooth' });
     } else {
-      // submit (placeholder — backend Worker da configurare)
       nextBtn.disabled = true;
       nextBtn.textContent = 'Invio in corso…';
-      try {
-        const data = new FormData(form);
-        // TODO: POST a /api/richiesta-ape (Cloudflare Worker)
-        await new Promise(r => setTimeout(r, 600));
+      const ok = await window.handleRequestSubmit(form, {
+        subject: 'Richiesta APE - ' + (form.querySelector('[name=nome]')?.value || '') + ' ' + (form.querySelector('[name=cognome]')?.value || ''),
+        successHtml: null,
+      });
+      if (ok) {
         steps.forEach(s => s.classList.toggle('active', s.dataset.step === 'done'));
         reqNav.style.display = 'none';
         bars.forEach(b => { b.classList.add('done'); b.classList.remove('current'); });
-      } catch (e) {
+      } else {
         nextBtn.disabled = false;
         nextBtn.textContent = 'Riprova';
-        alert('Errore di invio. Riprova o contattami su WhatsApp.');
       }
     }
   });
@@ -712,7 +706,8 @@
     sync('sm-tipologia', form.tipologia.value);
     sync('sm-mq', form.mq.value ? form.mq.value + ' m²' : '');
     sync('sm-citta', form.citta.value);
-    sync('sm-data', form.data1.value);
+    const dt = form.querySelector('[name=data_sopralluogo]')?.value;
+    sync('sm-data', dt || '');
   });
 
   // file dropzone

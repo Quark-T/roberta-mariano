@@ -438,14 +438,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="assets/main.js" defer></script>
 <script>
-document.getElementById('partnerForm')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
-  btn.disabled = true; btn.textContent = 'Invio in corso…';
-  // TODO: POST a /api/partner
-  await new Promise(r => setTimeout(r, 600));
-  e.target.innerHTML = '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Candidatura ricevuta</h2><p>Grazie! Ti contatto entro 48 ore per fissare un primo incontro conoscitivo.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>';
+window.addEventListener('DOMContentLoaded', () => {
+  window.bindSimpleForm('partnerForm', {
+    subject: 'Candidatura Partner',
+    successHtml: '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Candidatura ricevuta</h2><p>Grazie! Ti contatto entro 48 ore per fissare un primo incontro conoscitivo.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>',
+  });
 });
 </script>
 <script type="module">

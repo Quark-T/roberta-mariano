@@ -225,9 +225,7 @@
     </div>
 
     <!-- Form -->
-    <form class="ct-form reveal" data-delay=".15" id="ctForm"
-          action="mailto:arch.robertamariano@gmail.com"
-          method="post" enctype="text/plain">
+    <form class="ct-form reveal" data-delay=".15" id="ctForm" novalidate>
       <div class="fg-row">
         <div class="fg">
           <label for="fn">Nome *</label>
@@ -445,11 +443,12 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
   });
 });
 
-/* Form feedback */
-document.getElementById('ctForm').addEventListener('submit', () => {
-  const btn = document.getElementById('ctBtn');
-  btn.textContent = 'Messaggio Inviato ✓';
-  btn.style.cssText = 'background:var(--accent);border-color:var(--accent)';
+/* Form submit via FormSubmit (vedi main.js) */
+window.addEventListener('DOMContentLoaded', () => {
+  window.bindSimpleForm('ctForm', {
+    subject: 'Messaggio dal modulo contatti',
+    successHtml: '<div class="req-done"><div class="req-done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h2>Messaggio inviato</h2><p>Grazie! Ti risponderò entro 24 ore.</p><a href="index.html" class="btn btn-o">Torna alla home</a></div>',
+  });
 });
 </script>
 </body>
