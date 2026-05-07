@@ -161,6 +161,73 @@ window.bindSimpleForm = function(formId, opts = {}) {
 /* ══════════════════════════════════════════════════════════
    PAGE LOADER — transizione elegante tra pagine
    ══════════════════════════════════════════════════════════ */
+window.MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
+window.ALLOWED_UPLOAD_EXTENSIONS = ['pdf', 'jpg', 'jpeg', 'png', 'webp', 'heic'];
+
+window.formatFileSize = function(bytes) {
+  if (!Number.isFinite(bytes) || bytes <= 0) return '0 MB';
+  if (bytes < 1024 * 1024) return `${Math.max(bytes / 1024, 0.1).toFixed(1)} KB`;
+  return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
+};
+
+window.uploadLeadFiles = async function(files, opts = {}) {
+  const list = Array.isArray(files) ? files : Array.from(files || []);
+  const kind = String(opts.kind || 'documenti');
+  const maxFiles = opts.maxFiles || 10;
+
+  if (list.length > maxFiles) {
+    throw new Error(`Puoi caricare al massimo ${maxFiles} file.`);
+  }
+
+  const uploaded = [];
+
+  for (let i = 0; i < list.length; i++) {
+    const file = list[i];
+    const ext = String(file.name || '').toLowerCase().split('.').pop();
+
+    if (!window.ALLOWED_UPLOAD_EXTENSIONS.includes(ext)) {
+      throw new Error(`Il file ${file.name} non ha un formato supportato.`);
+    }
+
+    if (file.size > window.MAX_UPLOAD_BYTES) {
+      throw new Error(`Il file ${file.name} supera il limite di 10 MB.`);
+    }
+
+    const formData = new FormData();
+    formData.set('file', file, file.name);
+    formData.set('kind', kind);
+
+    const response = await fetch('/api/uploads', {
+      method: 'POST',
+      body: formData,
+    });
+
+    let data = null;
+    try {
+      data = await response.json();
+    } catch {
+      data = null;
+    }
+
+    if (!response.ok || !data?.ok) {
+      throw new Error(data?.error || `Upload fallito per ${file.name}.`);
+    }
+
+    uploaded.push(data);
+
+    if (typeof opts.onProgress === 'function') {
+      opts.onProgress({
+        current: i + 1,
+        total: list.length,
+        file,
+        result: data,
+      });
+    }
+  }
+
+  return uploaded;
+};
+
 (function initLoader() {
   /* ── Inietta HTML ── */
   const el = document.createElement('div');

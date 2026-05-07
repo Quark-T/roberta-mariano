@@ -164,6 +164,14 @@
   line-height: 1;
 }
 .file-list li button:hover { color: var(--text); }
+.upload-status {
+  min-height: 1.2rem;
+  margin-top: .85rem;
+  font-size: .82rem;
+  color: var(--muted);
+}
+.upload-status.ok { color: var(--accent-text); }
+.upload-status.err { color: #9b2c2c; }
 
 /* calendar */
 .cal-embed {
@@ -476,6 +484,8 @@
             <input type="file" id="files" name="files" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.heic">
           </label>
           <ul class="file-list" id="fileList"></ul>
+          <p class="upload-status" id="uploadStatus" aria-live="polite"></p>
+          <textarea id="documentiCaricati" name="documenti_caricati" hidden></textarea>
         </div>
 
         <div class="fg" style="margin-top:2rem">
@@ -683,6 +693,15 @@
     } else {
       nextBtn.disabled = true;
       nextBtn.textContent = 'Invio in corso…';
+      try {
+        await uploadFiles();
+      } catch (error) {
+        nextBtn.disabled = false;
+        showStep(current);
+        setUploadStatus(error.message || 'Errore durante il caricamento dei documenti.', 'err');
+        alert(error.message || 'Errore durante il caricamento dei documenti.');
+        return;
+      }
       const ok = await window.handleRequestSubmit(form, {
         subject: 'Richiesta APE - ' + (form.querySelector('[name=nome]')?.value || '') + ' ' + (form.querySelector('[name=cognome]')?.value || ''),
         successHtml: null,
@@ -693,7 +712,10 @@
         bars.forEach(b => { b.classList.add('done'); b.classList.remove('current'); });
       } else {
         nextBtn.disabled = false;
-        nextBtn.textContent = 'Riprova';
+        showStep(current);
+        if (uploadedDocs.length) {
+          setUploadStatus('Documenti gia caricati. Puoi riprovare l\'invio senza ricaricarli.', 'ok');
+        }
       }
     }
   });
@@ -714,7 +736,43 @@
   const dz = document.getElementById('dropzone');
   const fileInput = document.getElementById('files');
   const fileList = document.getElementById('fileList');
+  const uploadStatus = document.getElementById('uploadStatus');
+  const uploadedDocsField = document.getElementById('documentiCaricati');
   let files = [];
+  let uploadedDocs = [];
+  let uploadsComplete = false;
+
+  const setUploadStatus = (message = '', tone = '') => {
+    if (!uploadStatus) return;
+    uploadStatus.textContent = message;
+    uploadStatus.className = tone ? `upload-status ${tone}` : 'upload-status';
+  };
+
+  const syncUploadedDocsField = () => {
+    if (!uploadedDocsField) return;
+    if (!uploadedDocs.length) {
+      uploadedDocsField.value = '';
+      return;
+    }
+    uploadedDocsField.value = uploadedDocs
+      .map((doc, index) => {
+        const lines = [`${index + 1}. ${doc.name} (${window.formatFileSize(doc.size)})`];
+        if (doc.adminUrl) {
+          lines.push(doc.adminUrl);
+        } else {
+          lines.push(`R2 key: ${doc.key}`);
+          lines.push('Download diretto non ancora attivo: apri il file dal bucket R2 in dashboard.');
+        }
+        return lines.join('\n');
+      })
+      .join('\n\n');
+  };
+
+  const resetUploadedDocs = () => {
+    uploadedDocs = [];
+    uploadsComplete = false;
+    syncUploadedDocsField();
+  };
 
   const renderFiles = () => {
     fileList.innerHTML = '';
@@ -726,6 +784,48 @@
       fileList.appendChild(li);
     });
     document.getElementById('sm-files').textContent = files.length;
+    resetUploadedDocs();
+
+    const invalidFile = files.find((file) => {
+      const ext = String(file.name || '').toLowerCase().split('.').pop();
+      return file.size > window.MAX_UPLOAD_BYTES || !window.ALLOWED_UPLOAD_EXTENSIONS.includes(ext);
+    });
+
+    if (!invalidFile) {
+      setUploadStatus('');
+      return;
+    }
+
+    if (invalidFile.size > window.MAX_UPLOAD_BYTES) {
+      setUploadStatus(`Il file ${invalidFile.name} supera il limite di 10 MB.`, 'err');
+      return;
+    }
+
+    setUploadStatus(`Il file ${invalidFile.name} non ha un formato supportato.`, 'err');
+  };
+
+  const uploadFiles = async () => {
+    if (!files.length) {
+      resetUploadedDocs();
+      setUploadStatus('');
+      return;
+    }
+
+    if (uploadsComplete) {
+      return;
+    }
+
+    uploadedDocs = await window.uploadLeadFiles(files, {
+      kind: 'ape',
+      onProgress({ current, total, file }) {
+        setUploadStatus(`Caricamento documenti ${current}/${total}: ${file.name}`);
+      },
+    });
+
+    uploadsComplete = true;
+    syncUploadedDocsField();
+    fileInput.value = '';
+    setUploadStatus(`${uploadedDocs.length} documenti caricati e pronti per l'email all'admin.`, 'ok');
   };
 
   fileInput.addEventListener('change', (e) => {
