@@ -200,9 +200,174 @@
         <div class="pf-cap"><h3>Involucro Edilizio</h3><span>Rivestimento Esterno</span></div>
       </div>
 
+      <div class="pf-item" data-c="interni">
+        <img class="pf-img" src="assets/img/valentini-05.jpg" alt="Boutique Valentini — interior" loading="lazy" width="1054" height="1400">
+        <div class="pf-cap"><h3>Boutique Valentini</h3><span>Interior Design Commerciale</span></div>
+      </div>
+
+      <div class="pf-item" data-c="interni">
+        <img class="pf-img" src="assets/img/valentini-21.jpg" alt="Dettaglio negozio Valentini" loading="lazy" width="1400" height="1054">
+        <div class="pf-cap"><h3>Allestimento Retail</h3><span>Boutique · Veneto</span></div>
+      </div>
+
+      <div class="pf-item" data-c="esterni">
+        <img class="pf-img" src="assets/img/ape-cantiere-mirano.jpg" alt="Riqualificazione tre unità a Mirano" loading="lazy" width="1400" height="1050">
+        <div class="pf-cap"><h3>Riqualificazione Tre Unità</h3><span>Mirano · Cantiere</span></div>
+      </div>
+
+      <div class="pf-item" data-c="energia">
+        <img class="pf-img" src="assets/img/ape-impianti-fotovoltaici.jpg" alt="Impianti fotovoltaici" loading="lazy" width="1215" height="911">
+        <div class="pf-cap"><h3>Impianti Fotovoltaici</h3><span>Energia Rinnovabile</span></div>
+      </div>
+
+      <div class="pf-item" data-c="energia">
+        <img class="pf-img" src="assets/img/ape-edificio-industriale.jpg" alt="APE edifici industriali" loading="lazy" width="1400" height="788">
+        <div class="pf-cap"><h3>APE Industriale</h3><span>Capannoni · Veneto</span></div>
+      </div>
+
+      <div class="pf-item" data-c="facciate">
+        <img class="pf-img" src="assets/img/ape-progetto-galliera.jpg" alt="Progetto Galliera Veneta" loading="lazy" width="1050" height="1400">
+        <div class="pf-cap"><h3>Edificio in Galliera</h3><span>Veneto · 2011</span></div>
+      </div>
+
     </div><!-- /pf-grid -->
   </div>
 </section>
+
+
+<!-- ═══════════════ CASE STUDY: BOUTIQUE VALENTINI ═══════════════ -->
+<section class="section bg-white" id="valentini">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh">
+      <span class="label">Case Study</span>
+      <span class="dline"></span>
+      <h2>Boutique Valentini<br><em style="font-weight:300;color:var(--accent)">Interior Retail</em></h2>
+      <p>Progetto completo di interior design per una boutique nel Veneto:
+         dallo studio dell'allestimento alla scelta dei materiali, dei colori
+         e dell'illuminazione. Una sequenza di immagini che racconta lo spazio
+         così come è stato realizzato.</p>
+    </div>
+  </div>
+  <style>
+    .val-grid {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: .6rem;
+    }
+    .val-item {
+      position: relative; overflow: hidden; aspect-ratio: 3/4;
+      background: var(--bg-alt); cursor: zoom-in;
+    }
+    .val-item.wide { grid-column: span 2; aspect-ratio: 3/2; }
+    .val-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .6s var(--ease), opacity .3s ease;
+    }
+    .val-item:hover img { transform: scale(1.04); }
+    @media(max-width:900px) { .val-grid { grid-template-columns: repeat(2, 1fr); } .val-item.wide { grid-column: span 2; } }
+    @media(max-width:520px) { .val-grid { grid-template-columns: 1fr; } .val-item.wide { grid-column: span 1; aspect-ratio: 3/4; } }
+
+    /* lightbox */
+    .vl-overlay {
+      position: fixed; inset: 0; background: rgba(20,20,18,.94);
+      z-index: 9999; display: none; align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .vl-overlay.on { display: flex; }
+    .vl-overlay img { max-width: 90vw; max-height: 88vh; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    .vl-close, .vl-prev, .vl-next {
+      position: absolute; background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.25); color: #fff;
+      width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+      font-size: 1.4rem; display: flex; align-items: center; justify-content: center;
+      transition: background .2s ease;
+    }
+    .vl-close { top: 1.2rem; right: 1.2rem; }
+    .vl-prev  { left: 1.2rem; top: 50%; transform: translateY(-50%); }
+    .vl-next  { right: 1.2rem; top: 50%; transform: translateY(-50%); }
+    .vl-close:hover, .vl-prev:hover, .vl-next:hover { background: rgba(255,255,255,.22); }
+  </style>
+  <div class="val-grid" id="valGrid">
+    <div class="val-item wide"><img data-vl src="assets/img/valentini-05.jpg" alt="Boutique Valentini 1" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-08.jpg" alt="Boutique Valentini 2" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-12.jpg" alt="Boutique Valentini 3" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-13.jpg" alt="Boutique Valentini 4" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-15.jpg" alt="Boutique Valentini 5" loading="lazy"></div>
+    <div class="val-item wide"><img data-vl src="assets/img/valentini-21.jpg" alt="Boutique Valentini 6" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-23.jpg" alt="Boutique Valentini 7" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-24.jpg" alt="Boutique Valentini 8" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-25.jpg" alt="Boutique Valentini 9" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-27.jpg" alt="Boutique Valentini 10" loading="lazy"></div>
+    <div class="val-item wide"><img data-vl src="assets/img/valentini-28.jpg" alt="Boutique Valentini 11" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-30.jpg" alt="Boutique Valentini 12" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-32.jpg" alt="Boutique Valentini 13" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-34.jpg" alt="Boutique Valentini 14" loading="lazy"></div>
+    <div class="val-item"><img data-vl src="assets/img/valentini-36.jpg" alt="Boutique Valentini 15" loading="lazy"></div>
+  </div>
+  <p style="text-align:center;margin-top:1.6rem;font-size:.85rem;color:var(--muted)">
+    Clicca su una foto per ingrandirla.
+  </p>
+</section>
+
+
+<!-- ═══════════════ SCHIZZI & PROCESSO ═══════════════ -->
+<section class="section bg-alt" id="schizzi">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh sh-c">
+      <span class="label">Dietro il Progetto</span>
+      <span class="dline dline-c"></span>
+      <h2>Schizzi e <em style="font-weight:300;color:var(--accent)">Studi di Volume</em></h2>
+      <p>Ogni progetto nasce a matita. Un ventaglio di disegni, schizzi prospettici
+         e plastici fisici che precedono il rendering digitale e definiscono
+         l'identità degli spazi.</p>
+    </div>
+  </div>
+  <style>
+    .sk-grid {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .sk-card {
+      background: var(--white); border: 1px solid var(--border);
+      padding: .8rem; transition: transform .3s var(--ease), box-shadow .3s ease;
+    }
+    .sk-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px -10px rgba(0,0,0,.18); }
+    .sk-card img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center;
+      background: var(--bg-alt);
+    }
+    .sk-card.wide { grid-column: span 2; }
+    .sk-card.wide img { aspect-ratio: 16/9; }
+    .sk-cap {
+      padding: .8rem .4rem .2rem; font-size: .75rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); text-align: center;
+    }
+    @media(max-width:900px) { .sk-grid { grid-template-columns: repeat(2, 1fr); } .sk-card.wide { grid-column: span 2; } }
+    @media(max-width:520px) { .sk-grid { grid-template-columns: 1fr; } .sk-card.wide { grid-column: span 1; } }
+  </style>
+  <div class="sk-grid">
+    <div class="sk-card"><img data-vl src="assets/img/sk-schizzo-1.jpg" alt="Schizzo a mano libera" loading="lazy"><div class="sk-cap">Studio iniziale</div></div>
+    <div class="sk-card"><img data-vl src="assets/img/sk-studio-1.jpg" alt="Studio di pianta" loading="lazy"><div class="sk-cap">Pianta · Studio 1</div></div>
+    <div class="sk-card"><img data-vl src="assets/img/sk-studio-3.jpg" alt="Studio prospettico" loading="lazy"><div class="sk-cap">Prospettiva</div></div>
+    <div class="sk-card"><img data-vl src="assets/img/sk-atelier.jpg" alt="Schizzo atelier" loading="lazy"><div class="sk-cap">Atelier</div></div>
+    <div class="sk-card wide"><img data-vl src="assets/img/sk-studio-6.jpg" alt="Vista prospettica" loading="lazy"><div class="sk-cap">Vista assonometrica</div></div>
+    <div class="sk-card wide"><img data-vl src="assets/img/sk-progetto-a-3.jpg" alt="Studio di facciata" loading="lazy"><div class="sk-cap">Studio di facciata</div></div>
+    <div class="sk-card"><img data-vl src="assets/img/sk-plastico.jpg" alt="Plastico architettonico" loading="lazy"><div class="sk-cap">Plastico</div></div>
+    <div class="sk-card"><img data-vl src="assets/img/sk-vetrina-stoffe.jpg" alt="Schizzo vetrina stoffe" loading="lazy"><div class="sk-cap">Vetrina retail</div></div>
+    <div class="sk-card"><img data-vl src="assets/img/sk-esterno-1.jpg" alt="Schizzo esterno" loading="lazy"><div class="sk-cap">Esterno · Studio 1</div></div>
+    <div class="sk-card"><img data-vl src="assets/img/sk-scala.jpg" alt="Studio scala" loading="lazy"><div class="sk-cap">Scala</div></div>
+  </div>
+</section>
+
+<!-- Lightbox per Valentini & Schizzi -->
+<div class="vl-overlay" id="vlOverlay" role="dialog" aria-modal="true" aria-label="Galleria immagini">
+  <button class="vl-close" id="vlClose" aria-label="Chiudi">×</button>
+  <button class="vl-prev"  id="vlPrev"  aria-label="Precedente">‹</button>
+  <img id="vlImg" src="" alt="">
+  <button class="vl-next"  id="vlNext"  aria-label="Successiva">›</button>
+</div>
 
 
 <!-- INTERNATIONAL PROJECTS -->
@@ -403,6 +568,36 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
 });
 </script>
 <script>
+/* Lightbox per Valentini Book + Schizzi */
+(function(){
+  const overlay = document.getElementById('vlOverlay');
+  const imgEl = document.getElementById('vlImg');
+  const close = document.getElementById('vlClose');
+  const prev = document.getElementById('vlPrev');
+  const next = document.getElementById('vlNext');
+  const triggers = Array.from(document.querySelectorAll('img[data-vl]'));
+  let idx = 0;
+  function show(i) {
+    idx = (i + triggers.length) % triggers.length;
+    imgEl.src = triggers[idx].src;
+    imgEl.alt = triggers[idx].alt || '';
+    overlay.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  function hide() { overlay.classList.remove('on'); document.body.style.overflow = ''; }
+  triggers.forEach((t, i) => t.addEventListener('click', () => show(i)));
+  close.addEventListener('click', hide);
+  prev.addEventListener('click', () => show(idx - 1));
+  next.addEventListener('click', () => show(idx + 1));
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) hide(); });
+  document.addEventListener('keydown', (e) => {
+    if (!overlay.classList.contains('on')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+})();
+
 /* Prima/Dopo slider — vanilla, funziona indipendentemente da GSAP */
 document.querySelectorAll('[data-ba]').forEach(slider => {
   const after = slider.querySelector('.ba-img.after');

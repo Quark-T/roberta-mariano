@@ -265,8 +265,8 @@
 <!-- EXPERT CARD -->
 <section class="section">
   <div class="expert-card">
-    <img class="expert-photo" src="assets/img/roby1a.jpg"
-         alt="Roberta Mariano — Operatore Termografico Padova" loading="lazy" width="600" height="750">
+    <img class="expert-photo" src="assets/img/ape-roberta-termocamera-1.jpg"
+         alt="Roberta Mariano con termocamera — Operatore Termografico Padova" loading="lazy" width="683" height="911">
 
     <div class="expert-meta">
       <div>
@@ -334,6 +334,73 @@
         </a>
         <a href="tel:+393476622673" class="btn btn-o">Chiama Ora</a>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ CASI REALI / GALLERIA ═══════════════ -->
+<section class="section bg-white" id="casi">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Casi Reali</span>
+      <span class="dline dline-c"></span>
+      <h2>Cosa <em style="font-weight:300;color:var(--accent)">Vediamo</em> con la Termocamera</h2>
+      <p>Una selezione di indagini termografiche e diagnostiche svolte sul campo:
+         ponti termici, infiltrazioni, dispersioni, umidità nelle murature.
+         Tutto rilevato senza interventi invasivi.</p>
+    </div>
+  </div>
+  <style>
+    .casi-grid {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    .caso-card {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      overflow: hidden; transition: transform .35s var(--ease), box-shadow .35s ease;
+    }
+    .caso-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -10px rgba(0,0,0,.18); }
+    .caso-card img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+    }
+    .caso-meta {
+      padding: 1.2rem 1.4rem 1.4rem;
+    }
+    .caso-meta h3 {
+      font-size: 1.05rem; margin-bottom: .35rem;
+    }
+    .caso-meta p {
+      font-size: .85rem; color: var(--muted); margin: 0; line-height: 1.5;
+    }
+    @media(max-width:900px) { .casi-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:560px) { .casi-grid { grid-template-columns: 1fr; } }
+  </style>
+  <div class="casi-grid">
+    <div class="caso-card">
+      <img src="assets/img/ape-termografia-1.jpg" alt="Indagine termografica facciata" loading="lazy">
+      <div class="caso-meta"><h3>Mappatura Ponti Termici</h3><p>Indagine sull'involucro per individuare le aree di dispersione del calore.</p></div>
+    </div>
+    <div class="caso-card">
+      <img src="assets/img/ape-infiltrazione-terrazza.jpg" alt="Infiltrazione da terrazza" loading="lazy">
+      <div class="caso-meta"><h3>Infiltrazione da Terrazza</h3><p>Localizzazione del punto di ingresso d'acqua senza demolizioni.</p></div>
+    </div>
+    <div class="caso-card">
+      <img src="assets/img/ape-infiltrazione-copertura.jpg" alt="Infiltrazione condominiale dalla copertura" loading="lazy">
+      <div class="caso-meta"><h3>Infiltrazione da Copertura</h3><p>Indagine per condominio: rilevamento del percorso dell'acqua dall'alto.</p></div>
+    </div>
+    <div class="caso-card">
+      <img src="assets/img/ape-infiltrazioni-cantiere.jpg" alt="Infiltrazioni in cantiere" loading="lazy">
+      <div class="caso-meta"><h3>Verifica in Cantiere</h3><p>Controllo termografico durante i lavori per intercettare difetti di posa.</p></div>
+    </div>
+    <div class="caso-card">
+      <img src="assets/img/ape-indagine-igrometro.jpg" alt="Indagine con igrometro" loading="lazy">
+      <div class="caso-meta"><h3>Indagine con Igrometro</h3><p>Misura dell'umidità nelle murature a complemento della termografia.</p></div>
+    </div>
+    <div class="caso-card">
+      <img src="assets/img/ape-prova-fluorina.jpg" alt="Prova con fluorina" loading="lazy">
+      <div class="caso-meta"><h3>Prova con Fluorina</h3><p>Test integrativo per identificare con certezza il punto di infiltrazione.</p></div>
     </div>
   </div>
 </section>

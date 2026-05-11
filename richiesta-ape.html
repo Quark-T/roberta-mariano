@@ -319,7 +319,7 @@
 
 <!-- PAGE HERO -->
 <header class="page-hero">
-  <img class="page-hero-img" src="assets/img/architettura-e-energia-rinnovabile.webp" alt="" loading="eager">
+  <img class="page-hero-img" src="assets/img/ape-verifica-cappotto.jpg" alt="" loading="eager">
   <div class="page-hero-inner">
     <div class="breadcrumb">
       <a href="index.html">Home</a><span>/</span><a href="servizi.html">Servizi</a><span>/</span><span>Richiesta APE</span>
@@ -352,6 +352,43 @@
       <h4>Sopralluogo entro 15 km</h4>
       <p>Sopralluogo in giornata nel raggio di 15 km da Borgoricco. Compravendita, locazione, Superbonus, banca.</p>
     </div>
+  </div>
+</section>
+
+
+<!-- ESEMPI APE -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh sh-c">
+      <span class="label">Tipologie d'Intervento</span>
+      <span class="dline dline-c"></span>
+      <h2>Su Cosa <em style="font-weight:300;color:var(--accent)">Lavoro</em></h2>
+      <p>APE per residenziale, commerciale, industriale e Superbonus.
+         Alcune immagini di cantieri e immobili certificati.</p>
+    </div>
+  </div>
+  <style>
+    .ape-strip {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: .8rem;
+    }
+    .ape-strip figure { margin: 0; position: relative; overflow: hidden; aspect-ratio: 4/3; }
+    .ape-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+    .ape-strip figure:hover img { transform: scale(1.04); }
+    .ape-strip figcaption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .8rem 1rem;
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: #fff; background: linear-gradient(to top, rgba(20,20,18,.85), transparent);
+    }
+    @media(max-width:768px) { .ape-strip { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+  <div class="ape-strip">
+    <figure><img src="assets/img/ape-verifica-cappotto.jpg" alt="Verifica posa cappotto" loading="lazy"><figcaption>Verifica cappotto</figcaption></figure>
+    <figure><img src="assets/img/ape-edificio-industriale.jpg" alt="APE edifici industriali" loading="lazy"><figcaption>Edifici industriali</figcaption></figure>
+    <figure><img src="assets/img/ape-impianti-fotovoltaici.jpg" alt="Impianti fotovoltaici" loading="lazy"><figcaption>Impianti FTV</figcaption></figure>
+    <figure><img src="assets/img/ape-cantiere-mirano.jpg" alt="Riqualificazione tre unità a Mirano" loading="lazy"><figcaption>Riqualificazione · Mirano</figcaption></figure>
   </div>
 </section>
 

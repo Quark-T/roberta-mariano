@@ -217,6 +217,91 @@
   </div>
 </section>
 
+<!-- DAL SEGNO AL PROGETTO -->
+<section class="section bg-white">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh sh-c">
+      <span class="label">Dal Segno al Progetto</span>
+      <span class="dline dline-c"></span>
+      <h2>Schizzi a Mano <em style="font-weight:300;color:var(--accent)">e Plastici</em></h2>
+      <p>Ogni interior nasce da un disegno. Prima la matita, poi il render. Una raccolta
+         di schizzi, prospettive e plastici di studio realizzati in oltre vent'anni di lavoro.</p>
+    </div>
+  </div>
+  <style>
+    .ca-grid {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .ca-card {
+      position: relative; overflow: hidden;
+      background: var(--bg-alt); border: 1px solid var(--border);
+      aspect-ratio: 3/4;
+      transition: transform .35s var(--ease), box-shadow .35s ease;
+    }
+    .ca-card.wide { grid-column: span 2; aspect-ratio: 16/9; }
+    .ca-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px -10px rgba(0,0,0,.18); }
+    .ca-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+    .ca-card:hover img { transform: scale(1.04); }
+    .ca-cap {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .9rem 1.2rem;
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: #fff; background: linear-gradient(to top, rgba(20,20,18,.85), transparent);
+    }
+    @media(max-width:900px) { .ca-grid { grid-template-columns: repeat(2, 1fr); } .ca-card.wide { grid-column: span 2; } }
+    @media(max-width:520px) { .ca-grid { grid-template-columns: 1fr; } .ca-card.wide { grid-column: span 1; aspect-ratio: 3/4; } }
+  </style>
+  <div class="ca-grid">
+    <div class="ca-card"><img src="assets/img/sk-schizzo-1.jpg" alt="Schizzo iniziale" loading="lazy"><span class="ca-cap">Studio iniziale</span></div>
+    <div class="ca-card"><img src="assets/img/sk-studio-1.jpg" alt="Studio di pianta" loading="lazy"><span class="ca-cap">Pianta</span></div>
+    <div class="ca-card"><img src="assets/img/sk-studio-3.jpg" alt="Studio prospettico" loading="lazy"><span class="ca-cap">Prospettiva</span></div>
+    <div class="ca-card"><img src="assets/img/sk-atelier.jpg" alt="Schizzo atelier" loading="lazy"><span class="ca-cap">Atelier</span></div>
+    <div class="ca-card wide"><img src="assets/img/sk-studio-6.jpg" alt="Vista assonometrica" loading="lazy"><span class="ca-cap">Vista assonometrica</span></div>
+    <div class="ca-card wide"><img src="assets/img/sk-progetto-a-3.jpg" alt="Studio di facciata" loading="lazy"><span class="ca-cap">Studio di facciata</span></div>
+    <div class="ca-card"><img src="assets/img/sk-vetrina-stoffe.jpg" alt="Schizzo vetrina retail" loading="lazy"><span class="ca-cap">Vetrina retail</span></div>
+    <div class="ca-card"><img src="assets/img/sk-plastico.jpg" alt="Plastico fisico" loading="lazy"><span class="ca-cap">Plastico</span></div>
+    <div class="ca-card"><img src="assets/img/sk-scala.jpg" alt="Studio scala" loading="lazy"><span class="ca-cap">Scala</span></div>
+    <div class="ca-card"><img src="assets/img/sk-esterno-1.jpg" alt="Schizzo esterno" loading="lazy"><span class="ca-cap">Esterno</span></div>
+  </div>
+  <div style="text-align:center;margin-top:2rem">
+    <a href="portfolio.html#schizzi" class="btn btn-o">
+      Tutti gli Schizzi nel Portfolio
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- BOUTIQUE VALENTINI - REALIZZATO -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh">
+      <span class="label">Progetto Realizzato</span>
+      <span class="dline"></span>
+      <h2>Boutique Valentini</h2>
+      <p>Un esempio di interior commerciale completo: dall'allestimento alla scelta
+         dei materiali. Sequenza di immagini del realizzato.</p>
+    </div>
+  </div>
+  <div style="max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem">
+    <img src="assets/img/valentini-05.jpg" alt="Boutique Valentini 1" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover">
+    <img src="assets/img/valentini-12.jpg" alt="Boutique Valentini 2" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover">
+    <img src="assets/img/valentini-30.jpg" alt="Boutique Valentini 3" loading="lazy" style="width:100%;aspect-ratio:3/4;object-fit:cover">
+    <img src="assets/img/valentini-21.jpg" alt="Boutique Valentini 4" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover">
+    <img src="assets/img/valentini-25.jpg" alt="Boutique Valentini 5" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover">
+    <img src="assets/img/valentini-28.jpg" alt="Boutique Valentini 6" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover">
+  </div>
+  <div style="text-align:center;margin-top:2rem">
+    <a href="portfolio.html#valentini" class="btn">
+      Vedi il Case Study Completo
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+
 <!-- FORM -->
 <section class="section bg-white" id="form">
   <div style="max-width:var(--max);margin:0 auto 2.5rem">

@@ -459,6 +459,61 @@
 </section>
 
 
+<!-- IL MIO METODO -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2.5rem">
+    <div class="sh sh-c">
+      <span class="label">Il Mio Metodo</span>
+      <span class="dline dline-c"></span>
+      <h2>Dal <em style="font-weight:300;color:var(--accent)">Segno</em> al Cantiere</h2>
+      <p>Ogni progetto comincia a matita. Schizzi, prospettive, plastici fisici:
+         il pensiero progettuale prende forma sul foglio prima di diventare disegno
+         tecnico. Sul cantiere, lo stesso metodo: la presenza diretta, lo sguardo,
+         la termocamera, l'igrometro.</p>
+    </div>
+  </div>
+  <style>
+    .met-grid {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .met-card {
+      background: var(--white); border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform .35s var(--ease), box-shadow .35s ease;
+    }
+    .met-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px -10px rgba(0,0,0,.18); }
+    .met-card img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;
+    }
+    .met-card .met-meta { padding: 1rem 1.2rem; }
+    .met-card h4 { font-size: .95rem; margin-bottom: .25rem; }
+    .met-card p { font-size: .8rem; color: var(--muted); margin: 0; line-height: 1.5; }
+    @media(max-width:900px) { .met-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:520px) { .met-grid { grid-template-columns: 1fr; } }
+  </style>
+  <div class="met-grid">
+    <div class="met-card">
+      <img src="assets/img/sk-schizzo-1.jpg" alt="Schizzo a mano libera" loading="lazy">
+      <div class="met-meta"><h4>Lo schizzo iniziale</h4><p>L'idea prende forma sul foglio.</p></div>
+    </div>
+    <div class="met-card">
+      <img src="assets/img/sk-plastico.jpg" alt="Plastico fisico" loading="lazy">
+      <div class="met-meta"><h4>Il plastico</h4><p>Studio dei volumi nello spazio.</p></div>
+    </div>
+    <div class="met-card">
+      <img src="assets/img/ape-roberta-termocamera-1.jpg" alt="Sopralluogo con termocamera" loading="lazy">
+      <div class="met-meta"><h4>Il sopralluogo</h4><p>La termocamera vede ciò che l'occhio nasconde.</p></div>
+    </div>
+    <div class="met-card">
+      <img src="assets/img/ape-cantiere-mirano.jpg" alt="Cantiere riqualificazione" loading="lazy">
+      <div class="met-meta"><h4>Il cantiere</h4><p>Direzione lavori e verifica continua.</p></div>
+    </div>
+  </div>
+</section>
+
+
 <!-- PORTRAIT QUOTE -->
 <section class="section bg-white">
   <div class="portrait-grid">

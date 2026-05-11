@@ -111,7 +111,7 @@
 <main id="content">
 
 <header class="page-hero">
-  <img class="page-hero-img" src="assets/img/architetto-perizie-techiche-estimative.webp" alt="" loading="eager">
+  <img class="page-hero-img" src="assets/img/ape-sopralluogo-cantiere.jpg" alt="" loading="eager">
   <div class="page-hero-inner">
     <div class="breadcrumb">
       <a href="index.html">Home</a><span>/</span><a href="servizi.html">Servizi</a><span>/</span><span>Richiesta Perizia</span>
@@ -237,6 +237,43 @@
     </div>
   </div>
 </section>
+
+<!-- ESEMPI PERIZIE -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh sh-c">
+      <span class="label">Casi Documentati</span>
+      <span class="dline dline-c"></span>
+      <h2>Vizi, Infiltrazioni e <em style="font-weight:300;color:var(--accent)">Difetti Reali</em></h2>
+      <p>Una piccola raccolta di rilievi effettuati in perizie già svolte:
+         infiltrazioni, indagini acustiche, misurazioni con igrometro.</p>
+    </div>
+  </div>
+  <style>
+    .pz-strip {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: .8rem;
+    }
+    .pz-strip figure { margin: 0; position: relative; overflow: hidden; aspect-ratio: 4/3; }
+    .pz-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+    .pz-strip figure:hover img { transform: scale(1.04); }
+    .pz-strip figcaption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .8rem 1rem;
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: #fff; background: linear-gradient(to top, rgba(20,20,18,.85), transparent);
+    }
+    @media(max-width:768px) { .pz-strip { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+  <div class="pz-strip">
+    <figure><img src="assets/img/ape-infiltrazioni-cantiere.jpg" alt="Infiltrazioni in cantiere" loading="lazy"><figcaption>Infiltrazioni cantiere</figcaption></figure>
+    <figure><img src="assets/img/ape-infiltrazione-copertura.jpg" alt="Infiltrazione copertura condominiale" loading="lazy"><figcaption>Copertura condominiale</figcaption></figure>
+    <figure><img src="assets/img/ape-indagine-acustica.jpg" alt="Indagine acustica vano scale" loading="lazy"><figcaption>Indagine acustica</figcaption></figure>
+    <figure><img src="assets/img/ape-prova-fluorina.jpg" alt="Prova con fluorina" loading="lazy"><figcaption>Prova fluorina</figcaption></figure>
+  </div>
+</section>
+
 
 <section class="section bg-white" id="form">
   <div style="max-width:var(--max);margin:0 auto 2.5rem">

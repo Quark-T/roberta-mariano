@@ -152,7 +152,7 @@
 <main id="content">
 
 <header class="page-hero">
-  <img class="page-hero-img" src="assets/img/image18.webp" alt="" loading="eager">
+  <img class="page-hero-img" src="assets/img/ape-roberta-termocamera-1.jpg" alt="" loading="eager">
   <div class="page-hero-inner">
     <div class="breadcrumb">
       <a href="index.html">Home</a><span>/</span><a href="termografia-padova.html">Termografia</a><span>/</span><span>Richiesta</span>
@@ -261,6 +261,42 @@
     </div>
   </div>
 </section>
+
+<!-- ESEMPI / GALLERIA -->
+<section class="section bg-alt">
+  <div style="max-width:var(--max);margin:0 auto 2rem">
+    <div class="sh sh-c">
+      <span class="label">Esempi dal Campo</span>
+      <span class="dline dline-c"></span>
+      <h2>Lavori Reali</h2>
+      <p>Una piccola selezione di indagini termografiche e diagnostiche già svolte.</p>
+    </div>
+  </div>
+  <style>
+    .tg-strip {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: .8rem;
+    }
+    .tg-strip figure { margin: 0; position: relative; overflow: hidden; aspect-ratio: 3/4; }
+    .tg-strip img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+    .tg-strip figure:hover img { transform: scale(1.04); }
+    .tg-strip figcaption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .8rem 1rem;
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: #fff; background: linear-gradient(to top, rgba(20,20,18,.85), transparent);
+    }
+    @media(max-width:768px) { .tg-strip { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+  <div class="tg-strip">
+    <figure><img src="assets/img/ape-roberta-termocamera-2.jpg" alt="Sopralluogo termografico" loading="lazy"><figcaption>Sopralluogo</figcaption></figure>
+    <figure><img src="assets/img/ape-termografia-1.jpg" alt="Termogramma facciata" loading="lazy"><figcaption>Mappa termica</figcaption></figure>
+    <figure><img src="assets/img/ape-infiltrazione-terrazza.jpg" alt="Infiltrazione terrazza" loading="lazy"><figcaption>Infiltrazione terrazza</figcaption></figure>
+    <figure><img src="assets/img/ape-indagine-igrometro.jpg" alt="Indagine con igrometro" loading="lazy"><figcaption>Igrometro</figcaption></figure>
+  </div>
+</section>
+
 
 <!-- FORM -->
 <section class="section bg-white" id="form">
