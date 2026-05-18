@@ -23,6 +23,33 @@ function json(data, status = 200) {
   });
 }
 
+function withUtf8Charset(response) {
+  const headers = new Headers(response.headers);
+  const contentType = headers.get("content-type");
+
+  if (contentType && !/charset=/i.test(contentType)) {
+    const normalized = contentType.toLowerCase();
+
+    if (normalized.startsWith("text/html")) {
+      headers.set("content-type", "text/html; charset=UTF-8");
+    } else if (normalized.startsWith("text/css")) {
+      headers.set("content-type", "text/css; charset=UTF-8");
+    } else if (normalized.startsWith("application/javascript") || normalized.startsWith("text/javascript")) {
+      headers.set("content-type", "application/javascript; charset=UTF-8");
+    } else if (normalized.startsWith("application/json")) {
+      headers.set("content-type", "application/json; charset=UTF-8");
+    } else if (normalized.startsWith("image/svg+xml")) {
+      headers.set("content-type", "image/svg+xml; charset=UTF-8");
+    }
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 function base64url(bytes) {
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
@@ -243,6 +270,7 @@ export default {
       return handleDownload(request, env, key);
     }
 
-    return env.ASSETS.fetch(request);
+    const assetResponse = await env.ASSETS.fetch(request);
+    return withUtf8Charset(assetResponse);
   },
 };
