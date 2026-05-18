@@ -12,7 +12,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"></noscript>
-<link rel="preload" as="image" href="assets/img/gmb11-scaled-1.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/ape-roberta-termocamera-1.jpg" fetchpriority="high">
 <link rel="stylesheet" href="assets/style.css">
 <script type="application/ld+json">
 {
@@ -68,6 +68,14 @@
   font-size: clamp(.95rem,1.4vw,1.08rem); color: var(--muted);
   max-width: 440px; margin-bottom: 2.5rem; opacity: 0; line-height: 1.78;
 }
+.hero-note {
+  margin: -1.1rem 0 2rem;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  opacity: 0;
+}
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; }
 .hero-scroll {
   position: absolute; bottom: 2.5rem; left: var(--pad);
@@ -92,6 +100,7 @@
   .hero-right { order: -1; height: 48vh; clip-path: none; }
   .hero-left  { padding: 2.5rem var(--pad) 5rem; justify-content: flex-end; }
   .hero-deco, .hero-scroll { display: none; }
+  .hero-note { margin-bottom: 1.8rem; }
 }
 
 /* â”€â”€ STUDIO PREVIEW â”€â”€ */
@@ -100,7 +109,7 @@
   gap: clamp(3rem,8vw,7rem); align-items: center;
   max-width: var(--max); margin: 0 auto;
 }
-.studio-img-wrap { position: relative; }
+.studio-img-wrap { position: relative; max-width: 420px; margin: 0 auto; }
 .studio-img-wrap::before {
   content: ''; position: absolute;
   top: 20px; right: -20px; width: 100%; height: 100%;
@@ -348,6 +357,7 @@
       <h1 class="hero-h1">Arte, Tecnica<br><em style="font-weight:300;color:var(--accent)">e SostenibilitÃ </em></h1>
     </div>
     <p class="hero-sub">Progettazione architettonica, interior design, certificazioni energetiche e perizie tecniche. Oltre 22 anni di esperienza nel Veneto.</p>
+    <p class="hero-note">Listino in aggiornamento. Preventivi personalizzati su richiesta.</p>
     <div class="hero-btns">
       <a href="servizi.html" class="btn">
         Scopri i Servizi
@@ -359,7 +369,7 @@
   </div>
 
   <div class="hero-right">
-    <img src="assets/img/gmb11-scaled-1.webp" alt="Progetto architettonico" loading="eager" fetchpriority="high" width="900" height="1200" decoding="sync">
+    <img src="assets/img/ape-roberta-termocamera-1.jpg" alt="Indagine con termocamera su edificio" loading="eager" fetchpriority="high" width="683" height="911" decoding="sync">
   </div>
 </section>
 

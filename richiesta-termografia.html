@@ -211,53 +211,37 @@
 <section class="section">
   <div style="max-width:var(--max);margin:0 auto 2.5rem">
     <div class="sh sh-c">
-      <span class="label">Listino</span>
+      <span class="label">Listino in aggiornamento</span>
       <span class="dline dline-c"></span>
-      <h2>Tipologie di Indagine</h2>
-      <p>Prezzi indicativi a partire da. Il preventivo definitivo viene
-         comunicato sulla base della superficie e della complessitÃ .</p>
+      <h2>Richiesta su misura</h2>
+      <p>In questa fase non sono pubblicati prezzi standard. Ogni indagine viene
+         definita in base alla superficie, all'obiettivo della verifica e alla
+         complessitÃ  del caso.</p>
     </div>
   </div>
-  <div class="pricing-grid">
+  <div class="pricing-grid" style="grid-template-columns:1fr 1fr">
     <div class="price-card">
-      <h3>Indagine Base</h3>
-      <p class="lead">Singolo immobile residenziale fino a 100 mÂ².</p>
-      <span class="price-tag">â‚¬ 250 <small>+ IVA</small></span>
+      <h3>Cosa include la valutazione</h3>
+      <p class="lead">Un primo inquadramento chiaro prima di fissare il sopralluogo.</p>
       <ul>
-        <li>Sopralluogo con termocamera professionale</li>
-        <li>Analisi dispersioni termiche</li>
-        <li>Report fotografico (10â€“15 termogrammi)</li>
-        <li>Consegna in PDF entro 7 giorni</li>
+        <li>Raccolta delle informazioni essenziali sul problema</li>
+        <li>Verifica della tipologia di immobile e della superficie</li>
+        <li>Indicazione del tipo di indagine piÃ¹ adatto</li>
+        <li>Preventivo personalizzato prima della conferma</li>
       </ul>
-      <a href="#form" class="btn" data-pacchetto="Base">Scegli Base</a>
-    </div>
-
-    <div class="price-card featured">
-      <h3>Indagine Completa</h3>
-      <p class="lead">Immobile residenziale o commerciale fino a 200 mÂ².</p>
-      <span class="price-tag">â‚¬ 450 <small>+ IVA</small></span>
-      <ul>
-        <li>Tutto quello incluso in "Base"</li>
-        <li>Analisi ponti termici</li>
-        <li>Verifica infiltrazioni d'aria e umiditÃ </li>
-        <li>Relazione tecnica firmata</li>
-        <li>Suggerimenti per la riqualificazione</li>
-      </ul>
-      <a href="#form" class="btn" data-pacchetto="Completa">Scegli Completa</a>
+      <a href="#form" class="btn">Richiedi valutazione</a>
     </div>
 
     <div class="price-card">
-      <h3>Indagine Estesa</h3>
-      <p class="lead">Edifici grandi, condomini, capannoni, contenziosi.</p>
-      <span class="price-tag">Su preventivo</span>
+      <h3>Come funziona</h3>
+      <p class="lead">Un percorso semplice per capire se e come intervenire.</p>
       <ul>
-        <li>Tutto quello incluso in "Completa"</li>
-        <li>Termogrammi multipli su tutte le facciate</li>
-        <li>Rilievi in piÃ¹ momenti del giorno</li>
-        <li>Perizia legale e relazione CTU/CTP</li>
-        <li>Assistenza in causa o sopralluogo congiunto</li>
+        <li>Invii la richiesta dal modulo o via WhatsApp</li>
+        <li>Valuto contesto, urgenza e documentazione disponibile</li>
+        <li>Ti confermo modalitÃ , tempi e preventivo su misura</li>
+        <li>Fissiamo il sopralluogo solo dopo la tua approvazione</li>
       </ul>
-      <a href="#form" class="btn btn-o" data-pacchetto="Estesa">Richiedi Preventivo</a>
+      <a href="https://wa.me/393476622673" class="btn btn-o" target="_blank" rel="noopener">Scrivimi su WhatsApp</a>
     </div>
   </div>
 </section>
@@ -312,12 +296,13 @@
   <form class="req-form" id="termoForm" novalidate>
     <h3>Dati richiesta</h3>
     <div class="fg">
-      <label for="pacchetto">Pacchetto scelto *</label>
+      <label for="pacchetto">Tipologia di indagine *</label>
       <select id="pacchetto" name="pacchetto" required>
         <option value="">â€” Seleziona â€”</option>
-        <option>Indagine Base â€” â‚¬ 250</option>
-        <option>Indagine Completa â€” â‚¬ 450</option>
-        <option>Indagine Estesa â€” su preventivo</option>
+        <option>Verifica infiltrazioni e umiditÃ </option>
+        <option>Controllo dispersioni e ponti termici</option>
+        <option>Check-up post-ristrutturazione</option>
+        <option>Indagine estesa o multi-unitÃ </option>
         <option>Non lo so, valutiamo insieme</option>
       </select>
     </div>
@@ -404,8 +389,8 @@
 </section>
 
 <div class="cta-band">
-  <h2>Hai dubbi su quale<br><em style="font-weight:300">pacchetto scegliere?</em></h2>
-  <p>Scrivimi su WhatsApp con due foto del muro o dell'edificio: ti dico subito quale indagine ha senso.</p>
+  <h2>Hai dubbi su quale<br><em style="font-weight:300">indagine richiedere?</em></h2>
+  <p>Scrivimi su WhatsApp con due foto del muro o dell'edificio: ti aiuto a capire come procedere.</p>
   <a href="https://wa.me/393476622673" class="btn btn-light" target="_blank" rel="noopener">
     Scrivimi su WhatsApp
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
@@ -439,7 +424,7 @@ document.querySelectorAll('[data-pacchetto]').forEach(a => {
     const v = a.dataset.pacchetto;
     const sel = document.getElementById('pacchetto');
     if (!sel) return;
-    const opt = [...sel.options].find(o => o.text.startsWith('Indagine ' + v));
+    const opt = [...sel.options].find(o => o.text.startsWith(v));
     if (opt) sel.value = opt.value || opt.text;
   });
 });
