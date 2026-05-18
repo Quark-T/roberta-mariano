@@ -3,3 +3,7 @@ seo.md
 wrangler.jsonc
 .assetsignore
 .gitignore
+.git/
+.git/**
+.wrangler/
+.wrangler/**
