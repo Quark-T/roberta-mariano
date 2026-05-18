@@ -10,7 +10,7 @@ setTimeout(() => {
     el.style.opacity = '1';
     el.style.transform = 'none';
   });
-  document.querySelectorAll('.hero-pre, .hero-h1, .hero-sub, .hero-btns, .hero-scroll').forEach(el => {
+  document.querySelectorAll('.hero-pre, .hero-h1, .hero-sub, .hero-note, .hero-btns, .hero-scroll').forEach(el => {
     if (getComputedStyle(el).opacity === '0') {
       el.style.opacity = '1';
       el.style.transform = 'none';
