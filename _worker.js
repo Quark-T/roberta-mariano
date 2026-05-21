@@ -261,7 +261,8 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    if (url.hostname === "www.robertamariano.it") {
+    if (url.protocol === "http:" || url.hostname === "www.robertamariano.it") {
+      url.protocol = "https:";
       url.hostname = "robertamariano.it";
       return Response.redirect(url.toString(), 308);
     }
