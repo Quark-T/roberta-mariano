@@ -104,8 +104,11 @@
 <main id="content">
 
 <!-- PAGE HERO -->
-<header class="page-hero">
-  <img class="page-hero-img" src="assets/img/image11.webp" alt="" loading="eager">
+<header class="page-hero page-hero--portfolio" data-portfolio-hero>
+  <div class="portfolio-hero-media" aria-hidden="true">
+    <img class="page-hero-img portfolio-hero-fallback" src="assets/img/image11.webp" alt="" loading="eager">
+    <div class="portfolio-hero-slides" id="portfolioHeroSlides"></div>
+  </div>
   <div class="page-hero-inner">
     <div class="breadcrumb">
       <a href="index.html">Home</a><span>/</span><span>Portfolio</span>
@@ -116,6 +119,29 @@
       interior design, riqualificazione energetica e progettazione di spazi interni
       ed esterni nel Veneto e oltre confine.
     </p>
+    <div class="portfolio-hero-card">
+      <span class="portfolio-hero-eyebrow">Ordine casuale a ogni refresh</span>
+      <div class="portfolio-hero-project">
+        <strong id="portfolioHeroTitle">Rotazione dei progetti</strong>
+        <span id="portfolioHeroMeta">La hero seleziona i lavori direttamente dalla galleria e li mostra in sequenza.</span>
+      </div>
+      <div class="portfolio-hero-bottom">
+        <span class="portfolio-hero-chip" id="portfolioHeroCategory">Portfolio</span>
+        <div class="portfolio-hero-controls">
+          <button class="portfolio-hero-nav" type="button" data-hero-nav="prev" aria-label="Progetto precedente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6"></path>
+            </svg>
+          </button>
+          <span class="portfolio-hero-count" id="portfolioHeroCount">1 / 1</span>
+          <button class="portfolio-hero-nav" type="button" data-hero-nav="next" aria-label="Progetto successivo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -568,6 +594,153 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
 });
 </script>
 <script>
+/* Hero slider portfolio alimentata dai progetti della galleria */
+(function(){
+  const hero = document.querySelector('[data-portfolio-hero]');
+  const slideHost = document.getElementById('portfolioHeroSlides');
+  const titleEl = document.getElementById('portfolioHeroTitle');
+  const metaEl = document.getElementById('portfolioHeroMeta');
+  const categoryEl = document.getElementById('portfolioHeroCategory');
+  const countEl = document.getElementById('portfolioHeroCount');
+  const prevBtn = hero ? hero.querySelector('[data-hero-nav="prev"]') : null;
+  const nextBtn = hero ? hero.querySelector('[data-hero-nav="next"]') : null;
+
+  if (!hero || !slideHost || !titleEl || !metaEl || !categoryEl || !countEl) return;
+
+  const categoryMap = {
+    all: 'Tutti i progetti',
+    interni: 'Interior Design',
+    facciate: 'Facciate e Edilizia',
+    esterni: 'Spazi Esterni',
+    energia: 'Energia',
+  };
+
+  const tidyText = (value) => (value || '')
+    .replace(/Â·|·/g, ' / ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const projects = Array.from(document.querySelectorAll('#pfGrid .pf-item'))
+    .map((item, index) => {
+      const img = item.querySelector('.pf-img');
+      const heading = item.querySelector('.pf-cap h3, .pf-cap h4');
+      const meta = item.querySelector('.pf-cap span');
+      if (!img || !heading) return null;
+      return {
+        id: index,
+        src: img.getAttribute('src'),
+        alt: img.getAttribute('alt') || tidyText(heading.textContent),
+        width: img.getAttribute('width'),
+        height: img.getAttribute('height'),
+        title: tidyText(heading.textContent),
+        meta: tidyText(meta ? meta.textContent : ''),
+        category: item.getAttribute('data-c') || 'all',
+      };
+    })
+    .filter(Boolean);
+
+  if (projects.length === 0) return;
+
+  const shuffled = projects.slice();
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  const slides = shuffled.map((project, index) => {
+    const img = document.createElement('img');
+    img.className = 'portfolio-hero-slide';
+    img.src = project.src;
+    img.alt = '';
+    img.decoding = 'async';
+    img.loading = index === 0 ? 'eager' : 'lazy';
+    if (project.width) img.width = Number(project.width);
+    if (project.height) img.height = Number(project.height);
+    if (index === 0) img.classList.add('is-active');
+    slideHost.appendChild(img);
+    return img;
+  });
+
+  let current = 0;
+  let timer = null;
+
+  const render = (index) => {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle('is-active', slideIndex === current);
+    });
+
+    const project = shuffled[current];
+    titleEl.textContent = project.title;
+    metaEl.textContent = project.meta || 'Selezione portfolio';
+    categoryEl.textContent = categoryMap[project.category] || tidyText(project.category);
+    countEl.textContent = `${current + 1} / ${slides.length}`;
+  };
+
+  const stop = () => {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  };
+
+  const start = () => {
+    stop();
+    if (slides.length < 2) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    timer = window.setInterval(() => {
+      render(current + 1);
+    }, 4800);
+  };
+
+  render(0);
+
+  if (slides.length < 2) hero.classList.add('is-static');
+
+  const markReady = () => {
+    hero.classList.add('is-ready');
+    start();
+  };
+
+  if (slides[0].complete) {
+    markReady();
+  } else {
+    slides[0].addEventListener('load', markReady, { once: true });
+    slides[0].addEventListener('error', markReady, { once: true });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      render(current - 1);
+      start();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      render(current + 1);
+      start();
+    });
+  }
+
+  hero.addEventListener('mouseenter', stop);
+  hero.addEventListener('mouseleave', start);
+  hero.addEventListener('focusin', stop);
+  hero.addEventListener('focusout', () => {
+    window.setTimeout(() => {
+      if (!hero.contains(document.activeElement)) start();
+    }, 0);
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stop();
+    } else {
+      start();
+    }
+  });
+})();
+
 /* Lightbox per Valentini Book + Schizzi */
 (function(){
   const overlay = document.getElementById('vlOverlay');
