@@ -3,9 +3,20 @@
   "name": "icy-silence-016b",
   "main": "./_worker.js",
   "compatibility_date": "2026-05-05",
+  "routes": [
+    {
+      "pattern": "robertamariano.it",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.robertamariano.it/*",
+      "zone_name": "robertamariano.it"
+    }
+  ],
   "assets": {
     "directory": "./",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "run_worker_first": true
   },
   "r2_buckets": [
     {

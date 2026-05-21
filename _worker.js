@@ -261,6 +261,11 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.hostname === "www.robertamariano.it") {
+      url.hostname = "robertamariano.it";
+      return Response.redirect(url.toString(), 308);
+    }
+
     if (url.pathname === "/api/uploads" && request.method === "POST") {
       return handleUpload(request, env);
     }
